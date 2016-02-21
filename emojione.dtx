@@ -1,0 +1,3506 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2016 by Benjamin Weiss <weissbenjamin@me.com>
+% ---------------------------------------------------------------------------
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Benjamin Weiss.
+%
+% This work consists of the files emojione.dtx and emojione.ins and the derived
+% file emojione.sty.
+%
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{emojione.dtx}
+%</driver>
+%<package>\NeedsTeXFormat{LaTeX2e}
+%<package>\ProvidesPackage{emojione}
+%<*package>
+    [2016/02/21 1.0.0 emojione package]
+%</package>
+%<*driver>
+\documentclass{l3doc}
+%\EnableCrossrefs
+%\CodelineIndex
+%\DisableCrossrefs
+%\RecordChanges
+%\OnlyDescription
+\usepackage[parfill]{parskip}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage[no-math]{fontspec}
+\setmainfont[BoldFont={Fira Sans}]{Fira Sans Light}
+\setmonofont{Fira Mono}
+
+\usepackage{metalogo}
+
+\usepackage{multicol}
+
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep}
+\setlist[enumerate]{noitemsep}
+
+\usepackage[showerrors,table,hyperref]{xcolor}
+\usepackage{emojione}
+
+\definecolor{mDarkBrown}{HTML}{604c38}
+\definecolor{mDarkTeal}{HTML}{23373b}
+\definecolor{mLightBrown}{HTML}{EB811B}
+\definecolor{mLightGreen}{HTML}{14B03D}
+\definecolor{mBackground}{HTML}{FFFFFF}
+
+\usepackage{listings}
+\lstset{%
+  gobble=2,
+  language=[LaTeX]{TeX},
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{mLightBrown}\bfseries,
+  commentstyle=\color{mLightGreen},
+  stringstyle=\color{mLightGreen},
+  backgroundcolor=\color{mBackground},
+  numbers=none,
+  numberstyle=\tiny\ttfamily,
+  stepnumber=2,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=none,
+  framerule=1pt,
+  tabsize=2,
+  rulesep=5em,
+  captionpos=b,
+  breaklines=true,
+  breakatwhitespace=false,
+  framexleftmargin=0em,
+  framexrightmargin=0em,
+  xleftmargin=0em,
+  xrightmargin=0em,
+  aboveskip=1em,
+  belowskip=1em,
+  morekeywords={emojione, emoticons},
+}
+\lstMakeShortInline|
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,
+            linkcolor=mLightBrown,
+            menucolor=mLightBrown,
+            pagecolor=mLightBrown,
+            urlcolor=mLightBrown}
+\usepackage{xstring}
+
+\begin{document}
+\DocInput{emojione.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \GetFileInfo{emojione.sty}
+% \title{The \textsc{emojione} package}
+% \author{Benjamin Weiss\\ \url{weissbenjamin@me.com}}
+% \date{Version \fileversion~from \filedate}
+%
+% \maketitle
+%
+% \section{Introduction}
+% Emoji One is a complete open source emoji set. This package makes it easily
+% accessible in \LaTeX.
+%
+% \section{How to use it}
+% There are two ways to use this package. Either you use the unicode
+% characters directly in your document or you use the predefined macros. The
+% macroname consist of the prefix |emoji| and the symbolname. In some cases
+% the names slightly differ from the official shortname of emojione, because
+% digits are converted into words and underscores are stripped.
+%
+% The following lists every symbol available and its name used in the package.
+%
+% \begin{multicols}{2}
+% \begin{itemize}
+% \item[💯]onezerozero
+% \item[🔢]onetwothreefour
+% \item[🎱]eightball
+% \item[🅰]a
+% \item[🆎]ab
+% \item[🔤]abc
+% \item[🔡]abcd
+% \item[🉑]accept
+% \item[🚡]aerialtramway
+% \item[✈]airplane
+% \item[🛬]airplanearriving
+% \item[🛫]airplanedeparture
+% \item[🛩]airplanesmall
+% \item[⏰]alarmclock
+% \item[⚗]alembic
+% \item[👽]alien
+% \item[🚑]ambulance
+% \item[🏺]amphora
+% \item[⚓]anchor
+% \item[👼]angel
+% \item[🏻]angeltoneone
+% \item[🏼]angeltonetwo
+% \item[🏽]angeltonethree
+% \item[🏾]angeltonefour
+% \item[🏿]angeltonefive
+% \item[💢]anger
+% \item[🗯]angerright
+% \item[😠]angry
+% \item[😧]anguished
+% \item[🐜]ant
+% \item[🍎]apple
+% \item[♒]aquarius
+% \item[♈]aries
+% \item[◀]arrowbackward
+% \item[⏬]arrowdoubledown
+% \item[⏫]arrowdoubleup
+% \item[⬇]arrowdown
+% \item[🔽]arrowdownsmall
+% \item[▶]arrowforward
+% \item[⤵]arrowheadingdown
+% \item[⤴]arrowheadingup
+% \item[⬅]arrowleft
+% \item[↙]arrowlowerleft
+% \item[↘]arrowlowerright
+% \item[➡]arrowright
+% \item[↪]arrowrighthook
+% \item[⬆]arrowup
+% \item[↕]arrowupdown
+% \item[🔼]arrowupsmall
+% \item[↖]arrowupperleft
+% \item[↗]arrowupperright
+% \item[🔃]arrowsclockwise
+% \item[🔄]arrowscounterclockwise
+% \item[🎨]art
+% \item[🚛]articulatedlorry
+% \item[⃣]asterisk
+% \item[😲]astonished
+% \item[👟]athleticshoe
+% \item[🏧]atm
+% \item[⚛]atom
+% \item[🅱]b
+% \item[👶]baby
+% \item[🍼]babybottle
+% \item[🐤]babychick
+% \item[🚼]babysymbol
+% \item[🏻]babytoneone
+% \item[🏼]babytonetwo
+% \item[🏽]babytonethree
+% \item[🏾]babytonefour
+% \item[🏿]babytonefive
+% \item[🔙]back
+% \item[🏸]badminton
+% \item[🛄]baggageclaim
+% \item[🎈]balloon
+% \item[🗳]ballotbox
+% \item[☑]ballotboxwithcheck
+% \item[🎍]bamboo
+% \item[🍌]banana
+% \item[‼]bangbang
+% \item[🏦]bank
+% \item[📊]barchart
+% \item[💈]barber
+% \item[⚾]baseball
+% \item[🏀]basketball
+% \item[⛹]basketballplayer
+% \item[🏻]basketballplayertoneone
+% \item[🏼]basketballplayertonetwo
+% \item[🏽]basketballplayertonethree
+% \item[🏾]basketballplayertonefour
+% \item[🏿]basketballplayertonefive
+% \item[🛀]bath
+% \item[🏻]bathtoneone
+% \item[🏼]bathtonetwo
+% \item[🏽]bathtonethree
+% \item[🏾]bathtonefour
+% \item[🏿]bathtonefive
+% \item[🛁]bathtub
+% \item[🔋]battery
+% \item[🏖]beach
+% \item[⛱]beachumbrella
+% \item[🐻]bear
+% \item[🛏]bed
+% \item[🐝]bee
+% \item[🍺]beer
+% \item[🍻]beers
+% \item[🐞]beetle
+% \item[🔰]beginner
+% \item[🔔]bell
+% \item[🛎]bellhop
+% \item[🍱]bento
+% \item[🚴]bicyclist
+% \item[🏻]bicyclisttoneone
+% \item[🏼]bicyclisttonetwo
+% \item[🏽]bicyclisttonethree
+% \item[🏾]bicyclisttonefour
+% \item[🏿]bicyclisttonefive
+% \item[🚲]bike
+% \item[👙]bikini
+% \item[☣]biohazard
+% \item[🐦]bird
+% \item[🎂]birthday
+% \item[⚫]blackcircle
+% \item[🃏]blackjoker
+% \item[⬛]blacklargesquare
+% \item[◾]blackmediumsmallsquare
+% \item[◼]blackmediumsquare
+% \item[✒]blacknib
+% \item[▪]blacksmallsquare
+% \item[🔲]blacksquarebutton
+% \item[🌼]blossom
+% \item[🐡]blowfish
+% \item[📘]bluebook
+% \item[🚙]bluecar
+% \item[💙]blueheart
+% \item[😊]blush
+% \item[🐗]boar
+% \item[💣]bomb
+% \item[📖]book
+% \item[🔖]bookmark
+% \item[📑]bookmarktabs
+% \item[📚]books
+% \item[💥]boom
+% \item[👢]boot
+% \item[💐]bouquet
+% \item[🙇]bow
+% \item[🏹]bowandarrow
+% \item[🏻]bowtoneone
+% \item[🏼]bowtonetwo
+% \item[🏽]bowtonethree
+% \item[🏾]bowtonefour
+% \item[🏿]bowtonefive
+% \item[🎳]bowling
+% \item[👦]boy
+% \item[🏻]boytoneone
+% \item[🏼]boytonetwo
+% \item[🏽]boytonethree
+% \item[🏾]boytonefour
+% \item[🏿]boytonefive
+% \item[🍞]bread
+% \item[👰]bridewithveil
+% \item[🏻]bridewithveiltoneone
+% \item[🏼]bridewithveiltonetwo
+% \item[🏽]bridewithveiltonethree
+% \item[🏾]bridewithveiltonefour
+% \item[🏿]bridewithveiltonefive
+% \item[🌉]bridgeatnight
+% \item[💼]briefcase
+% \item[💔]brokenheart
+% \item[🐛]bug
+% \item[💡]bulb
+% \item[🚅]bullettrainfront
+% \item[🚄]bullettrainside
+% \item[🌯]burrito
+% \item[🚌]bus
+% \item[🚏]busstop
+% \item[👤]bustinsilhouette
+% \item[👥]bustsinsilhouette
+% \item[🌵]cactus
+% \item[🍰]cake
+% \item[📆]calendar
+% \item[🗓]calendarspiral
+% \item[📲]calling
+% \item[🐫]camel
+% \item[📷]camera
+% \item[📸]camerawithflash
+% \item[🏕]camping
+% \item[♋]cancer
+% \item[🕯]candle
+% \item[🍬]candy
+% \item[🔠]capitalabcd
+% \item[♑]capricorn
+% \item[🗃]cardbox
+% \item[📇]cardindex
+% \item[🎠]carouselhorse
+% \item[🐱]cat
+% \item[🐈]cattwo
+% \item[💿]cd
+% \item[⛓]chains
+% \item[🍾]champagne
+% \item[💹]chart
+% \item[📉]chartwithdownwardstrend
+% \item[📈]chartwithupwardstrend
+% \item[🏁]checkeredflag
+% \item[🧀]cheese
+% \item[🍒]cherries
+% \item[🌸]cherryblossom
+% \item[🌰]chestnut
+% \item[🐔]chicken
+% \item[🚸]childrencrossing
+% \item[🐿]chipmunk
+% \item[🍫]chocolatebar
+% \item[🎄]christmastree
+% \item[⛪]church
+% \item[🎦]cinema
+% \item[🎪]circustent
+% \item[🌆]citydusk
+% \item[🌇]citysunset
+% \item[🏙]cityscape
+% \item[🆑]cl
+% \item[👏]clap
+% \item[🏻]claptoneone
+% \item[🏼]claptonetwo
+% \item[🏽]claptonethree
+% \item[🏾]claptonefour
+% \item[🏿]claptonefive
+% \item[🎬]clapper
+% \item[🏛]classicalbuilding
+% \item[📋]clipboard
+% \item[🕰]clock
+% \item[🕐]clockone
+% \item[🕙]clockonezero
+% \item[🕥]clockonezerothreezero
+% \item[🕚]clockoneone
+% \item[🕦]clockoneonethreezero
+% \item[🕛]clockonetwo
+% \item[🕧]clockonetwothreezero
+% \item[🕜]clockonethreezero
+% \item[🕑]clocktwo
+% \item[🕝]clocktwothreezero
+% \item[🕒]clockthree
+% \item[🕞]clockthreethreezero
+% \item[🕓]clockfour
+% \item[🕟]clockfourthreezero
+% \item[🕔]clockfive
+% \item[🕠]clockfivethreezero
+% \item[🕕]clocksix
+% \item[🕡]clocksixthreezero
+% \item[🕖]clockseven
+% \item[🕢]clockseventhreezero
+% \item[🕗]clockeight
+% \item[🕣]clockeightthreezero
+% \item[🕘]clocknine
+% \item[🕤]clockninethreezero
+% \item[📕]closedbook
+% \item[🔐]closedlockwithkey
+% \item[🌂]closedumbrella
+% \item[☁]cloud
+% \item[🌩]cloudlightning
+% \item[🌧]cloudrain
+% \item[🌨]cloudsnow
+% \item[🌪]cloudtornado
+% \item[♣]clubs
+% \item[🍸]cocktail
+% \item[☕]coffee
+% \item[⚰]coffin
+% \item[😰]coldsweat
+% \item[☄]comet
+% \item[🗜]compression
+% \item[💻]computer
+% \item[🎊]confettiball
+% \item[😖]confounded
+% \item[😕]confused
+% \item[㊗]congratulations
+% \item[🚧]construction
+% \item[🏗]constructionsite
+% \item[👷]constructionworker
+% \item[🏻]constructionworkertoneone
+% \item[🏼]constructionworkertonetwo
+% \item[🏽]constructionworkertonethree
+% \item[🏾]constructionworkertonefour
+% \item[🏿]constructionworkertonefive
+% \item[🎛]controlknobs
+% \item[🏪]conveniencestore
+% \item[🍪]cookie
+% \item[🆒]cool
+% \item[👮]cop
+% \item[🏻]coptoneone
+% \item[🏼]coptonetwo
+% \item[🏽]coptonethree
+% \item[🏾]coptonefour
+% \item[🏿]coptonefive
+% \item[©]copyright
+% \item[🌽]corn
+% \item[🛋]couch
+% \item[👫]couple
+% \item[👨]couplemm
+% \item[💑]couplewithheart
+% \item[👩]coupleww
+% \item[💏]couplekiss
+% \item[🐮]cow
+% \item[🐄]cowtwo
+% \item[🦀]crab
+% \item[🖍]crayon
+% \item[💳]creditcard
+% \item[🌙]crescentmoon
+% \item[🏏]cricket
+% \item[🐊]crocodile
+% \item[✝]cross
+% \item[🎌]crossedflags
+% \item[⚔]crossedswords
+% \item[👑]crown
+% \item[🛳]cruiseship
+% \item[😢]cry
+% \item[😿]cryingcatface
+% \item[🔮]crystalball
+% \item[💘]cupid
+% \item[➰]curlyloop
+% \item[💱]currencyexchange
+% \item[🍛]curry
+% \item[🍮]custard
+% \item[🛃]customs
+% \item[🌀]cyclone
+% \item[🗡]dagger
+% \item[💃]dancer
+% \item[🏻]dancertoneone
+% \item[🏼]dancertonetwo
+% \item[🏽]dancertonethree
+% \item[🏾]dancertonefour
+% \item[🏿]dancertonefive
+% \item[👯]dancers
+% \item[🍡]dango
+% \item[🕶]darksunglasses
+% \item[🎯]dart
+% \item[💨]dash
+% \item[📅]date
+% \item[🌳]deciduoustree
+% \item[🏬]departmentstore
+% \item[🏜]desert
+% \item[🖥]desktop
+% \item[💠]diamondshapewithadotinside
+% \item[♦]diamonds
+% \item[😞]disappointed
+% \item[😥]disappointedrelieved
+% \item[🗂]dividers
+% \item[💫]dizzy
+% \item[😵]dizzyface
+% \item[🚯]donotlitter
+% \item[🐶]dog
+% \item[🐕]dogtwo
+% \item[💵]dollar
+% \item[🎎]dolls
+% \item[🐬]dolphin
+% \item[🚪]door
+% \item[🍩]doughnut
+% \item[🕊]dove
+% \item[🐉]dragon
+% \item[🐲]dragonface
+% \item[👗]dress
+% \item[🐪]dromedarycamel
+% \item[💧]droplet
+% \item[📀]dvd
+% \item[📧]e-mail
+% \item[👂]ear
+% \item[🌾]earofrice
+% \item[🏻]eartoneone
+% \item[🏼]eartonetwo
+% \item[🏽]eartonethree
+% \item[🏾]eartonefour
+% \item[🏿]eartonefive
+% \item[🌍]earthafrica
+% \item[🌎]earthamericas
+% \item[🌏]earthasia
+% \item[🍳]egg
+% \item[🍆]eggplant
+% \item[⃣]eight
+% \item[✴]eightpointedblackstar
+% \item[✳]eightspokedasterisk
+% \item[🔌]electricplug
+% \item[🐘]elephant
+% \item[🔚]end
+% \item[✉]envelope
+% \item[📩]envelopewitharrow
+% \item[💶]euro
+% \item[🏰]europeancastle
+% \item[🏤]europeanpostoffice
+% \item[🌲]evergreentree
+% \item[❗]exclamation
+% \item[😑]expressionless
+% \item[👁]eye
+% \item[🗨]eyeinspeechbubble
+% \item[👓]eyeglasses
+% \item[👀]eyes
+% \item[🏭]factory
+% \item[🍂]fallenleaf
+% \item[👪]family
+% \item[👦]familymmb
+% \item[👦]familymmbb
+% \item[👧]familymmg
+% \item[👦]familymmgb
+% \item[👧]familymmgg
+% \item[👦]familymwbb
+% \item[👧]familymwg
+% \item[👦]familymwgb
+% \item[👧]familymwgg
+% \item[👦]familywwb
+% \item[👦]familywwbb
+% \item[👧]familywwg
+% \item[👦]familywwgb
+% \item[👧]familywwgg
+% \item[⏩]fastforward
+% \item[📠]fax
+% \item[😨]fearful
+% \item[🐾]feet
+% \item[🎡]ferriswheel
+% \item[⛴]ferry
+% \item[🏑]fieldhockey
+% \item[🗄]filecabinet
+% \item[📁]filefolder
+% \item[🎞]filmframes
+% \item[🔥]fire
+% \item[🚒]fireengine
+% \item[🎆]fireworks
+% \item[🌓]firstquartermoon
+% \item[🌛]firstquartermoonwithface
+% \item[🐟]fish
+% \item[🍥]fishcake
+% \item[🎣]fishingpoleandfish
+% \item[✊]fist
+% \item[🏻]fisttoneone
+% \item[🏼]fisttonetwo
+% \item[🏽]fisttonethree
+% \item[🏾]fisttonefour
+% \item[🏿]fisttonefive
+% \item[⃣]five
+% \item[🇨]flagac
+% \item[🇩]flagad
+% \item[🇪]flagae
+% \item[🇫]flagaf
+% \item[🇬]flagag
+% \item[🇮]flagai
+% \item[🇱]flagal
+% \item[🇲]flagam
+% \item[🇴]flagao
+% \item[🇶]flagaq
+% \item[🇷]flagar
+% \item[🇸]flagas
+% \item[🇹]flagat
+% \item[🇺]flagau
+% \item[🇼]flagaw
+% \item[🇽]flagax
+% \item[🇿]flagaz
+% \item[🇦]flagba
+% \item[🇧]flagbb
+% \item[🇩]flagbd
+% \item[🇪]flagbe
+% \item[🇫]flagbf
+% \item[🇬]flagbg
+% \item[🇭]flagbh
+% \item[🇮]flagbi
+% \item[🇯]flagbj
+% \item[🇱]flagbl
+% \item[🏴]flagblack
+% \item[🇲]flagbm
+% \item[🇳]flagbn
+% \item[🇴]flagbo
+% \item[🇶]flagbq
+% \item[🇷]flagbr
+% \item[🇸]flagbs
+% \item[🇹]flagbt
+% \item[🇻]flagbv
+% \item[🇼]flagbw
+% \item[🇾]flagby
+% \item[🇿]flagbz
+% \item[🇦]flagca
+% \item[🇨]flagcc
+% \item[🇩]flagcd
+% \item[🇫]flagcf
+% \item[🇬]flagcg
+% \item[🇭]flagch
+% \item[🇮]flagci
+% \item[🇰]flagck
+% \item[🇱]flagcl
+% \item[🇲]flagcm
+% \item[🇳]flagcn
+% \item[🇴]flagco
+% \item[🇵]flagcp
+% \item[🇷]flagcr
+% \item[🇺]flagcu
+% \item[🇻]flagcv
+% \item[🇼]flagcw
+% \item[🇽]flagcx
+% \item[🇾]flagcy
+% \item[🇿]flagcz
+% \item[🇪]flagde
+% \item[🇬]flagdg
+% \item[🇯]flagdj
+% \item[🇰]flagdk
+% \item[🇲]flagdm
+% \item[🇴]flagdo
+% \item[🇿]flagdz
+% \item[🇦]flagea
+% \item[🇨]flagec
+% \item[🇪]flagee
+% \item[🇬]flageg
+% \item[🇭]flageh
+% \item[🇷]flager
+% \item[🇸]flages
+% \item[🇹]flaget
+% \item[🇺]flageu
+% \item[🇮]flagfi
+% \item[🇯]flagfj
+% \item[🇰]flagfk
+% \item[🇲]flagfm
+% \item[🇴]flagfo
+% \item[🇷]flagfr
+% \item[🇦]flagga
+% \item[🇧]flaggb
+% \item[🇩]flaggd
+% \item[🇪]flagge
+% \item[🇫]flaggf
+% \item[🇬]flaggg
+% \item[🇭]flaggh
+% \item[🇮]flaggi
+% \item[🇱]flaggl
+% \item[🇲]flaggm
+% \item[🇳]flaggn
+% \item[🇵]flaggp
+% \item[🇶]flaggq
+% \item[🇷]flaggr
+% \item[🇸]flaggs
+% \item[🇹]flaggt
+% \item[🇺]flaggu
+% \item[🇼]flaggw
+% \item[🇾]flaggy
+% \item[🇰]flaghk
+% \item[🇲]flaghm
+% \item[🇳]flaghn
+% \item[🇷]flaghr
+% \item[🇹]flaght
+% \item[🇺]flaghu
+% \item[🇨]flagic
+% \item[🇩]flagid
+% \item[🇪]flagie
+% \item[🇱]flagil
+% \item[🇲]flagim
+% \item[🇳]flagin
+% \item[🇴]flagio
+% \item[🇶]flagiq
+% \item[🇷]flagir
+% \item[🇸]flagis
+% \item[🇹]flagit
+% \item[🇪]flagje
+% \item[🇲]flagjm
+% \item[🇴]flagjo
+% \item[🇵]flagjp
+% \item[🇪]flagke
+% \item[🇬]flagkg
+% \item[🇭]flagkh
+% \item[🇮]flagki
+% \item[🇲]flagkm
+% \item[🇳]flagkn
+% \item[🇵]flagkp
+% \item[🇷]flagkr
+% \item[🇼]flagkw
+% \item[🇾]flagky
+% \item[🇿]flagkz
+% \item[🇦]flagla
+% \item[🇧]flaglb
+% \item[🇨]flaglc
+% \item[🇮]flagli
+% \item[🇰]flaglk
+% \item[🇷]flaglr
+% \item[🇸]flagls
+% \item[🇹]flaglt
+% \item[🇺]flaglu
+% \item[🇻]flaglv
+% \item[🇾]flagly
+% \item[🇦]flagma
+% \item[🇨]flagmc
+% \item[🇩]flagmd
+% \item[🇪]flagme
+% \item[🇫]flagmf
+% \item[🇬]flagmg
+% \item[🇭]flagmh
+% \item[🇰]flagmk
+% \item[🇱]flagml
+% \item[🇲]flagmm
+% \item[🇳]flagmn
+% \item[🇴]flagmo
+% \item[🇵]flagmp
+% \item[🇶]flagmq
+% \item[🇷]flagmr
+% \item[🇸]flagms
+% \item[🇹]flagmt
+% \item[🇺]flagmu
+% \item[🇻]flagmv
+% \item[🇼]flagmw
+% \item[🇽]flagmx
+% \item[🇾]flagmy
+% \item[🇿]flagmz
+% \item[🇦]flagna
+% \item[🇨]flagnc
+% \item[🇪]flagne
+% \item[🇫]flagnf
+% \item[🇬]flagng
+% \item[🇮]flagni
+% \item[🇱]flagnl
+% \item[🇴]flagno
+% \item[🇵]flagnp
+% \item[🇷]flagnr
+% \item[🇺]flagnu
+% \item[🇿]flagnz
+% \item[🇲]flagom
+% \item[🇦]flagpa
+% \item[🇪]flagpe
+% \item[🇫]flagpf
+% \item[🇬]flagpg
+% \item[🇭]flagph
+% \item[🇰]flagpk
+% \item[🇱]flagpl
+% \item[🇲]flagpm
+% \item[🇳]flagpn
+% \item[🇷]flagpr
+% \item[🇸]flagps
+% \item[🇹]flagpt
+% \item[🇼]flagpw
+% \item[🇾]flagpy
+% \item[🇦]flagqa
+% \item[🇪]flagre
+% \item[🇴]flagro
+% \item[🇸]flagrs
+% \item[🇺]flagru
+% \item[🇼]flagrw
+% \item[🇦]flagsa
+% \item[🇧]flagsb
+% \item[🇨]flagsc
+% \item[🇩]flagsd
+% \item[🇪]flagse
+% \item[🇬]flagsg
+% \item[🇭]flagsh
+% \item[🇮]flagsi
+% \item[🇯]flagsj
+% \item[🇰]flagsk
+% \item[🇱]flagsl
+% \item[🇲]flagsm
+% \item[🇳]flagsn
+% \item[🇴]flagso
+% \item[🇷]flagsr
+% \item[🇸]flagss
+% \item[🇹]flagst
+% \item[🇻]flagsv
+% \item[🇽]flagsx
+% \item[🇾]flagsy
+% \item[🇿]flagsz
+% \item[🇦]flagta
+% \item[🇨]flagtc
+% \item[🇩]flagtd
+% \item[🇫]flagtf
+% \item[🇬]flagtg
+% \item[🇭]flagth
+% \item[🇯]flagtj
+% \item[🇰]flagtk
+% \item[🇱]flagtl
+% \item[🇲]flagtm
+% \item[🇳]flagtn
+% \item[🇴]flagto
+% \item[🇷]flagtr
+% \item[🇹]flagtt
+% \item[🇻]flagtv
+% \item[🇼]flagtw
+% \item[🇿]flagtz
+% \item[🇦]flagua
+% \item[🇬]flagug
+% \item[🇲]flagum
+% \item[🇸]flagus
+% \item[🇾]flaguy
+% \item[🇿]flaguz
+% \item[🇦]flagva
+% \item[🇨]flagvc
+% \item[🇪]flagve
+% \item[🇬]flagvg
+% \item[🇮]flagvi
+% \item[🇳]flagvn
+% \item[🇺]flagvu
+% \item[🇫]flagwf
+% \item[🏳]flagwhite
+% \item[🇸]flagws
+% \item[🇰]flagxk
+% \item[🇪]flagye
+% \item[🇹]flagyt
+% \item[🇦]flagza
+% \item[🇲]flagzm
+% \item[🇼]flagzw
+% \item[🎏]flags
+% \item[🔦]flashlight
+% \item[⚜]fleur-de-lis
+% \item[💾]floppydisk
+% \item[🎴]flowerplayingcards
+% \item[😳]flushed
+% \item[🌫]fog
+% \item[🌁]foggy
+% \item[🏈]football
+% \item[👣]footprints
+% \item[🍴]forkandknife
+% \item[🍽]forkknifeplate
+% \item[⛲]fountain
+% \item[⃣]four
+% \item[🍀]fourleafclover
+% \item[🖼]framephoto
+% \item[🆓]free
+% \item[🍤]friedshrimp
+% \item[🍟]fries
+% \item[🐸]frog
+% \item[😦]frowning
+% \item[☹]frowningtwo
+% \item[⛽]fuelpump
+% \item[🌕]fullmoon
+% \item[🌝]fullmoonwithface
+% \item[🎲]gamedie
+% \item[⚙]gear
+% \item[💎]gem
+% \item[♊]gemini
+% \item[👻]ghost
+% \item[🎁]gift
+% \item[💝]giftheart
+% \item[👧]girl
+% \item[🏻]girltoneone
+% \item[🏼]girltonetwo
+% \item[🏽]girltonethree
+% \item[🏾]girltonefour
+% \item[🏿]girltonefive
+% \item[🌐]globewithmeridians
+% \item[🐐]goat
+% \item[⛳]golf
+% \item[🏌]golfer
+% \item[🍇]grapes
+% \item[🍏]greenapple
+% \item[📗]greenbook
+% \item[💚]greenheart
+% \item[❕]greyexclamation
+% \item[❔]greyquestion
+% \item[😬]grimacing
+% \item[😁]grin
+% \item[😀]grinning
+% \item[💂]guardsman
+% \item[🏻]guardsmantoneone
+% \item[🏼]guardsmantonetwo
+% \item[🏽]guardsmantonethree
+% \item[🏾]guardsmantonefour
+% \item[🏿]guardsmantonefive
+% \item[🎸]guitar
+% \item[🔫]gun
+% \item[💇]haircut
+% \item[🏻]haircuttoneone
+% \item[🏼]haircuttonetwo
+% \item[🏽]haircuttonethree
+% \item[🏾]haircuttonefour
+% \item[🏿]haircuttonefive
+% \item[🍔]hamburger
+% \item[🔨]hammer
+% \item[⚒]hammerpick
+% \item[🐹]hamster
+% \item[🖐]handsplayed
+% \item[🏻]handsplayedtoneone
+% \item[🏼]handsplayedtonetwo
+% \item[🏽]handsplayedtonethree
+% \item[🏾]handsplayedtonefour
+% \item[🏿]handsplayedtonefive
+% \item[👜]handbag
+% \item[⃣]hash
+% \item[🐥]hatchedchick
+% \item[🐣]hatchingchick
+% \item[🤕]headbandage
+% \item[🎧]headphones
+% \item[🙉]hearnoevil
+% \item[❤]heart
+% \item[💟]heartdecoration
+% \item[❣]heartexclamation
+% \item[😍]hearteyes
+% \item[😻]hearteyescat
+% \item[💓]heartbeat
+% \item[💗]heartpulse
+% \item[♥]hearts
+% \item[✔]heavycheckmark
+% \item[➗]heavydivisionsign
+% \item[💲]heavydollarsign
+% \item[➖]heavyminussign
+% \item[✖]heavymultiplicationx
+% \item[➕]heavyplussign
+% \item[🚁]helicopter
+% \item[⛑]helmetwithcross
+% \item[🌿]herb
+% \item[🌺]hibiscus
+% \item[🔆]highbrightness
+% \item[👠]highheel
+% \item[🏒]hockey
+% \item[🕳]hole
+% \item[🏘]homes
+% \item[🍯]honeypot
+% \item[🐴]horse
+% \item[🏇]horseracing
+% \item[🏻]horseracingtoneone
+% \item[🏼]horseracingtonetwo
+% \item[🏽]horseracingtonethree
+% \item[🏾]horseracingtonefour
+% \item[🏿]horseracingtonefive
+% \item[🏥]hospital
+% \item[🌶]hotpepper
+% \item[🌭]hotdog
+% \item[🏨]hotel
+% \item[♨]hotsprings
+% \item[⌛]hourglass
+% \item[⏳]hourglassflowingsand
+% \item[🏠]house
+% \item[🏚]houseabandoned
+% \item[🏡]housewithgarden
+% \item[🤗]hugging
+% \item[😯]hushed
+% \item[🍨]icecream
+% \item[⛸]iceskate
+% \item[🍦]icecream
+% \item[🆔]id
+% \item[🉐]ideographadvantage
+% \item[👿]imp
+% \item[📥]inboxtray
+% \item[📨]incomingenvelope
+% \item[💁]informationdeskperson
+% \item[🏻]informationdeskpersontoneone
+% \item[🏼]informationdeskpersontonetwo
+% \item[🏽]informationdeskpersontonethree
+% \item[🏾]informationdeskpersontonefour
+% \item[🏿]informationdeskpersontonefive
+% \item[ℹ]informationsource
+% \item[😇]innocent
+% \item[⁉]interrobang
+% \item[📱]iphone
+% \item[🏝]island
+% \item[🏮]izakayalantern
+% \item[🎃]jackolantern
+% \item[🗾]japan
+% \item[🏯]japanesecastle
+% \item[👺]japanesegoblin
+% \item[👹]japaneseogre
+% \item[👖]jeans
+% \item[😂]joy
+% \item[😹]joycat
+% \item[🕹]joystick
+% \item[🕋]kaaba
+% \item[🔑]key
+% \item[🗝]keytwo
+% \item[⌨]keyboard
+% \item[👘]kimono
+% \item[💋]kiss
+% \item[👨]kissmm
+% \item[👩]kissww
+% \item[😗]kissing
+% \item[😽]kissingcat
+% \item[😚]kissingclosedeyes
+% \item[😘]kissingheart
+% \item[😙]kissingsmilingeyes
+% \item[🔪]knife
+% \item[🐨]koala
+% \item[🈁]koko
+% \item[🏷]label
+% \item[🔵]largebluecircle
+% \item[🔷]largebluediamond
+% \item[🔶]largeorangediamond
+% \item[🌗]lastquartermoon
+% \item[🌜]lastquartermoonwithface
+% \item[😆]laughing
+% \item[🍃]leaves
+% \item[📒]ledger
+% \item[🛅]leftluggage
+% \item[↔]leftrightarrow
+% \item[↩]leftwardsarrowwithhook
+% \item[🍋]lemon
+% \item[♌]leo
+% \item[🐆]leopard
+% \item[🎚]levelslider
+% \item[🕴]levitate
+% \item[♎]libra
+% \item[🏋]lifter
+% \item[🏻]liftertoneone
+% \item[🏼]liftertonetwo
+% \item[🏽]liftertonethree
+% \item[🏾]liftertonefour
+% \item[🏿]liftertonefive
+% \item[🚈]lightrail
+% \item[🔗]link
+% \item[🦁]lionface
+% \item[👄]lips
+% \item[💄]lipstick
+% \item[🔒]lock
+% \item[🔏]lockwithinkpen
+% \item[🍭]lollipop
+% \item[➿]loop
+% \item[🔊]loudsound
+% \item[📢]loudspeaker
+% \item[🏩]lovehotel
+% \item[💌]loveletter
+% \item[🔅]lowbrightness
+% \item[Ⓜ]m
+% \item[🔍]mag
+% \item[🔎]magright
+% \item[🀄]mahjong
+% \item[📫]mailbox
+% \item[📪]mailboxclosed
+% \item[📬]mailboxwithmail
+% \item[📭]mailboxwithnomail
+% \item[👨]man
+% \item[🏻]mantoneone
+% \item[🏼]mantonetwo
+% \item[🏽]mantonethree
+% \item[🏾]mantonefour
+% \item[🏿]mantonefive
+% \item[👲]manwithguapimao
+% \item[🏻]manwithguapimaotoneone
+% \item[🏼]manwithguapimaotonetwo
+% \item[🏽]manwithguapimaotonethree
+% \item[🏾]manwithguapimaotonefour
+% \item[🏿]manwithguapimaotonefive
+% \item[👳]manwithturban
+% \item[🏻]manwithturbantoneone
+% \item[🏼]manwithturbantonetwo
+% \item[🏽]manwithturbantonethree
+% \item[🏾]manwithturbantonefour
+% \item[🏿]manwithturbantonefive
+% \item[👞]mansshoe
+% \item[🗺]map
+% \item[🍁]mapleleaf
+% \item[😷]mask
+% \item[💆]massage
+% \item[🏻]massagetoneone
+% \item[🏼]massagetonetwo
+% \item[🏽]massagetonethree
+% \item[🏾]massagetonefour
+% \item[🏿]massagetonefive
+% \item[🍖]meatonbone
+% \item[🏅]medal
+% \item[📣]mega
+% \item[🍈]melon
+% \item[🕎]menorah
+% \item[🚹]mens
+% \item[🤘]metal
+% \item[🏻]metaltoneone
+% \item[🏼]metaltonetwo
+% \item[🏽]metaltonethree
+% \item[🏾]metaltonefour
+% \item[🏿]metaltonefive
+% \item[🚇]metro
+% \item[🎤]microphone
+% \item[🎙]microphonetwo
+% \item[🔬]microscope
+% \item[🖕]middlefinger
+% \item[🏻]middlefingertoneone
+% \item[🏼]middlefingertonetwo
+% \item[🏽]middlefingertonethree
+% \item[🏾]middlefingertonefour
+% \item[🏿]middlefingertonefive
+% \item[🎖]militarymedal
+% \item[🌌]milkyway
+% \item[🚐]minibus
+% \item[💽]minidisc
+% \item[📴]mobilephoneoff
+% \item[🤑]moneymouth
+% \item[💸]moneywithwings
+% \item[💰]moneybag
+% \item[🐒]monkey
+% \item[🐵]monkeyface
+% \item[🚝]monorail
+% \item[🎓]mortarboard
+% \item[🕌]mosque
+% \item[🛥]motorboat
+% \item[🏍]motorcycle
+% \item[🛣]motorway
+% \item[🗻]mountfuji
+% \item[⛰]mountain
+% \item[🚵]mountainbicyclist
+% \item[🏻]mountainbicyclisttoneone
+% \item[🏼]mountainbicyclisttonetwo
+% \item[🏽]mountainbicyclisttonethree
+% \item[🏾]mountainbicyclisttonefour
+% \item[🏿]mountainbicyclisttonefive
+% \item[🚠]mountaincableway
+% \item[🚞]mountainrailway
+% \item[🏔]mountainsnow
+% \item[🐭]mouse
+% \item[🐁]mousetwo
+% \item[🖱]mousethreebutton
+% \item[🎥]moviecamera
+% \item[🗿]moyai
+% \item[💪]muscle
+% \item[🏻]muscletoneone
+% \item[🏼]muscletonetwo
+% \item[🏽]muscletonethree
+% \item[🏾]muscletonefour
+% \item[🏿]muscletonefive
+% \item[🍄]mushroom
+% \item[🎹]musicalkeyboard
+% \item[🎵]musicalnote
+% \item[🎼]musicalscore
+% \item[🔇]mute
+% \item[💅]nailcare
+% \item[🏻]nailcaretoneone
+% \item[🏼]nailcaretonetwo
+% \item[🏽]nailcaretonethree
+% \item[🏾]nailcaretonefour
+% \item[🏿]nailcaretonefive
+% \item[📛]namebadge
+% \item[👔]necktie
+% \item[❎]negativesquaredcrossmark
+% \item[🤓]nerd
+% \item[😐]neutralface
+% \item[🆕]new
+% \item[🌑]newmoon
+% \item[🌚]newmoonwithface
+% \item[📰]newspaper
+% \item[🗞]newspapertwo
+% \item[🆖]ng
+% \item[🌃]nightwithstars
+% \item[⃣]nine
+% \item[🔕]nobell
+% \item[🚳]nobicycles
+% \item[⛔]noentry
+% \item[🚫]noentrysign
+% \item[🙅]nogood
+% \item[🏻]nogoodtoneone
+% \item[🏼]nogoodtonetwo
+% \item[🏽]nogoodtonethree
+% \item[🏾]nogoodtonefour
+% \item[🏿]nogoodtonefive
+% \item[📵]nomobilephones
+% \item[😶]nomouth
+% \item[🚷]nopedestrians
+% \item[🚭]nosmoking
+% \item[🚱]non-potablewater
+% \item[👃]nose
+% \item[🏻]nosetoneone
+% \item[🏼]nosetonetwo
+% \item[🏽]nosetonethree
+% \item[🏾]nosetonefour
+% \item[🏿]nosetonefive
+% \item[📓]notebook
+% \item[📔]notebookwithdecorativecover
+% \item[🗒]notepadspiral
+% \item[🎶]notes
+% \item[🔩]nutandbolt
+% \item[⭕]o
+% \item[🅾]otwo
+% \item[🌊]ocean
+% \item[🐙]octopus
+% \item[🍢]oden
+% \item[🏢]office
+% \item[🛢]oil
+% \item[🆗]ok
+% \item[👌]okhand
+% \item[🏻]okhandtoneone
+% \item[🏼]okhandtonetwo
+% \item[🏽]okhandtonethree
+% \item[🏾]okhandtonefour
+% \item[🏿]okhandtonefive
+% \item[🙆]okwoman
+% \item[🏻]okwomantoneone
+% \item[🏼]okwomantonetwo
+% \item[🏽]okwomantonethree
+% \item[🏾]okwomantonefour
+% \item[🏿]okwomantonefive
+% \item[👴]olderman
+% \item[🏻]oldermantoneone
+% \item[🏼]oldermantonetwo
+% \item[🏽]oldermantonethree
+% \item[🏾]oldermantonefour
+% \item[🏿]oldermantonefive
+% \item[👵]olderwoman
+% \item[🏻]olderwomantoneone
+% \item[🏼]olderwomantonetwo
+% \item[🏽]olderwomantonethree
+% \item[🏾]olderwomantonefour
+% \item[🏿]olderwomantonefive
+% \item[🕉]omsymbol
+% \item[🔛]on
+% \item[🚘]oncomingautomobile
+% \item[🚍]oncomingbus
+% \item[🚔]oncomingpolicecar
+% \item[🚖]oncomingtaxi
+% \item[⃣]one
+% \item[📂]openfilefolder
+% \item[👐]openhands
+% \item[🏻]openhandstoneone
+% \item[🏼]openhandstonetwo
+% \item[🏽]openhandstonethree
+% \item[🏾]openhandstonefour
+% \item[🏿]openhandstonefive
+% \item[😮]openmouth
+% \item[⛎]ophiuchus
+% \item[📙]orangebook
+% \item[☦]orthodoxcross
+% \item[📤]outboxtray
+% \item[🐂]ox
+% \item[📦]package
+% \item[📄]pagefacingup
+% \item[📃]pagewithcurl
+% \item[📟]pager
+% \item[🖌]paintbrush
+% \item[🌴]palmtree
+% \item[🐼]pandaface
+% \item[📎]paperclip
+% \item[🖇]paperclips
+% \item[🏞]park
+% \item[🅿]parking
+% \item[〽]partalternationmark
+% \item[⛅]partlysunny
+% \item[🛂]passportcontrol
+% \item[⏸]pausebutton
+% \item[☮]peace
+% \item[🍑]peach
+% \item[🍐]pear
+% \item[🖊]penballpoint
+% \item[🖋]penfountain
+% \item[📝]pencil
+% \item[✏]penciltwo
+% \item[🐧]penguin
+% \item[😔]pensive
+% \item[🎭]performingarts
+% \item[😣]persevere
+% \item[🙍]personfrowning
+% \item[🏻]personfrowningtoneone
+% \item[🏼]personfrowningtonetwo
+% \item[🏽]personfrowningtonethree
+% \item[🏾]personfrowningtonefour
+% \item[🏿]personfrowningtonefive
+% \item[👱]personwithblondhair
+% \item[🏻]personwithblondhairtoneone
+% \item[🏼]personwithblondhairtonetwo
+% \item[🏽]personwithblondhairtonethree
+% \item[🏾]personwithblondhairtonefour
+% \item[🏿]personwithblondhairtonefive
+% \item[🙎]personwithpoutingface
+% \item[🏻]personwithpoutingfacetoneone
+% \item[🏼]personwithpoutingfacetonetwo
+% \item[🏽]personwithpoutingfacetonethree
+% \item[🏾]personwithpoutingfacetonefour
+% \item[🏿]personwithpoutingfacetonefive
+% \item[⛏]pick
+% \item[🐷]pig
+% \item[🐖]pigtwo
+% \item[🐽]pignose
+% \item[💊]pill
+% \item[🍍]pineapple
+% \item[🏓]pingpong
+% \item[♓]pisces
+% \item[🍕]pizza
+% \item[🛐]placeofworship
+% \item[⏯]playpause
+% \item[👇]pointdown
+% \item[🏻]pointdowntoneone
+% \item[🏼]pointdowntonetwo
+% \item[🏽]pointdowntonethree
+% \item[🏾]pointdowntonefour
+% \item[🏿]pointdowntonefive
+% \item[👈]pointleft
+% \item[🏻]pointlefttoneone
+% \item[🏼]pointlefttonetwo
+% \item[🏽]pointlefttonethree
+% \item[🏾]pointlefttonefour
+% \item[🏿]pointlefttonefive
+% \item[👉]pointright
+% \item[🏻]pointrighttoneone
+% \item[🏼]pointrighttonetwo
+% \item[🏽]pointrighttonethree
+% \item[🏾]pointrighttonefour
+% \item[🏿]pointrighttonefive
+% \item[☝]pointup
+% \item[👆]pointuptwo
+% \item[🏻]pointuptwotoneone
+% \item[🏼]pointuptwotonetwo
+% \item[🏽]pointuptwotonethree
+% \item[🏾]pointuptwotonefour
+% \item[🏿]pointuptwotonefive
+% \item[🏻]pointuptoneone
+% \item[🏼]pointuptonetwo
+% \item[🏽]pointuptonethree
+% \item[🏾]pointuptonefour
+% \item[🏿]pointuptonefive
+% \item[🚓]policecar
+% \item[🐩]poodle
+% \item[💩]poop
+% \item[🍿]popcorn
+% \item[🏣]postoffice
+% \item[📯]postalhorn
+% \item[📮]postbox
+% \item[🚰]potablewater
+% \item[👝]pouch
+% \item[🍗]poultryleg
+% \item[💷]pound
+% \item[😾]poutingcat
+% \item[🙏]pray
+% \item[🏻]praytoneone
+% \item[🏼]praytonetwo
+% \item[🏽]praytonethree
+% \item[🏾]praytonefour
+% \item[🏿]praytonefive
+% \item[📿]prayerbeads
+% \item[👸]princess
+% \item[🏻]princesstoneone
+% \item[🏼]princesstonetwo
+% \item[🏽]princesstonethree
+% \item[🏾]princesstonefour
+% \item[🏿]princesstonefive
+% \item[🖨]printer
+% \item[📽]projector
+% \item[👊]punch
+% \item[🏻]punchtoneone
+% \item[🏼]punchtonetwo
+% \item[🏽]punchtonethree
+% \item[🏾]punchtonefour
+% \item[🏿]punchtonefive
+% \item[💜]purpleheart
+% \item[👛]purse
+% \item[📌]pushpin
+% \item[🚮]putlitterinitsplace
+% \item[❓]question
+% \item[🐰]rabbit
+% \item[🐇]rabbittwo
+% \item[🏎]racecar
+% \item[🐎]racehorse
+% \item[📻]radio
+% \item[🔘]radiobutton
+% \item[☢]radioactive
+% \item[😡]rage
+% \item[🚃]railwaycar
+% \item[🛤]railwaytrack
+% \item[🌈]rainbow
+% \item[✋]raisedhand
+% \item[🏻]raisedhandtoneone
+% \item[🏼]raisedhandtonetwo
+% \item[🏽]raisedhandtonethree
+% \item[🏾]raisedhandtonefour
+% \item[🏿]raisedhandtonefive
+% \item[🙌]raisedhands
+% \item[🏻]raisedhandstoneone
+% \item[🏼]raisedhandstonetwo
+% \item[🏽]raisedhandstonethree
+% \item[🏾]raisedhandstonefour
+% \item[🏿]raisedhandstonefive
+% \item[🙋]raisinghand
+% \item[🏻]raisinghandtoneone
+% \item[🏼]raisinghandtonetwo
+% \item[🏽]raisinghandtonethree
+% \item[🏾]raisinghandtonefour
+% \item[🏿]raisinghandtonefive
+% \item[🐏]ram
+% \item[🍜]ramen
+% \item[🐀]rat
+% \item[⏺]recordbutton
+% \item[♻]recycle
+% \item[🚗]redcar
+% \item[🔴]redcircle
+% \item[®]registered
+% \item[☺]relaxed
+% \item[😌]relieved
+% \item[🎗]reminderribbon
+% \item[🔁]repeat
+% \item[🔂]repeatone
+% \item[🚻]restroom
+% \item[💞]revolvinghearts
+% \item[⏪]rewind
+% \item[🎀]ribbon
+% \item[🍚]rice
+% \item[🍙]riceball
+% \item[🍘]ricecracker
+% \item[🎑]ricescene
+% \item[💍]ring
+% \item[🤖]robot
+% \item[🚀]rocket
+% \item[🎢]rollercoaster
+% \item[🙄]rollingeyes
+% \item[🐓]rooster
+% \item[🌹]rose
+% \item[🏵]rosette
+% \item[🚨]rotatinglight
+% \item[📍]roundpushpin
+% \item[🚣]rowboat
+% \item[🏻]rowboattoneone
+% \item[🏼]rowboattonetwo
+% \item[🏽]rowboattonethree
+% \item[🏾]rowboattonefour
+% \item[🏿]rowboattonefive
+% \item[🏉]rugbyfootball
+% \item[🏃]runner
+% \item[🏻]runnertoneone
+% \item[🏼]runnertonetwo
+% \item[🏽]runnertonethree
+% \item[🏾]runnertonefour
+% \item[🏿]runnertonefive
+% \item[🎽]runningshirtwithsash
+% \item[🈂]sa
+% \item[♐]sagittarius
+% \item[⛵]sailboat
+% \item[🍶]sake
+% \item[👡]sandal
+% \item[🎅]santa
+% \item[🏻]santatoneone
+% \item[🏼]santatonetwo
+% \item[🏽]santatonethree
+% \item[🏾]santatonefour
+% \item[🏿]santatonefive
+% \item[📡]satellite
+% \item[🛰]satelliteorbital
+% \item[🎷]saxophone
+% \item[⚖]scales
+% \item[🏫]school
+% \item[🎒]schoolsatchel
+% \item[✂]scissors
+% \item[🦂]scorpion
+% \item[♏]scorpius
+% \item[😱]scream
+% \item[🙀]screamcat
+% \item[📜]scroll
+% \item[💺]seat
+% \item[㊙]secret
+% \item[🙈]seenoevil
+% \item[🌱]seedling
+% \item[⃣]seven
+% \item[☘]shamrock
+% \item[🍧]shavedice
+% \item[🐑]sheep
+% \item[🐚]shell
+% \item[🛡]shield
+% \item[⛩]shintoshrine
+% \item[🚢]ship
+% \item[👕]shirt
+% \item[🛍]shoppingbags
+% \item[🚿]shower
+% \item[📶]signalstrength
+% \item[⃣]six
+% \item[🔯]sixpointedstar
+% \item[🎿]ski
+% \item[⛷]skier
+% \item[💀]skull
+% \item[☠]skullcrossbones
+% \item[😴]sleeping
+% \item[🛌]sleepingaccommodation
+% \item[😪]sleepy
+% \item[🙁]slightfrown
+% \item[🙂]slightsmile
+% \item[🎰]slotmachine
+% \item[🔹]smallbluediamond
+% \item[🔸]smallorangediamond
+% \item[🔺]smallredtriangle
+% \item[🔻]smallredtriangledown
+% \item[😄]smile
+% \item[😸]smilecat
+% \item[😃]smiley
+% \item[😺]smileycat
+% \item[😈]smilingimp
+% \item[😏]smirk
+% \item[😼]smirkcat
+% \item[🚬]smoking
+% \item[🐌]snail
+% \item[🐍]snake
+% \item[🏂]snowboarder
+% \item[❄]snowflake
+% \item[⛄]snowman
+% \item[☃]snowmantwo
+% \item[😭]sob
+% \item[⚽]soccer
+% \item[🔜]soon
+% \item[🆘]sos
+% \item[🔉]sound
+% \item[👾]spaceinvader
+% \item[♠]spades
+% \item[🍝]spaghetti
+% \item[❇]sparkle
+% \item[🎇]sparkler
+% \item[✨]sparkles
+% \item[💖]sparklingheart
+% \item[🙊]speaknoevil
+% \item[🔈]speaker
+% \item[🗣]speakinghead
+% \item[💬]speechballoon
+% \item[🚤]speedboat
+% \item[🕷]spider
+% \item[🕸]spiderweb
+% \item[🕵]spy
+% \item[🏻]spytoneone
+% \item[🏼]spytonetwo
+% \item[🏽]spytonethree
+% \item[🏾]spytonefour
+% \item[🏿]spytonefive
+% \item[🏟]stadium
+% \item[⭐]star
+% \item[🌟]startwo
+% \item[☪]starandcrescent
+% \item[✡]starofdavid
+% \item[🌠]stars
+% \item[🚉]station
+% \item[🗽]statueofliberty
+% \item[🚂]steamlocomotive
+% \item[🍲]stew
+% \item[⏹]stopbutton
+% \item[⏱]stopwatch
+% \item[📏]straightruler
+% \item[🍓]strawberry
+% \item[😛]stuckouttongue
+% \item[😝]stuckouttongueclosedeyes
+% \item[😜]stuckouttonguewinkingeye
+% \item[🌞]sunwithface
+% \item[🌻]sunflower
+% \item[😎]sunglasses
+% \item[☀]sunny
+% \item[🌅]sunrise
+% \item[🌄]sunriseovermountains
+% \item[🏄]surfer
+% \item[🏻]surfertoneone
+% \item[🏼]surfertonetwo
+% \item[🏽]surfertonethree
+% \item[🏾]surfertonefour
+% \item[🏿]surfertonefive
+% \item[🍣]sushi
+% \item[🚟]suspensionrailway
+% \item[😓]sweat
+% \item[💦]sweatdrops
+% \item[😅]sweatsmile
+% \item[🍠]sweetpotato
+% \item[🏊]swimmer
+% \item[🏻]swimmertoneone
+% \item[🏼]swimmertonetwo
+% \item[🏽]swimmertonethree
+% \item[🏾]swimmertonefour
+% \item[🏿]swimmertonefive
+% \item[🔣]symbols
+% \item[🕍]synagogue
+% \item[💉]syringe
+% \item[🌮]taco
+% \item[🎉]tada
+% \item[🎋]tanabatatree
+% \item[🍊]tangerine
+% \item[♉]taurus
+% \item[🚕]taxi
+% \item[🍵]tea
+% \item[☎]telephone
+% \item[📞]telephonereceiver
+% \item[🔭]telescope
+% \item[🔟]ten
+% \item[🎾]tennis
+% \item[⛺]tent
+% \item[🌡]thermometer
+% \item[🤒]thermometerface
+% \item[🤔]thinking
+% \item[💭]thoughtballoon
+% \item[⃣]three
+% \item[👎]thumbsdown
+% \item[🏻]thumbsdowntoneone
+% \item[🏼]thumbsdowntonetwo
+% \item[🏽]thumbsdowntonethree
+% \item[🏾]thumbsdowntonefour
+% \item[🏿]thumbsdowntonefive
+% \item[👍]thumbsup
+% \item[🏻]thumbsuptoneone
+% \item[🏼]thumbsuptonetwo
+% \item[🏽]thumbsuptonethree
+% \item[🏾]thumbsuptonefour
+% \item[🏿]thumbsuptonefive
+% \item[⛈]thundercloudrain
+% \item[🎫]ticket
+% \item[🎟]tickets
+% \item[🐯]tiger
+% \item[🐅]tigertwo
+% \item[⏲]timer
+% \item[😫]tiredface
+% \item[™]tm
+% \item[🚽]toilet
+% \item[🗼]tokyotower
+% \item[🍅]tomato
+% \item[🏻]toneone
+% \item[🏼]tonetwo
+% \item[🏽]tonethree
+% \item[🏾]tonefour
+% \item[🏿]tonefive
+% \item[👅]tongue
+% \item[🛠]tools
+% \item[🔝]top
+% \item[🎩]tophat
+% \item[⏭]tracknext
+% \item[⏮]trackprevious
+% \item[🖲]trackball
+% \item[🚜]tractor
+% \item[🚥]trafficlight
+% \item[🚋]train
+% \item[🚆]traintwo
+% \item[🚊]tram
+% \item[🚩]triangularflagonpost
+% \item[📐]triangularruler
+% \item[🔱]trident
+% \item[😤]triumph
+% \item[🚎]trolleybus
+% \item[🏆]trophy
+% \item[🍹]tropicaldrink
+% \item[🐠]tropicalfish
+% \item[🚚]truck
+% \item[🎺]trumpet
+% \item[🌷]tulip
+% \item[🦃]turkey
+% \item[🐢]turtle
+% \item[📺]tv
+% \item[🔀]twistedrightwardsarrows
+% \item[⃣]two
+% \item[💕]twohearts
+% \item[👬]twomenholdinghands
+% \item[👭]twowomenholdinghands
+% \item[🈹]ufivetwoseventwo
+% \item[🈴]ufivefourzeroeight
+% \item[🈺]ufivefivebsix
+% \item[🈯]usixthreezeroseven
+% \item[🈷]usixsevenzeroeight
+% \item[🈶]usixsevenzeronine
+% \item[🈵]usixeeightzero
+% \item[🈚]usevenonetwoone
+% \item[🈸]usevenfivethreethree
+% \item[🈲]usevennineeightone
+% \item[🈳]usevenasevena
+% \item[☔]umbrella
+% \item[☂]umbrellatwo
+% \item[😒]unamused
+% \item[🔞]underage
+% \item[🦄]unicorn
+% \item[🔓]unlock
+% \item[🆙]up
+% \item[🙃]upsidedown
+% \item[⚱]urn
+% \item[✌]v
+% \item[🏻]vtoneone
+% \item[🏼]vtonetwo
+% \item[🏽]vtonethree
+% \item[🏾]vtonefour
+% \item[🏿]vtonefive
+% \item[🚦]verticaltrafficlight
+% \item[📼]vhs
+% \item[📳]vibrationmode
+% \item[📹]videocamera
+% \item[🎮]videogame
+% \item[🎻]violin
+% \item[♍]virgo
+% \item[🌋]volcano
+% \item[🏐]volleyball
+% \item[🆚]vs
+% \item[🖖]vulcan
+% \item[🏻]vulcantoneone
+% \item[🏼]vulcantonetwo
+% \item[🏽]vulcantonethree
+% \item[🏾]vulcantonefour
+% \item[🏿]vulcantonefive
+% \item[🚶]walking
+% \item[🏻]walkingtoneone
+% \item[🏼]walkingtonetwo
+% \item[🏽]walkingtonethree
+% \item[🏾]walkingtonefour
+% \item[🏿]walkingtonefive
+% \item[🌘]waningcrescentmoon
+% \item[🌖]waninggibbousmoon
+% \item[⚠]warning
+% \item[🗑]wastebasket
+% \item[⌚]watch
+% \item[🐃]waterbuffalo
+% \item[🍉]watermelon
+% \item[👋]wave
+% \item[🏻]wavetoneone
+% \item[🏼]wavetonetwo
+% \item[🏽]wavetonethree
+% \item[🏾]wavetonefour
+% \item[🏿]wavetonefive
+% \item[〰]wavydash
+% \item[🌒]waxingcrescentmoon
+% \item[🌔]waxinggibbousmoon
+% \item[🚾]wc
+% \item[😩]weary
+% \item[💒]wedding
+% \item[🐳]whale
+% \item[🐋]whaletwo
+% \item[☸]wheelofdharma
+% \item[♿]wheelchair
+% \item[✅]whitecheckmark
+% \item[⚪]whitecircle
+% \item[💮]whiteflower
+% \item[⬜]whitelargesquare
+% \item[◽]whitemediumsmallsquare
+% \item[◻]whitemediumsquare
+% \item[▫]whitesmallsquare
+% \item[🔳]whitesquarebutton
+% \item[🌥]whitesuncloud
+% \item[🌦]whitesunraincloud
+% \item[🌤]whitesunsmallcloud
+% \item[🌬]windblowingface
+% \item[🎐]windchime
+% \item[🍷]wineglass
+% \item[😉]wink
+% \item[🐺]wolf
+% \item[👩]woman
+% \item[🏻]womantoneone
+% \item[🏼]womantonetwo
+% \item[🏽]womantonethree
+% \item[🏾]womantonefour
+% \item[🏿]womantonefive
+% \item[👚]womansclothes
+% \item[👒]womanshat
+% \item[🚺]womens
+% \item[😟]worried
+% \item[🔧]wrench
+% \item[✍]writinghand
+% \item[🏻]writinghandtoneone
+% \item[🏼]writinghandtonetwo
+% \item[🏽]writinghandtonethree
+% \item[🏾]writinghandtonefour
+% \item[🏿]writinghandtonefive
+% \item[❌]x
+% \item[💛]yellowheart
+% \item[💴]yen
+% \item[☯]yinyang
+% \item[😋]yum
+% \item[⚡]zap
+% \item[⃣]zero
+% \item[🤐]zippermouth
+% \item[💤]zzz
+% \end{itemize}
+% \end{multicols}
+%
+%
+%
+% \section{License}
+% The following applies to artwork from \href{http://emojione.com}{Emoji One}
+% used in this package. The SVG files were merely converted to PDF, other than
+% that no changes where made to the files.
+% \begin{itemize}
+%   \item License: Creative Commons Attribution 4.0 International
+%   \item Human Readable License:\newline\url{http://creativecommons.org/licenses/by/4.0/}
+%   \item Complete Legal Terms:\newline\url{http://creativecommons.org/licenses/by/4.0/legalcode}
+% \end{itemize}
+% The package itself may be distributed and/or modified under the conditions
+% of the LaTeX Project Public License, either version 1.3 of this license or
+% (at your option) any later version.
+%
+% The latest version of this license is in
+% \url{http://www.latex-project.org/lppl.txt} and version 1.3 or later is part
+% of all distributions of LaTeX version 2005/12/01 or later.
+%
+%
+% \section{Implementation}
+%
+% \iffalse
+%<*package>
+% \fi
+%
+%
+%
+% Load required packages.
+%    \begin{macrocode}
+\RequirePackage{expl3}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath}
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
+\RequirePackage[export]{adjustbox}
+\RequirePackage{l3keys2e}
+%    \end{macrocode}
+%
+% Enable expl3 syntax.
+%    \begin{macrocode}
+\ExplSyntaxOn
+%    \end{macrocode}
+%
+% Create variables.
+%    \begin{macrocode}
+\fp_new:N \emojione_scale
+\tl_const:Nn \c_emojione_folder { ./pdf }
+\tl_const:Nn \c_emojione_extension { pdf }
+\dim_new:N \emojione_height
+\dim_new:N \emojione_raise
+%    \end{macrocode}
+%
+% Process package options.
+%    \begin{macrocode}
+\keys_define:nn { emojione }
+{
+  scale .code:n = \fp_set:Nn \emojione_scale {#1},
+  scale .initial:n = 1.2,
+}
+\ProcessKeysOptions { emojione }
+%    \end{macrocode}
+%
+% \begin{macro}{\emojione_input}
+% Create variables.
+%    \begin{macrocode}
+\cs_new_protected:Npn \emojione_input #1
+{%
+  \text{%
+  \settoheight{\emojione_height}{X}%
+  \dim_set:Nn \emojione_raise {\emojione_height-\fp_to_decimal:N\emojione_scale\emojione_height}
+  \dim_set:Nn \emojione_raise {0.5\emojione_raise}
+  \dim_set:Nn \emojione_height {\fp_to_decimal:N\emojione_scale\emojione_height}
+  \includegraphics[height=\emojione_height, raise=\emojione_raise]%
+                  {\c_emojione_folder / #1.\c_emojione_extension}%
+  }%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\emojione_define:nnnn}
+% Depending on which engine is used we have to either use
+% |\DeclareUnicodeCharacter| (pdf\TeX) or |\newunicodechar| (\XeLaTeX and
+% \LuaLaTeX) to define new unicode characters. Additionally to defining new
+% characters for every symbol a new macro is created. For a symbol named
+% |link| the macro is called |\emojilink|.
+%    \begin{macrocode}
+\bool_if:nTF { \xetex_if_engine_p: || \luatex_if_engine_p:}
+{%
+  \RequirePackage{newunicodechar}
+  \cs_new:Npn \emojione_define:nnnn #1#2#3#4
+  {%
+    \newunicodechar{#1}{{\emojione_input{#4}}}
+    \expandafter\edef\csname emoji#2\endcsname{\emojione_input{#4}}
+  }
+}{%
+  \RequirePackage[utf8x]{inputenc}
+  \cs_new:Npn \emojione_define:nnnn #1#2#3#4
+  {%
+    \DeclareUnicodeCharacter{#3}{\emojione_input{#4}}
+    \expandafter\edef\csname emoji#2\endcsname{\emojione_input{#4}}
+  }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% Define the symbols using the previously created macro.
+%    \begin{macrocode}
+\emojione_define:nnnn{💯}{onezerozero}{128175}{1f4af}
+\emojione_define:nnnn{🔢}{onetwothreefour}{128290}{1f522}
+\emojione_define:nnnn{🎱}{eightball}{127921}{1f3b1}
+\emojione_define:nnnn{🅰}{a}{127344}{1f170}
+\emojione_define:nnnn{🆎}{ab}{127374}{1f18e}
+\emojione_define:nnnn{🔤}{abc}{128292}{1f524}
+\emojione_define:nnnn{🔡}{abcd}{128289}{1f521}
+\emojione_define:nnnn{🉑}{accept}{127569}{1f251}
+\emojione_define:nnnn{🚡}{aerialtramway}{128673}{1f6a1}
+\emojione_define:nnnn{✈}{airplane}{9992}{2708}
+\emojione_define:nnnn{🛬}{airplanearriving}{128748}{1f6ec}
+\emojione_define:nnnn{🛫}{airplanedeparture}{128747}{1f6eb}
+\emojione_define:nnnn{🛩}{airplanesmall}{128745}{1f6e9}
+\emojione_define:nnnn{⏰}{alarmclock}{9200}{23f0}
+\emojione_define:nnnn{⚗}{alembic}{9879}{2697}
+\emojione_define:nnnn{👽}{alien}{128125}{1f47d}
+\emojione_define:nnnn{🚑}{ambulance}{128657}{1f691}
+\emojione_define:nnnn{🏺}{amphora}{127994}{1f3fa}
+\emojione_define:nnnn{⚓}{anchor}{9875}{2693}
+\emojione_define:nnnn{👼}{angel}{128124}{1f47c}
+\emojione_define:nnnn{🏻}{angeltoneone}{127995}{1f47c-1f3fb}
+\emojione_define:nnnn{🏼}{angeltonetwo}{127996}{1f47c-1f3fc}
+\emojione_define:nnnn{🏽}{angeltonethree}{127997}{1f47c-1f3fd}
+\emojione_define:nnnn{🏾}{angeltonefour}{127998}{1f47c-1f3fe}
+\emojione_define:nnnn{🏿}{angeltonefive}{127999}{1f47c-1f3ff}
+\emojione_define:nnnn{💢}{anger}{128162}{1f4a2}
+\emojione_define:nnnn{🗯}{angerright}{128495}{1f5ef}
+\emojione_define:nnnn{😠}{angry}{128544}{1f620}
+\emojione_define:nnnn{😧}{anguished}{128551}{1f627}
+\emojione_define:nnnn{🐜}{ant}{128028}{1f41c}
+\emojione_define:nnnn{🍎}{apple}{127822}{1f34e}
+\emojione_define:nnnn{♒}{aquarius}{9810}{2652}
+\emojione_define:nnnn{♈}{aries}{9800}{2648}
+\emojione_define:nnnn{◀}{arrowbackward}{9664}{25c0}
+\emojione_define:nnnn{⏬}{arrowdoubledown}{9196}{23ec}
+\emojione_define:nnnn{⏫}{arrowdoubleup}{9195}{23eb}
+\emojione_define:nnnn{⬇}{arrowdown}{11015}{2b07}
+\emojione_define:nnnn{🔽}{arrowdownsmall}{128317}{1f53d}
+\emojione_define:nnnn{▶}{arrowforward}{9654}{25b6}
+\emojione_define:nnnn{⤵}{arrowheadingdown}{10549}{2935}
+\emojione_define:nnnn{⤴}{arrowheadingup}{10548}{2934}
+\emojione_define:nnnn{⬅}{arrowleft}{11013}{2b05}
+\emojione_define:nnnn{↙}{arrowlowerleft}{8601}{2199}
+\emojione_define:nnnn{↘}{arrowlowerright}{8600}{2198}
+\emojione_define:nnnn{➡}{arrowright}{10145}{27a1}
+\emojione_define:nnnn{↪}{arrowrighthook}{8618}{21aa}
+\emojione_define:nnnn{⬆}{arrowup}{11014}{2b06}
+\emojione_define:nnnn{↕}{arrowupdown}{8597}{2195}
+\emojione_define:nnnn{🔼}{arrowupsmall}{128316}{1f53c}
+\emojione_define:nnnn{↖}{arrowupperleft}{8598}{2196}
+\emojione_define:nnnn{↗}{arrowupperright}{8599}{2197}
+\emojione_define:nnnn{🔃}{arrowsclockwise}{128259}{1f503}
+\emojione_define:nnnn{🔄}{arrowscounterclockwise}{128260}{1f504}
+\emojione_define:nnnn{🎨}{art}{127912}{1f3a8}
+\emojione_define:nnnn{🚛}{articulatedlorry}{128667}{1f69b}
+\emojione_define:nnnn{⃣}{asterisk}{8419}{002a-20e3}
+\emojione_define:nnnn{😲}{astonished}{128562}{1f632}
+\emojione_define:nnnn{👟}{athleticshoe}{128095}{1f45f}
+\emojione_define:nnnn{🏧}{atm}{127975}{1f3e7}
+\emojione_define:nnnn{⚛}{atom}{9883}{269b}
+\emojione_define:nnnn{🅱}{b}{127345}{1f171}
+\emojione_define:nnnn{👶}{baby}{128118}{1f476}
+\emojione_define:nnnn{🍼}{babybottle}{127868}{1f37c}
+\emojione_define:nnnn{🐤}{babychick}{128036}{1f424}
+\emojione_define:nnnn{🚼}{babysymbol}{128700}{1f6bc}
+\emojione_define:nnnn{🏻}{babytoneone}{127995}{1f476-1f3fb}
+\emojione_define:nnnn{🏼}{babytonetwo}{127996}{1f476-1f3fc}
+\emojione_define:nnnn{🏽}{babytonethree}{127997}{1f476-1f3fd}
+\emojione_define:nnnn{🏾}{babytonefour}{127998}{1f476-1f3fe}
+\emojione_define:nnnn{🏿}{babytonefive}{127999}{1f476-1f3ff}
+\emojione_define:nnnn{🔙}{back}{128281}{1f519}
+\emojione_define:nnnn{🏸}{badminton}{127992}{1f3f8}
+\emojione_define:nnnn{🛄}{baggageclaim}{128708}{1f6c4}
+\emojione_define:nnnn{🎈}{balloon}{127880}{1f388}
+\emojione_define:nnnn{🗳}{ballotbox}{128499}{1f5f3}
+\emojione_define:nnnn{☑}{ballotboxwithcheck}{9745}{2611}
+\emojione_define:nnnn{🎍}{bamboo}{127885}{1f38d}
+\emojione_define:nnnn{🍌}{banana}{127820}{1f34c}
+\emojione_define:nnnn{‼}{bangbang}{8252}{203c}
+\emojione_define:nnnn{🏦}{bank}{127974}{1f3e6}
+\emojione_define:nnnn{📊}{barchart}{128202}{1f4ca}
+\emojione_define:nnnn{💈}{barber}{128136}{1f488}
+\emojione_define:nnnn{⚾}{baseball}{9918}{26be}
+\emojione_define:nnnn{🏀}{basketball}{127936}{1f3c0}
+\emojione_define:nnnn{⛹}{basketballplayer}{9977}{26f9}
+\emojione_define:nnnn{🏻}{basketballplayertoneone}{127995}{26f9-1f3fb}
+\emojione_define:nnnn{🏼}{basketballplayertonetwo}{127996}{26f9-1f3fc}
+\emojione_define:nnnn{🏽}{basketballplayertonethree}{127997}{26f9-1f3fd}
+\emojione_define:nnnn{🏾}{basketballplayertonefour}{127998}{26f9-1f3fe}
+\emojione_define:nnnn{🏿}{basketballplayertonefive}{127999}{26f9-1f3ff}
+\emojione_define:nnnn{🛀}{bath}{128704}{1f6c0}
+\emojione_define:nnnn{🏻}{bathtoneone}{127995}{1f6c0-1f3fb}
+\emojione_define:nnnn{🏼}{bathtonetwo}{127996}{1f6c0-1f3fc}
+\emojione_define:nnnn{🏽}{bathtonethree}{127997}{1f6c0-1f3fd}
+\emojione_define:nnnn{🏾}{bathtonefour}{127998}{1f6c0-1f3fe}
+\emojione_define:nnnn{🏿}{bathtonefive}{127999}{1f6c0-1f3ff}
+\emojione_define:nnnn{🛁}{bathtub}{128705}{1f6c1}
+\emojione_define:nnnn{🔋}{battery}{128267}{1f50b}
+\emojione_define:nnnn{🏖}{beach}{127958}{1f3d6}
+\emojione_define:nnnn{⛱}{beachumbrella}{9969}{26f1}
+\emojione_define:nnnn{🐻}{bear}{128059}{1f43b}
+\emojione_define:nnnn{🛏}{bed}{128719}{1f6cf}
+\emojione_define:nnnn{🐝}{bee}{128029}{1f41d}
+\emojione_define:nnnn{🍺}{beer}{127866}{1f37a}
+\emojione_define:nnnn{🍻}{beers}{127867}{1f37b}
+\emojione_define:nnnn{🐞}{beetle}{128030}{1f41e}
+\emojione_define:nnnn{🔰}{beginner}{128304}{1f530}
+\emojione_define:nnnn{🔔}{bell}{128276}{1f514}
+\emojione_define:nnnn{🛎}{bellhop}{128718}{1f6ce}
+\emojione_define:nnnn{🍱}{bento}{127857}{1f371}
+\emojione_define:nnnn{🚴}{bicyclist}{128692}{1f6b4}
+\emojione_define:nnnn{🏻}{bicyclisttoneone}{127995}{1f6b4-1f3fb}
+\emojione_define:nnnn{🏼}{bicyclisttonetwo}{127996}{1f6b4-1f3fc}
+\emojione_define:nnnn{🏽}{bicyclisttonethree}{127997}{1f6b4-1f3fd}
+\emojione_define:nnnn{🏾}{bicyclisttonefour}{127998}{1f6b4-1f3fe}
+\emojione_define:nnnn{🏿}{bicyclisttonefive}{127999}{1f6b4-1f3ff}
+\emojione_define:nnnn{🚲}{bike}{128690}{1f6b2}
+\emojione_define:nnnn{👙}{bikini}{128089}{1f459}
+\emojione_define:nnnn{☣}{biohazard}{9763}{2623}
+\emojione_define:nnnn{🐦}{bird}{128038}{1f426}
+\emojione_define:nnnn{🎂}{birthday}{127874}{1f382}
+\emojione_define:nnnn{⚫}{blackcircle}{9899}{26ab}
+\emojione_define:nnnn{🃏}{blackjoker}{127183}{1f0cf}
+\emojione_define:nnnn{⬛}{blacklargesquare}{11035}{2b1b}
+\emojione_define:nnnn{◾}{blackmediumsmallsquare}{9726}{25fe}
+\emojione_define:nnnn{◼}{blackmediumsquare}{9724}{25fc}
+\emojione_define:nnnn{✒}{blacknib}{10002}{2712}
+\emojione_define:nnnn{▪}{blacksmallsquare}{9642}{25aa}
+\emojione_define:nnnn{🔲}{blacksquarebutton}{128306}{1f532}
+\emojione_define:nnnn{🌼}{blossom}{127804}{1f33c}
+\emojione_define:nnnn{🐡}{blowfish}{128033}{1f421}
+\emojione_define:nnnn{📘}{bluebook}{128216}{1f4d8}
+\emojione_define:nnnn{🚙}{bluecar}{128665}{1f699}
+\emojione_define:nnnn{💙}{blueheart}{128153}{1f499}
+\emojione_define:nnnn{😊}{blush}{128522}{1f60a}
+\emojione_define:nnnn{🐗}{boar}{128023}{1f417}
+\emojione_define:nnnn{💣}{bomb}{128163}{1f4a3}
+\emojione_define:nnnn{📖}{book}{128214}{1f4d6}
+\emojione_define:nnnn{🔖}{bookmark}{128278}{1f516}
+\emojione_define:nnnn{📑}{bookmarktabs}{128209}{1f4d1}
+\emojione_define:nnnn{📚}{books}{128218}{1f4da}
+\emojione_define:nnnn{💥}{boom}{128165}{1f4a5}
+\emojione_define:nnnn{👢}{boot}{128098}{1f462}
+\emojione_define:nnnn{💐}{bouquet}{128144}{1f490}
+\emojione_define:nnnn{🙇}{bow}{128583}{1f647}
+\emojione_define:nnnn{🏹}{bowandarrow}{127993}{1f3f9}
+\emojione_define:nnnn{🏻}{bowtoneone}{127995}{1f647-1f3fb}
+\emojione_define:nnnn{🏼}{bowtonetwo}{127996}{1f647-1f3fc}
+\emojione_define:nnnn{🏽}{bowtonethree}{127997}{1f647-1f3fd}
+\emojione_define:nnnn{🏾}{bowtonefour}{127998}{1f647-1f3fe}
+\emojione_define:nnnn{🏿}{bowtonefive}{127999}{1f647-1f3ff}
+\emojione_define:nnnn{🎳}{bowling}{127923}{1f3b3}
+\emojione_define:nnnn{👦}{boy}{128102}{1f466}
+\emojione_define:nnnn{🏻}{boytoneone}{127995}{1f466-1f3fb}
+\emojione_define:nnnn{🏼}{boytonetwo}{127996}{1f466-1f3fc}
+\emojione_define:nnnn{🏽}{boytonethree}{127997}{1f466-1f3fd}
+\emojione_define:nnnn{🏾}{boytonefour}{127998}{1f466-1f3fe}
+\emojione_define:nnnn{🏿}{boytonefive}{127999}{1f466-1f3ff}
+\emojione_define:nnnn{🍞}{bread}{127838}{1f35e}
+\emojione_define:nnnn{👰}{bridewithveil}{128112}{1f470}
+\emojione_define:nnnn{🏻}{bridewithveiltoneone}{127995}{1f470-1f3fb}
+\emojione_define:nnnn{🏼}{bridewithveiltonetwo}{127996}{1f470-1f3fc}
+\emojione_define:nnnn{🏽}{bridewithveiltonethree}{127997}{1f470-1f3fd}
+\emojione_define:nnnn{🏾}{bridewithveiltonefour}{127998}{1f470-1f3fe}
+\emojione_define:nnnn{🏿}{bridewithveiltonefive}{127999}{1f470-1f3ff}
+\emojione_define:nnnn{🌉}{bridgeatnight}{127753}{1f309}
+\emojione_define:nnnn{💼}{briefcase}{128188}{1f4bc}
+\emojione_define:nnnn{💔}{brokenheart}{128148}{1f494}
+\emojione_define:nnnn{🐛}{bug}{128027}{1f41b}
+\emojione_define:nnnn{💡}{bulb}{128161}{1f4a1}
+\emojione_define:nnnn{🚅}{bullettrainfront}{128645}{1f685}
+\emojione_define:nnnn{🚄}{bullettrainside}{128644}{1f684}
+\emojione_define:nnnn{🌯}{burrito}{127791}{1f32f}
+\emojione_define:nnnn{🚌}{bus}{128652}{1f68c}
+\emojione_define:nnnn{🚏}{busstop}{128655}{1f68f}
+\emojione_define:nnnn{👤}{bustinsilhouette}{128100}{1f464}
+\emojione_define:nnnn{👥}{bustsinsilhouette}{128101}{1f465}
+\emojione_define:nnnn{🌵}{cactus}{127797}{1f335}
+\emojione_define:nnnn{🍰}{cake}{127856}{1f370}
+\emojione_define:nnnn{📆}{calendar}{128198}{1f4c6}
+\emojione_define:nnnn{🗓}{calendarspiral}{128467}{1f5d3}
+\emojione_define:nnnn{📲}{calling}{128242}{1f4f2}
+\emojione_define:nnnn{🐫}{camel}{128043}{1f42b}
+\emojione_define:nnnn{📷}{camera}{128247}{1f4f7}
+\emojione_define:nnnn{📸}{camerawithflash}{128248}{1f4f8}
+\emojione_define:nnnn{🏕}{camping}{127957}{1f3d5}
+\emojione_define:nnnn{♋}{cancer}{9803}{264b}
+\emojione_define:nnnn{🕯}{candle}{128367}{1f56f}
+\emojione_define:nnnn{🍬}{candy}{127852}{1f36c}
+\emojione_define:nnnn{🔠}{capitalabcd}{128288}{1f520}
+\emojione_define:nnnn{♑}{capricorn}{9809}{2651}
+\emojione_define:nnnn{🗃}{cardbox}{128451}{1f5c3}
+\emojione_define:nnnn{📇}{cardindex}{128199}{1f4c7}
+\emojione_define:nnnn{🎠}{carouselhorse}{127904}{1f3a0}
+\emojione_define:nnnn{🐱}{cat}{128049}{1f431}
+\emojione_define:nnnn{🐈}{cattwo}{128008}{1f408}
+\emojione_define:nnnn{💿}{cd}{128191}{1f4bf}
+\emojione_define:nnnn{⛓}{chains}{9939}{26d3}
+\emojione_define:nnnn{🍾}{champagne}{127870}{1f37e}
+\emojione_define:nnnn{💹}{chart}{128185}{1f4b9}
+\emojione_define:nnnn{📉}{chartwithdownwardstrend}{128201}{1f4c9}
+\emojione_define:nnnn{📈}{chartwithupwardstrend}{128200}{1f4c8}
+\emojione_define:nnnn{🏁}{checkeredflag}{127937}{1f3c1}
+\emojione_define:nnnn{🧀}{cheese}{129472}{1f9c0}
+\emojione_define:nnnn{🍒}{cherries}{127826}{1f352}
+\emojione_define:nnnn{🌸}{cherryblossom}{127800}{1f338}
+\emojione_define:nnnn{🌰}{chestnut}{127792}{1f330}
+\emojione_define:nnnn{🐔}{chicken}{128020}{1f414}
+\emojione_define:nnnn{🚸}{childrencrossing}{128696}{1f6b8}
+\emojione_define:nnnn{🐿}{chipmunk}{128063}{1f43f}
+\emojione_define:nnnn{🍫}{chocolatebar}{127851}{1f36b}
+\emojione_define:nnnn{🎄}{christmastree}{127876}{1f384}
+\emojione_define:nnnn{⛪}{church}{9962}{26ea}
+\emojione_define:nnnn{🎦}{cinema}{127910}{1f3a6}
+\emojione_define:nnnn{🎪}{circustent}{127914}{1f3aa}
+\emojione_define:nnnn{🌆}{citydusk}{127750}{1f306}
+\emojione_define:nnnn{🌇}{citysunset}{127751}{1f307}
+\emojione_define:nnnn{🏙}{cityscape}{127961}{1f3d9}
+\emojione_define:nnnn{🆑}{cl}{127377}{1f191}
+\emojione_define:nnnn{👏}{clap}{128079}{1f44f}
+\emojione_define:nnnn{🏻}{claptoneone}{127995}{1f44f-1f3fb}
+\emojione_define:nnnn{🏼}{claptonetwo}{127996}{1f44f-1f3fc}
+\emojione_define:nnnn{🏽}{claptonethree}{127997}{1f44f-1f3fd}
+\emojione_define:nnnn{🏾}{claptonefour}{127998}{1f44f-1f3fe}
+\emojione_define:nnnn{🏿}{claptonefive}{127999}{1f44f-1f3ff}
+\emojione_define:nnnn{🎬}{clapper}{127916}{1f3ac}
+\emojione_define:nnnn{🏛}{classicalbuilding}{127963}{1f3db}
+\emojione_define:nnnn{📋}{clipboard}{128203}{1f4cb}
+\emojione_define:nnnn{🕰}{clock}{128368}{1f570}
+\emojione_define:nnnn{🕐}{clockone}{128336}{1f550}
+\emojione_define:nnnn{🕙}{clockonezero}{128345}{1f559}
+\emojione_define:nnnn{🕥}{clockonezerothreezero}{128357}{1f565}
+\emojione_define:nnnn{🕚}{clockoneone}{128346}{1f55a}
+\emojione_define:nnnn{🕦}{clockoneonethreezero}{128358}{1f566}
+\emojione_define:nnnn{🕛}{clockonetwo}{128347}{1f55b}
+\emojione_define:nnnn{🕧}{clockonetwothreezero}{128359}{1f567}
+\emojione_define:nnnn{🕜}{clockonethreezero}{128348}{1f55c}
+\emojione_define:nnnn{🕑}{clocktwo}{128337}{1f551}
+\emojione_define:nnnn{🕝}{clocktwothreezero}{128349}{1f55d}
+\emojione_define:nnnn{🕒}{clockthree}{128338}{1f552}
+\emojione_define:nnnn{🕞}{clockthreethreezero}{128350}{1f55e}
+\emojione_define:nnnn{🕓}{clockfour}{128339}{1f553}
+\emojione_define:nnnn{🕟}{clockfourthreezero}{128351}{1f55f}
+\emojione_define:nnnn{🕔}{clockfive}{128340}{1f554}
+\emojione_define:nnnn{🕠}{clockfivethreezero}{128352}{1f560}
+\emojione_define:nnnn{🕕}{clocksix}{128341}{1f555}
+\emojione_define:nnnn{🕡}{clocksixthreezero}{128353}{1f561}
+\emojione_define:nnnn{🕖}{clockseven}{128342}{1f556}
+\emojione_define:nnnn{🕢}{clockseventhreezero}{128354}{1f562}
+\emojione_define:nnnn{🕗}{clockeight}{128343}{1f557}
+\emojione_define:nnnn{🕣}{clockeightthreezero}{128355}{1f563}
+\emojione_define:nnnn{🕘}{clocknine}{128344}{1f558}
+\emojione_define:nnnn{🕤}{clockninethreezero}{128356}{1f564}
+\emojione_define:nnnn{📕}{closedbook}{128213}{1f4d5}
+\emojione_define:nnnn{🔐}{closedlockwithkey}{128272}{1f510}
+\emojione_define:nnnn{🌂}{closedumbrella}{127746}{1f302}
+\emojione_define:nnnn{☁}{cloud}{9729}{2601}
+\emojione_define:nnnn{🌩}{cloudlightning}{127785}{1f329}
+\emojione_define:nnnn{🌧}{cloudrain}{127783}{1f327}
+\emojione_define:nnnn{🌨}{cloudsnow}{127784}{1f328}
+\emojione_define:nnnn{🌪}{cloudtornado}{127786}{1f32a}
+\emojione_define:nnnn{♣}{clubs}{9827}{2663}
+\emojione_define:nnnn{🍸}{cocktail}{127864}{1f378}
+\emojione_define:nnnn{☕}{coffee}{9749}{2615}
+\emojione_define:nnnn{⚰}{coffin}{9904}{26b0}
+\emojione_define:nnnn{😰}{coldsweat}{128560}{1f630}
+\emojione_define:nnnn{☄}{comet}{9732}{2604}
+\emojione_define:nnnn{🗜}{compression}{128476}{1f5dc}
+\emojione_define:nnnn{💻}{computer}{128187}{1f4bb}
+\emojione_define:nnnn{🎊}{confettiball}{127882}{1f38a}
+\emojione_define:nnnn{😖}{confounded}{128534}{1f616}
+\emojione_define:nnnn{😕}{confused}{128533}{1f615}
+\emojione_define:nnnn{㊗}{congratulations}{12951}{3297}
+\emojione_define:nnnn{🚧}{construction}{128679}{1f6a7}
+\emojione_define:nnnn{🏗}{constructionsite}{127959}{1f3d7}
+\emojione_define:nnnn{👷}{constructionworker}{128119}{1f477}
+\emojione_define:nnnn{🏻}{constructionworkertoneone}{127995}{1f477-1f3fb}
+\emojione_define:nnnn{🏼}{constructionworkertonetwo}{127996}{1f477-1f3fc}
+\emojione_define:nnnn{🏽}{constructionworkertonethree}{127997}{1f477-1f3fd}
+\emojione_define:nnnn{🏾}{constructionworkertonefour}{127998}{1f477-1f3fe}
+\emojione_define:nnnn{🏿}{constructionworkertonefive}{127999}{1f477-1f3ff}
+\emojione_define:nnnn{🎛}{controlknobs}{127899}{1f39b}
+\emojione_define:nnnn{🏪}{conveniencestore}{127978}{1f3ea}
+\emojione_define:nnnn{🍪}{cookie}{127850}{1f36a}
+\emojione_define:nnnn{🆒}{cool}{127378}{1f192}
+\emojione_define:nnnn{👮}{cop}{128110}{1f46e}
+\emojione_define:nnnn{🏻}{coptoneone}{127995}{1f46e-1f3fb}
+\emojione_define:nnnn{🏼}{coptonetwo}{127996}{1f46e-1f3fc}
+\emojione_define:nnnn{🏽}{coptonethree}{127997}{1f46e-1f3fd}
+\emojione_define:nnnn{🏾}{coptonefour}{127998}{1f46e-1f3fe}
+\emojione_define:nnnn{🏿}{coptonefive}{127999}{1f46e-1f3ff}
+\emojione_define:nnnn{©}{copyright}{169}{00a9}
+\emojione_define:nnnn{🌽}{corn}{127805}{1f33d}
+\emojione_define:nnnn{🛋}{couch}{128715}{1f6cb}
+\emojione_define:nnnn{👫}{couple}{128107}{1f46b}
+\emojione_define:nnnn{👨}{couplemm}{128104}{1f468-2764-1f468}
+\emojione_define:nnnn{💑}{couplewithheart}{128145}{1f491}
+\emojione_define:nnnn{👩}{coupleww}{128105}{1f469-2764-1f469}
+\emojione_define:nnnn{💏}{couplekiss}{128143}{1f48f}
+\emojione_define:nnnn{🐮}{cow}{128046}{1f42e}
+\emojione_define:nnnn{🐄}{cowtwo}{128004}{1f404}
+\emojione_define:nnnn{🦀}{crab}{129408}{1f980}
+\emojione_define:nnnn{🖍}{crayon}{128397}{1f58d}
+\emojione_define:nnnn{💳}{creditcard}{128179}{1f4b3}
+\emojione_define:nnnn{🌙}{crescentmoon}{127769}{1f319}
+\emojione_define:nnnn{🏏}{cricket}{127951}{1f3cf}
+\emojione_define:nnnn{🐊}{crocodile}{128010}{1f40a}
+\emojione_define:nnnn{✝}{cross}{10013}{271d}
+\emojione_define:nnnn{🎌}{crossedflags}{127884}{1f38c}
+\emojione_define:nnnn{⚔}{crossedswords}{9876}{2694}
+\emojione_define:nnnn{👑}{crown}{128081}{1f451}
+\emojione_define:nnnn{🛳}{cruiseship}{128755}{1f6f3}
+\emojione_define:nnnn{😢}{cry}{128546}{1f622}
+\emojione_define:nnnn{😿}{cryingcatface}{128575}{1f63f}
+\emojione_define:nnnn{🔮}{crystalball}{128302}{1f52e}
+\emojione_define:nnnn{💘}{cupid}{128152}{1f498}
+\emojione_define:nnnn{➰}{curlyloop}{10160}{27b0}
+\emojione_define:nnnn{💱}{currencyexchange}{128177}{1f4b1}
+\emojione_define:nnnn{🍛}{curry}{127835}{1f35b}
+\emojione_define:nnnn{🍮}{custard}{127854}{1f36e}
+\emojione_define:nnnn{🛃}{customs}{128707}{1f6c3}
+\emojione_define:nnnn{🌀}{cyclone}{127744}{1f300}
+\emojione_define:nnnn{🗡}{dagger}{128481}{1f5e1}
+\emojione_define:nnnn{💃}{dancer}{128131}{1f483}
+\emojione_define:nnnn{🏻}{dancertoneone}{127995}{1f483-1f3fb}
+\emojione_define:nnnn{🏼}{dancertonetwo}{127996}{1f483-1f3fc}
+\emojione_define:nnnn{🏽}{dancertonethree}{127997}{1f483-1f3fd}
+\emojione_define:nnnn{🏾}{dancertonefour}{127998}{1f483-1f3fe}
+\emojione_define:nnnn{🏿}{dancertonefive}{127999}{1f483-1f3ff}
+\emojione_define:nnnn{👯}{dancers}{128111}{1f46f}
+\emojione_define:nnnn{🍡}{dango}{127841}{1f361}
+\emojione_define:nnnn{🕶}{darksunglasses}{128374}{1f576}
+\emojione_define:nnnn{🎯}{dart}{127919}{1f3af}
+\emojione_define:nnnn{💨}{dash}{128168}{1f4a8}
+\emojione_define:nnnn{📅}{date}{128197}{1f4c5}
+\emojione_define:nnnn{🌳}{deciduoustree}{127795}{1f333}
+\emojione_define:nnnn{🏬}{departmentstore}{127980}{1f3ec}
+\emojione_define:nnnn{🏜}{desert}{127964}{1f3dc}
+\emojione_define:nnnn{🖥}{desktop}{128421}{1f5a5}
+\emojione_define:nnnn{💠}{diamondshapewithadotinside}{128160}{1f4a0}
+\emojione_define:nnnn{♦}{diamonds}{9830}{2666}
+\emojione_define:nnnn{😞}{disappointed}{128542}{1f61e}
+\emojione_define:nnnn{😥}{disappointedrelieved}{128549}{1f625}
+\emojione_define:nnnn{🗂}{dividers}{128450}{1f5c2}
+\emojione_define:nnnn{💫}{dizzy}{128171}{1f4ab}
+\emojione_define:nnnn{😵}{dizzyface}{128565}{1f635}
+\emojione_define:nnnn{🚯}{donotlitter}{128687}{1f6af}
+\emojione_define:nnnn{🐶}{dog}{128054}{1f436}
+\emojione_define:nnnn{🐕}{dogtwo}{128021}{1f415}
+\emojione_define:nnnn{💵}{dollar}{128181}{1f4b5}
+\emojione_define:nnnn{🎎}{dolls}{127886}{1f38e}
+\emojione_define:nnnn{🐬}{dolphin}{128044}{1f42c}
+\emojione_define:nnnn{🚪}{door}{128682}{1f6aa}
+\emojione_define:nnnn{🍩}{doughnut}{127849}{1f369}
+\emojione_define:nnnn{🕊}{dove}{128330}{1f54a}
+\emojione_define:nnnn{🐉}{dragon}{128009}{1f409}
+\emojione_define:nnnn{🐲}{dragonface}{128050}{1f432}
+\emojione_define:nnnn{👗}{dress}{128087}{1f457}
+\emojione_define:nnnn{🐪}{dromedarycamel}{128042}{1f42a}
+\emojione_define:nnnn{💧}{droplet}{128167}{1f4a7}
+\emojione_define:nnnn{📀}{dvd}{128192}{1f4c0}
+\emojione_define:nnnn{📧}{e-mail}{128231}{1f4e7}
+\emojione_define:nnnn{👂}{ear}{128066}{1f442}
+\emojione_define:nnnn{🌾}{earofrice}{127806}{1f33e}
+\emojione_define:nnnn{🏻}{eartoneone}{127995}{1f442-1f3fb}
+\emojione_define:nnnn{🏼}{eartonetwo}{127996}{1f442-1f3fc}
+\emojione_define:nnnn{🏽}{eartonethree}{127997}{1f442-1f3fd}
+\emojione_define:nnnn{🏾}{eartonefour}{127998}{1f442-1f3fe}
+\emojione_define:nnnn{🏿}{eartonefive}{127999}{1f442-1f3ff}
+\emojione_define:nnnn{🌍}{earthafrica}{127757}{1f30d}
+\emojione_define:nnnn{🌎}{earthamericas}{127758}{1f30e}
+\emojione_define:nnnn{🌏}{earthasia}{127759}{1f30f}
+\emojione_define:nnnn{🍳}{egg}{127859}{1f373}
+\emojione_define:nnnn{🍆}{eggplant}{127814}{1f346}
+\emojione_define:nnnn{⃣}{eight}{8419}{0038-20e3}
+\emojione_define:nnnn{✴}{eightpointedblackstar}{10036}{2734}
+\emojione_define:nnnn{✳}{eightspokedasterisk}{10035}{2733}
+\emojione_define:nnnn{🔌}{electricplug}{128268}{1f50c}
+\emojione_define:nnnn{🐘}{elephant}{128024}{1f418}
+\emojione_define:nnnn{🔚}{end}{128282}{1f51a}
+\emojione_define:nnnn{✉}{envelope}{9993}{2709}
+\emojione_define:nnnn{📩}{envelopewitharrow}{128233}{1f4e9}
+\emojione_define:nnnn{💶}{euro}{128182}{1f4b6}
+\emojione_define:nnnn{🏰}{europeancastle}{127984}{1f3f0}
+\emojione_define:nnnn{🏤}{europeanpostoffice}{127972}{1f3e4}
+\emojione_define:nnnn{🌲}{evergreentree}{127794}{1f332}
+\emojione_define:nnnn{❗}{exclamation}{10071}{2757}
+\emojione_define:nnnn{😑}{expressionless}{128529}{1f611}
+\emojione_define:nnnn{👁}{eye}{128065}{1f441}
+\emojione_define:nnnn{🗨}{eyeinspeechbubble}{128488}{1f441-1f5e8}
+\emojione_define:nnnn{👓}{eyeglasses}{128083}{1f453}
+\emojione_define:nnnn{👀}{eyes}{128064}{1f440}
+\emojione_define:nnnn{🏭}{factory}{127981}{1f3ed}
+\emojione_define:nnnn{🍂}{fallenleaf}{127810}{1f342}
+\emojione_define:nnnn{👪}{family}{128106}{1f46a}
+\emojione_define:nnnn{👦}{familymmb}{128102}{1f468-1f468-1f466}
+\emojione_define:nnnn{👦}{familymmbb}{128102}{1f468-1f468-1f466-1f466}
+\emojione_define:nnnn{👧}{familymmg}{128103}{1f468-1f468-1f467}
+\emojione_define:nnnn{👦}{familymmgb}{128102}{1f468-1f468-1f467-1f466}
+\emojione_define:nnnn{👧}{familymmgg}{128103}{1f468-1f468-1f467-1f467}
+\emojione_define:nnnn{👦}{familymwbb}{128102}{1f468-1f469-1f466-1f466}
+\emojione_define:nnnn{👧}{familymwg}{128103}{1f468-1f469-1f467}
+\emojione_define:nnnn{👦}{familymwgb}{128102}{1f468-1f469-1f467-1f466}
+\emojione_define:nnnn{👧}{familymwgg}{128103}{1f468-1f469-1f467-1f467}
+\emojione_define:nnnn{👦}{familywwb}{128102}{1f469-1f469-1f466}
+\emojione_define:nnnn{👦}{familywwbb}{128102}{1f469-1f469-1f466-1f466}
+\emojione_define:nnnn{👧}{familywwg}{128103}{1f469-1f469-1f467}
+\emojione_define:nnnn{👦}{familywwgb}{128102}{1f469-1f469-1f467-1f466}
+\emojione_define:nnnn{👧}{familywwgg}{128103}{1f469-1f469-1f467-1f467}
+\emojione_define:nnnn{⏩}{fastforward}{9193}{23e9}
+\emojione_define:nnnn{📠}{fax}{128224}{1f4e0}
+\emojione_define:nnnn{😨}{fearful}{128552}{1f628}
+\emojione_define:nnnn{🐾}{feet}{128062}{1f43e}
+\emojione_define:nnnn{🎡}{ferriswheel}{127905}{1f3a1}
+\emojione_define:nnnn{⛴}{ferry}{9972}{26f4}
+\emojione_define:nnnn{🏑}{fieldhockey}{127953}{1f3d1}
+\emojione_define:nnnn{🗄}{filecabinet}{128452}{1f5c4}
+\emojione_define:nnnn{📁}{filefolder}{128193}{1f4c1}
+\emojione_define:nnnn{🎞}{filmframes}{127902}{1f39e}
+\emojione_define:nnnn{🔥}{fire}{128293}{1f525}
+\emojione_define:nnnn{🚒}{fireengine}{128658}{1f692}
+\emojione_define:nnnn{🎆}{fireworks}{127878}{1f386}
+\emojione_define:nnnn{🌓}{firstquartermoon}{127763}{1f313}
+\emojione_define:nnnn{🌛}{firstquartermoonwithface}{127771}{1f31b}
+\emojione_define:nnnn{🐟}{fish}{128031}{1f41f}
+\emojione_define:nnnn{🍥}{fishcake}{127845}{1f365}
+\emojione_define:nnnn{🎣}{fishingpoleandfish}{127907}{1f3a3}
+\emojione_define:nnnn{✊}{fist}{9994}{270a}
+\emojione_define:nnnn{🏻}{fisttoneone}{127995}{270a-1f3fb}
+\emojione_define:nnnn{🏼}{fisttonetwo}{127996}{270a-1f3fc}
+\emojione_define:nnnn{🏽}{fisttonethree}{127997}{270a-1f3fd}
+\emojione_define:nnnn{🏾}{fisttonefour}{127998}{270a-1f3fe}
+\emojione_define:nnnn{🏿}{fisttonefive}{127999}{270a-1f3ff}
+\emojione_define:nnnn{⃣}{five}{8419}{0035-20e3}
+\emojione_define:nnnn{🇨}{flagac}{127464}{1f1e6-1f1e8}
+\emojione_define:nnnn{🇩}{flagad}{127465}{1f1e6-1f1e9}
+\emojione_define:nnnn{🇪}{flagae}{127466}{1f1e6-1f1ea}
+\emojione_define:nnnn{🇫}{flagaf}{127467}{1f1e6-1f1eb}
+\emojione_define:nnnn{🇬}{flagag}{127468}{1f1e6-1f1ec}
+\emojione_define:nnnn{🇮}{flagai}{127470}{1f1e6-1f1ee}
+\emojione_define:nnnn{🇱}{flagal}{127473}{1f1e6-1f1f1}
+\emojione_define:nnnn{🇲}{flagam}{127474}{1f1e6-1f1f2}
+\emojione_define:nnnn{🇴}{flagao}{127476}{1f1e6-1f1f4}
+\emojione_define:nnnn{🇶}{flagaq}{127478}{1f1e6-1f1f6}
+\emojione_define:nnnn{🇷}{flagar}{127479}{1f1e6-1f1f7}
+\emojione_define:nnnn{🇸}{flagas}{127480}{1f1e6-1f1f8}
+\emojione_define:nnnn{🇹}{flagat}{127481}{1f1e6-1f1f9}
+\emojione_define:nnnn{🇺}{flagau}{127482}{1f1e6-1f1fa}
+\emojione_define:nnnn{🇼}{flagaw}{127484}{1f1e6-1f1fc}
+\emojione_define:nnnn{🇽}{flagax}{127485}{1f1e6-1f1fd}
+\emojione_define:nnnn{🇿}{flagaz}{127487}{1f1e6-1f1ff}
+\emojione_define:nnnn{🇦}{flagba}{127462}{1f1e7-1f1e6}
+\emojione_define:nnnn{🇧}{flagbb}{127463}{1f1e7-1f1e7}
+\emojione_define:nnnn{🇩}{flagbd}{127465}{1f1e7-1f1e9}
+\emojione_define:nnnn{🇪}{flagbe}{127466}{1f1e7-1f1ea}
+\emojione_define:nnnn{🇫}{flagbf}{127467}{1f1e7-1f1eb}
+\emojione_define:nnnn{🇬}{flagbg}{127468}{1f1e7-1f1ec}
+\emojione_define:nnnn{🇭}{flagbh}{127469}{1f1e7-1f1ed}
+\emojione_define:nnnn{🇮}{flagbi}{127470}{1f1e7-1f1ee}
+\emojione_define:nnnn{🇯}{flagbj}{127471}{1f1e7-1f1ef}
+\emojione_define:nnnn{🇱}{flagbl}{127473}{1f1e7-1f1f1}
+\emojione_define:nnnn{🏴}{flagblack}{127988}{1f3f4}
+\emojione_define:nnnn{🇲}{flagbm}{127474}{1f1e7-1f1f2}
+\emojione_define:nnnn{🇳}{flagbn}{127475}{1f1e7-1f1f3}
+\emojione_define:nnnn{🇴}{flagbo}{127476}{1f1e7-1f1f4}
+\emojione_define:nnnn{🇶}{flagbq}{127478}{1f1e7-1f1f6}
+\emojione_define:nnnn{🇷}{flagbr}{127479}{1f1e7-1f1f7}
+\emojione_define:nnnn{🇸}{flagbs}{127480}{1f1e7-1f1f8}
+\emojione_define:nnnn{🇹}{flagbt}{127481}{1f1e7-1f1f9}
+\emojione_define:nnnn{🇻}{flagbv}{127483}{1f1e7-1f1fb}
+\emojione_define:nnnn{🇼}{flagbw}{127484}{1f1e7-1f1fc}
+\emojione_define:nnnn{🇾}{flagby}{127486}{1f1e7-1f1fe}
+\emojione_define:nnnn{🇿}{flagbz}{127487}{1f1e7-1f1ff}
+\emojione_define:nnnn{🇦}{flagca}{127462}{1f1e8-1f1e6}
+\emojione_define:nnnn{🇨}{flagcc}{127464}{1f1e8-1f1e8}
+\emojione_define:nnnn{🇩}{flagcd}{127465}{1f1e8-1f1e9}
+\emojione_define:nnnn{🇫}{flagcf}{127467}{1f1e8-1f1eb}
+\emojione_define:nnnn{🇬}{flagcg}{127468}{1f1e8-1f1ec}
+\emojione_define:nnnn{🇭}{flagch}{127469}{1f1e8-1f1ed}
+\emojione_define:nnnn{🇮}{flagci}{127470}{1f1e8-1f1ee}
+\emojione_define:nnnn{🇰}{flagck}{127472}{1f1e8-1f1f0}
+\emojione_define:nnnn{🇱}{flagcl}{127473}{1f1e8-1f1f1}
+\emojione_define:nnnn{🇲}{flagcm}{127474}{1f1e8-1f1f2}
+\emojione_define:nnnn{🇳}{flagcn}{127475}{1f1e8-1f1f3}
+\emojione_define:nnnn{🇴}{flagco}{127476}{1f1e8-1f1f4}
+\emojione_define:nnnn{🇵}{flagcp}{127477}{1f1e8-1f1f5}
+\emojione_define:nnnn{🇷}{flagcr}{127479}{1f1e8-1f1f7}
+\emojione_define:nnnn{🇺}{flagcu}{127482}{1f1e8-1f1fa}
+\emojione_define:nnnn{🇻}{flagcv}{127483}{1f1e8-1f1fb}
+\emojione_define:nnnn{🇼}{flagcw}{127484}{1f1e8-1f1fc}
+\emojione_define:nnnn{🇽}{flagcx}{127485}{1f1e8-1f1fd}
+\emojione_define:nnnn{🇾}{flagcy}{127486}{1f1e8-1f1fe}
+\emojione_define:nnnn{🇿}{flagcz}{127487}{1f1e8-1f1ff}
+\emojione_define:nnnn{🇪}{flagde}{127466}{1f1e9-1f1ea}
+\emojione_define:nnnn{🇬}{flagdg}{127468}{1f1e9-1f1ec}
+\emojione_define:nnnn{🇯}{flagdj}{127471}{1f1e9-1f1ef}
+\emojione_define:nnnn{🇰}{flagdk}{127472}{1f1e9-1f1f0}
+\emojione_define:nnnn{🇲}{flagdm}{127474}{1f1e9-1f1f2}
+\emojione_define:nnnn{🇴}{flagdo}{127476}{1f1e9-1f1f4}
+\emojione_define:nnnn{🇿}{flagdz}{127487}{1f1e9-1f1ff}
+\emojione_define:nnnn{🇦}{flagea}{127462}{1f1ea-1f1e6}
+\emojione_define:nnnn{🇨}{flagec}{127464}{1f1ea-1f1e8}
+\emojione_define:nnnn{🇪}{flagee}{127466}{1f1ea-1f1ea}
+\emojione_define:nnnn{🇬}{flageg}{127468}{1f1ea-1f1ec}
+\emojione_define:nnnn{🇭}{flageh}{127469}{1f1ea-1f1ed}
+\emojione_define:nnnn{🇷}{flager}{127479}{1f1ea-1f1f7}
+\emojione_define:nnnn{🇸}{flages}{127480}{1f1ea-1f1f8}
+\emojione_define:nnnn{🇹}{flaget}{127481}{1f1ea-1f1f9}
+\emojione_define:nnnn{🇺}{flageu}{127482}{1f1ea-1f1fa}
+\emojione_define:nnnn{🇮}{flagfi}{127470}{1f1eb-1f1ee}
+\emojione_define:nnnn{🇯}{flagfj}{127471}{1f1eb-1f1ef}
+\emojione_define:nnnn{🇰}{flagfk}{127472}{1f1eb-1f1f0}
+\emojione_define:nnnn{🇲}{flagfm}{127474}{1f1eb-1f1f2}
+\emojione_define:nnnn{🇴}{flagfo}{127476}{1f1eb-1f1f4}
+\emojione_define:nnnn{🇷}{flagfr}{127479}{1f1eb-1f1f7}
+\emojione_define:nnnn{🇦}{flagga}{127462}{1f1ec-1f1e6}
+\emojione_define:nnnn{🇧}{flaggb}{127463}{1f1ec-1f1e7}
+\emojione_define:nnnn{🇩}{flaggd}{127465}{1f1ec-1f1e9}
+\emojione_define:nnnn{🇪}{flagge}{127466}{1f1ec-1f1ea}
+\emojione_define:nnnn{🇫}{flaggf}{127467}{1f1ec-1f1eb}
+\emojione_define:nnnn{🇬}{flaggg}{127468}{1f1ec-1f1ec}
+\emojione_define:nnnn{🇭}{flaggh}{127469}{1f1ec-1f1ed}
+\emojione_define:nnnn{🇮}{flaggi}{127470}{1f1ec-1f1ee}
+\emojione_define:nnnn{🇱}{flaggl}{127473}{1f1ec-1f1f1}
+\emojione_define:nnnn{🇲}{flaggm}{127474}{1f1ec-1f1f2}
+\emojione_define:nnnn{🇳}{flaggn}{127475}{1f1ec-1f1f3}
+\emojione_define:nnnn{🇵}{flaggp}{127477}{1f1ec-1f1f5}
+\emojione_define:nnnn{🇶}{flaggq}{127478}{1f1ec-1f1f6}
+\emojione_define:nnnn{🇷}{flaggr}{127479}{1f1ec-1f1f7}
+\emojione_define:nnnn{🇸}{flaggs}{127480}{1f1ec-1f1f8}
+\emojione_define:nnnn{🇹}{flaggt}{127481}{1f1ec-1f1f9}
+\emojione_define:nnnn{🇺}{flaggu}{127482}{1f1ec-1f1fa}
+\emojione_define:nnnn{🇼}{flaggw}{127484}{1f1ec-1f1fc}
+\emojione_define:nnnn{🇾}{flaggy}{127486}{1f1ec-1f1fe}
+\emojione_define:nnnn{🇰}{flaghk}{127472}{1f1ed-1f1f0}
+\emojione_define:nnnn{🇲}{flaghm}{127474}{1f1ed-1f1f2}
+\emojione_define:nnnn{🇳}{flaghn}{127475}{1f1ed-1f1f3}
+\emojione_define:nnnn{🇷}{flaghr}{127479}{1f1ed-1f1f7}
+\emojione_define:nnnn{🇹}{flaght}{127481}{1f1ed-1f1f9}
+\emojione_define:nnnn{🇺}{flaghu}{127482}{1f1ed-1f1fa}
+\emojione_define:nnnn{🇨}{flagic}{127464}{1f1ee-1f1e8}
+\emojione_define:nnnn{🇩}{flagid}{127465}{1f1ee-1f1e9}
+\emojione_define:nnnn{🇪}{flagie}{127466}{1f1ee-1f1ea}
+\emojione_define:nnnn{🇱}{flagil}{127473}{1f1ee-1f1f1}
+\emojione_define:nnnn{🇲}{flagim}{127474}{1f1ee-1f1f2}
+\emojione_define:nnnn{🇳}{flagin}{127475}{1f1ee-1f1f3}
+\emojione_define:nnnn{🇴}{flagio}{127476}{1f1ee-1f1f4}
+\emojione_define:nnnn{🇶}{flagiq}{127478}{1f1ee-1f1f6}
+\emojione_define:nnnn{🇷}{flagir}{127479}{1f1ee-1f1f7}
+\emojione_define:nnnn{🇸}{flagis}{127480}{1f1ee-1f1f8}
+\emojione_define:nnnn{🇹}{flagit}{127481}{1f1ee-1f1f9}
+\emojione_define:nnnn{🇪}{flagje}{127466}{1f1ef-1f1ea}
+\emojione_define:nnnn{🇲}{flagjm}{127474}{1f1ef-1f1f2}
+\emojione_define:nnnn{🇴}{flagjo}{127476}{1f1ef-1f1f4}
+\emojione_define:nnnn{🇵}{flagjp}{127477}{1f1ef-1f1f5}
+\emojione_define:nnnn{🇪}{flagke}{127466}{1f1f0-1f1ea}
+\emojione_define:nnnn{🇬}{flagkg}{127468}{1f1f0-1f1ec}
+\emojione_define:nnnn{🇭}{flagkh}{127469}{1f1f0-1f1ed}
+\emojione_define:nnnn{🇮}{flagki}{127470}{1f1f0-1f1ee}
+\emojione_define:nnnn{🇲}{flagkm}{127474}{1f1f0-1f1f2}
+\emojione_define:nnnn{🇳}{flagkn}{127475}{1f1f0-1f1f3}
+\emojione_define:nnnn{🇵}{flagkp}{127477}{1f1f0-1f1f5}
+\emojione_define:nnnn{🇷}{flagkr}{127479}{1f1f0-1f1f7}
+\emojione_define:nnnn{🇼}{flagkw}{127484}{1f1f0-1f1fc}
+\emojione_define:nnnn{🇾}{flagky}{127486}{1f1f0-1f1fe}
+\emojione_define:nnnn{🇿}{flagkz}{127487}{1f1f0-1f1ff}
+\emojione_define:nnnn{🇦}{flagla}{127462}{1f1f1-1f1e6}
+\emojione_define:nnnn{🇧}{flaglb}{127463}{1f1f1-1f1e7}
+\emojione_define:nnnn{🇨}{flaglc}{127464}{1f1f1-1f1e8}
+\emojione_define:nnnn{🇮}{flagli}{127470}{1f1f1-1f1ee}
+\emojione_define:nnnn{🇰}{flaglk}{127472}{1f1f1-1f1f0}
+\emojione_define:nnnn{🇷}{flaglr}{127479}{1f1f1-1f1f7}
+\emojione_define:nnnn{🇸}{flagls}{127480}{1f1f1-1f1f8}
+\emojione_define:nnnn{🇹}{flaglt}{127481}{1f1f1-1f1f9}
+\emojione_define:nnnn{🇺}{flaglu}{127482}{1f1f1-1f1fa}
+\emojione_define:nnnn{🇻}{flaglv}{127483}{1f1f1-1f1fb}
+\emojione_define:nnnn{🇾}{flagly}{127486}{1f1f1-1f1fe}
+\emojione_define:nnnn{🇦}{flagma}{127462}{1f1f2-1f1e6}
+\emojione_define:nnnn{🇨}{flagmc}{127464}{1f1f2-1f1e8}
+\emojione_define:nnnn{🇩}{flagmd}{127465}{1f1f2-1f1e9}
+\emojione_define:nnnn{🇪}{flagme}{127466}{1f1f2-1f1ea}
+\emojione_define:nnnn{🇫}{flagmf}{127467}{1f1f2-1f1eb}
+\emojione_define:nnnn{🇬}{flagmg}{127468}{1f1f2-1f1ec}
+\emojione_define:nnnn{🇭}{flagmh}{127469}{1f1f2-1f1ed}
+\emojione_define:nnnn{🇰}{flagmk}{127472}{1f1f2-1f1f0}
+\emojione_define:nnnn{🇱}{flagml}{127473}{1f1f2-1f1f1}
+\emojione_define:nnnn{🇲}{flagmm}{127474}{1f1f2-1f1f2}
+\emojione_define:nnnn{🇳}{flagmn}{127475}{1f1f2-1f1f3}
+\emojione_define:nnnn{🇴}{flagmo}{127476}{1f1f2-1f1f4}
+\emojione_define:nnnn{🇵}{flagmp}{127477}{1f1f2-1f1f5}
+\emojione_define:nnnn{🇶}{flagmq}{127478}{1f1f2-1f1f6}
+\emojione_define:nnnn{🇷}{flagmr}{127479}{1f1f2-1f1f7}
+\emojione_define:nnnn{🇸}{flagms}{127480}{1f1f2-1f1f8}
+\emojione_define:nnnn{🇹}{flagmt}{127481}{1f1f2-1f1f9}
+\emojione_define:nnnn{🇺}{flagmu}{127482}{1f1f2-1f1fa}
+\emojione_define:nnnn{🇻}{flagmv}{127483}{1f1f2-1f1fb}
+\emojione_define:nnnn{🇼}{flagmw}{127484}{1f1f2-1f1fc}
+\emojione_define:nnnn{🇽}{flagmx}{127485}{1f1f2-1f1fd}
+\emojione_define:nnnn{🇾}{flagmy}{127486}{1f1f2-1f1fe}
+\emojione_define:nnnn{🇿}{flagmz}{127487}{1f1f2-1f1ff}
+\emojione_define:nnnn{🇦}{flagna}{127462}{1f1f3-1f1e6}
+\emojione_define:nnnn{🇨}{flagnc}{127464}{1f1f3-1f1e8}
+\emojione_define:nnnn{🇪}{flagne}{127466}{1f1f3-1f1ea}
+\emojione_define:nnnn{🇫}{flagnf}{127467}{1f1f3-1f1eb}
+\emojione_define:nnnn{🇬}{flagng}{127468}{1f1f3-1f1ec}
+\emojione_define:nnnn{🇮}{flagni}{127470}{1f1f3-1f1ee}
+\emojione_define:nnnn{🇱}{flagnl}{127473}{1f1f3-1f1f1}
+\emojione_define:nnnn{🇴}{flagno}{127476}{1f1f3-1f1f4}
+\emojione_define:nnnn{🇵}{flagnp}{127477}{1f1f3-1f1f5}
+\emojione_define:nnnn{🇷}{flagnr}{127479}{1f1f3-1f1f7}
+\emojione_define:nnnn{🇺}{flagnu}{127482}{1f1f3-1f1fa}
+\emojione_define:nnnn{🇿}{flagnz}{127487}{1f1f3-1f1ff}
+\emojione_define:nnnn{🇲}{flagom}{127474}{1f1f4-1f1f2}
+\emojione_define:nnnn{🇦}{flagpa}{127462}{1f1f5-1f1e6}
+\emojione_define:nnnn{🇪}{flagpe}{127466}{1f1f5-1f1ea}
+\emojione_define:nnnn{🇫}{flagpf}{127467}{1f1f5-1f1eb}
+\emojione_define:nnnn{🇬}{flagpg}{127468}{1f1f5-1f1ec}
+\emojione_define:nnnn{🇭}{flagph}{127469}{1f1f5-1f1ed}
+\emojione_define:nnnn{🇰}{flagpk}{127472}{1f1f5-1f1f0}
+\emojione_define:nnnn{🇱}{flagpl}{127473}{1f1f5-1f1f1}
+\emojione_define:nnnn{🇲}{flagpm}{127474}{1f1f5-1f1f2}
+\emojione_define:nnnn{🇳}{flagpn}{127475}{1f1f5-1f1f3}
+\emojione_define:nnnn{🇷}{flagpr}{127479}{1f1f5-1f1f7}
+\emojione_define:nnnn{🇸}{flagps}{127480}{1f1f5-1f1f8}
+\emojione_define:nnnn{🇹}{flagpt}{127481}{1f1f5-1f1f9}
+\emojione_define:nnnn{🇼}{flagpw}{127484}{1f1f5-1f1fc}
+\emojione_define:nnnn{🇾}{flagpy}{127486}{1f1f5-1f1fe}
+\emojione_define:nnnn{🇦}{flagqa}{127462}{1f1f6-1f1e6}
+\emojione_define:nnnn{🇪}{flagre}{127466}{1f1f7-1f1ea}
+\emojione_define:nnnn{🇴}{flagro}{127476}{1f1f7-1f1f4}
+\emojione_define:nnnn{🇸}{flagrs}{127480}{1f1f7-1f1f8}
+\emojione_define:nnnn{🇺}{flagru}{127482}{1f1f7-1f1fa}
+\emojione_define:nnnn{🇼}{flagrw}{127484}{1f1f7-1f1fc}
+\emojione_define:nnnn{🇦}{flagsa}{127462}{1f1f8-1f1e6}
+\emojione_define:nnnn{🇧}{flagsb}{127463}{1f1f8-1f1e7}
+\emojione_define:nnnn{🇨}{flagsc}{127464}{1f1f8-1f1e8}
+\emojione_define:nnnn{🇩}{flagsd}{127465}{1f1f8-1f1e9}
+\emojione_define:nnnn{🇪}{flagse}{127466}{1f1f8-1f1ea}
+\emojione_define:nnnn{🇬}{flagsg}{127468}{1f1f8-1f1ec}
+\emojione_define:nnnn{🇭}{flagsh}{127469}{1f1f8-1f1ed}
+\emojione_define:nnnn{🇮}{flagsi}{127470}{1f1f8-1f1ee}
+\emojione_define:nnnn{🇯}{flagsj}{127471}{1f1f8-1f1ef}
+\emojione_define:nnnn{🇰}{flagsk}{127472}{1f1f8-1f1f0}
+\emojione_define:nnnn{🇱}{flagsl}{127473}{1f1f8-1f1f1}
+\emojione_define:nnnn{🇲}{flagsm}{127474}{1f1f8-1f1f2}
+\emojione_define:nnnn{🇳}{flagsn}{127475}{1f1f8-1f1f3}
+\emojione_define:nnnn{🇴}{flagso}{127476}{1f1f8-1f1f4}
+\emojione_define:nnnn{🇷}{flagsr}{127479}{1f1f8-1f1f7}
+\emojione_define:nnnn{🇸}{flagss}{127480}{1f1f8-1f1f8}
+\emojione_define:nnnn{🇹}{flagst}{127481}{1f1f8-1f1f9}
+\emojione_define:nnnn{🇻}{flagsv}{127483}{1f1f8-1f1fb}
+\emojione_define:nnnn{🇽}{flagsx}{127485}{1f1f8-1f1fd}
+\emojione_define:nnnn{🇾}{flagsy}{127486}{1f1f8-1f1fe}
+\emojione_define:nnnn{🇿}{flagsz}{127487}{1f1f8-1f1ff}
+\emojione_define:nnnn{🇦}{flagta}{127462}{1f1f9-1f1e6}
+\emojione_define:nnnn{🇨}{flagtc}{127464}{1f1f9-1f1e8}
+\emojione_define:nnnn{🇩}{flagtd}{127465}{1f1f9-1f1e9}
+\emojione_define:nnnn{🇫}{flagtf}{127467}{1f1f9-1f1eb}
+\emojione_define:nnnn{🇬}{flagtg}{127468}{1f1f9-1f1ec}
+\emojione_define:nnnn{🇭}{flagth}{127469}{1f1f9-1f1ed}
+\emojione_define:nnnn{🇯}{flagtj}{127471}{1f1f9-1f1ef}
+\emojione_define:nnnn{🇰}{flagtk}{127472}{1f1f9-1f1f0}
+\emojione_define:nnnn{🇱}{flagtl}{127473}{1f1f9-1f1f1}
+\emojione_define:nnnn{🇲}{flagtm}{127474}{1f1f9-1f1f2}
+\emojione_define:nnnn{🇳}{flagtn}{127475}{1f1f9-1f1f3}
+\emojione_define:nnnn{🇴}{flagto}{127476}{1f1f9-1f1f4}
+\emojione_define:nnnn{🇷}{flagtr}{127479}{1f1f9-1f1f7}
+\emojione_define:nnnn{🇹}{flagtt}{127481}{1f1f9-1f1f9}
+\emojione_define:nnnn{🇻}{flagtv}{127483}{1f1f9-1f1fb}
+\emojione_define:nnnn{🇼}{flagtw}{127484}{1f1f9-1f1fc}
+\emojione_define:nnnn{🇿}{flagtz}{127487}{1f1f9-1f1ff}
+\emojione_define:nnnn{🇦}{flagua}{127462}{1f1fa-1f1e6}
+\emojione_define:nnnn{🇬}{flagug}{127468}{1f1fa-1f1ec}
+\emojione_define:nnnn{🇲}{flagum}{127474}{1f1fa-1f1f2}
+\emojione_define:nnnn{🇸}{flagus}{127480}{1f1fa-1f1f8}
+\emojione_define:nnnn{🇾}{flaguy}{127486}{1f1fa-1f1fe}
+\emojione_define:nnnn{🇿}{flaguz}{127487}{1f1fa-1f1ff}
+\emojione_define:nnnn{🇦}{flagva}{127462}{1f1fb-1f1e6}
+\emojione_define:nnnn{🇨}{flagvc}{127464}{1f1fb-1f1e8}
+\emojione_define:nnnn{🇪}{flagve}{127466}{1f1fb-1f1ea}
+\emojione_define:nnnn{🇬}{flagvg}{127468}{1f1fb-1f1ec}
+\emojione_define:nnnn{🇮}{flagvi}{127470}{1f1fb-1f1ee}
+\emojione_define:nnnn{🇳}{flagvn}{127475}{1f1fb-1f1f3}
+\emojione_define:nnnn{🇺}{flagvu}{127482}{1f1fb-1f1fa}
+\emojione_define:nnnn{🇫}{flagwf}{127467}{1f1fc-1f1eb}
+\emojione_define:nnnn{🏳}{flagwhite}{127987}{1f3f3}
+\emojione_define:nnnn{🇸}{flagws}{127480}{1f1fc-1f1f8}
+\emojione_define:nnnn{🇰}{flagxk}{127472}{1f1fd-1f1f0}
+\emojione_define:nnnn{🇪}{flagye}{127466}{1f1fe-1f1ea}
+\emojione_define:nnnn{🇹}{flagyt}{127481}{1f1fe-1f1f9}
+\emojione_define:nnnn{🇦}{flagza}{127462}{1f1ff-1f1e6}
+\emojione_define:nnnn{🇲}{flagzm}{127474}{1f1ff-1f1f2}
+\emojione_define:nnnn{🇼}{flagzw}{127484}{1f1ff-1f1fc}
+\emojione_define:nnnn{🎏}{flags}{127887}{1f38f}
+\emojione_define:nnnn{🔦}{flashlight}{128294}{1f526}
+\emojione_define:nnnn{⚜}{fleur-de-lis}{9884}{269c}
+\emojione_define:nnnn{💾}{floppydisk}{128190}{1f4be}
+\emojione_define:nnnn{🎴}{flowerplayingcards}{127924}{1f3b4}
+\emojione_define:nnnn{😳}{flushed}{128563}{1f633}
+\emojione_define:nnnn{🌫}{fog}{127787}{1f32b}
+\emojione_define:nnnn{🌁}{foggy}{127745}{1f301}
+\emojione_define:nnnn{🏈}{football}{127944}{1f3c8}
+\emojione_define:nnnn{👣}{footprints}{128099}{1f463}
+\emojione_define:nnnn{🍴}{forkandknife}{127860}{1f374}
+\emojione_define:nnnn{🍽}{forkknifeplate}{127869}{1f37d}
+\emojione_define:nnnn{⛲}{fountain}{9970}{26f2}
+\emojione_define:nnnn{⃣}{four}{8419}{0034-20e3}
+\emojione_define:nnnn{🍀}{fourleafclover}{127808}{1f340}
+\emojione_define:nnnn{🖼}{framephoto}{128444}{1f5bc}
+\emojione_define:nnnn{🆓}{free}{127379}{1f193}
+\emojione_define:nnnn{🍤}{friedshrimp}{127844}{1f364}
+\emojione_define:nnnn{🍟}{fries}{127839}{1f35f}
+\emojione_define:nnnn{🐸}{frog}{128056}{1f438}
+\emojione_define:nnnn{😦}{frowning}{128550}{1f626}
+\emojione_define:nnnn{☹}{frowningtwo}{9785}{2639}
+\emojione_define:nnnn{⛽}{fuelpump}{9981}{26fd}
+\emojione_define:nnnn{🌕}{fullmoon}{127765}{1f315}
+\emojione_define:nnnn{🌝}{fullmoonwithface}{127773}{1f31d}
+\emojione_define:nnnn{🎲}{gamedie}{127922}{1f3b2}
+\emojione_define:nnnn{⚙}{gear}{9881}{2699}
+\emojione_define:nnnn{💎}{gem}{128142}{1f48e}
+\emojione_define:nnnn{♊}{gemini}{9802}{264a}
+\emojione_define:nnnn{👻}{ghost}{128123}{1f47b}
+\emojione_define:nnnn{🎁}{gift}{127873}{1f381}
+\emojione_define:nnnn{💝}{giftheart}{128157}{1f49d}
+\emojione_define:nnnn{👧}{girl}{128103}{1f467}
+\emojione_define:nnnn{🏻}{girltoneone}{127995}{1f467-1f3fb}
+\emojione_define:nnnn{🏼}{girltonetwo}{127996}{1f467-1f3fc}
+\emojione_define:nnnn{🏽}{girltonethree}{127997}{1f467-1f3fd}
+\emojione_define:nnnn{🏾}{girltonefour}{127998}{1f467-1f3fe}
+\emojione_define:nnnn{🏿}{girltonefive}{127999}{1f467-1f3ff}
+\emojione_define:nnnn{🌐}{globewithmeridians}{127760}{1f310}
+\emojione_define:nnnn{🐐}{goat}{128016}{1f410}
+\emojione_define:nnnn{⛳}{golf}{9971}{26f3}
+\emojione_define:nnnn{🏌}{golfer}{127948}{1f3cc}
+\emojione_define:nnnn{🍇}{grapes}{127815}{1f347}
+\emojione_define:nnnn{🍏}{greenapple}{127823}{1f34f}
+\emojione_define:nnnn{📗}{greenbook}{128215}{1f4d7}
+\emojione_define:nnnn{💚}{greenheart}{128154}{1f49a}
+\emojione_define:nnnn{❕}{greyexclamation}{10069}{2755}
+\emojione_define:nnnn{❔}{greyquestion}{10068}{2754}
+\emojione_define:nnnn{😬}{grimacing}{128556}{1f62c}
+\emojione_define:nnnn{😁}{grin}{128513}{1f601}
+\emojione_define:nnnn{😀}{grinning}{128512}{1f600}
+\emojione_define:nnnn{💂}{guardsman}{128130}{1f482}
+\emojione_define:nnnn{🏻}{guardsmantoneone}{127995}{1f482-1f3fb}
+\emojione_define:nnnn{🏼}{guardsmantonetwo}{127996}{1f482-1f3fc}
+\emojione_define:nnnn{🏽}{guardsmantonethree}{127997}{1f482-1f3fd}
+\emojione_define:nnnn{🏾}{guardsmantonefour}{127998}{1f482-1f3fe}
+\emojione_define:nnnn{🏿}{guardsmantonefive}{127999}{1f482-1f3ff}
+\emojione_define:nnnn{🎸}{guitar}{127928}{1f3b8}
+\emojione_define:nnnn{🔫}{gun}{128299}{1f52b}
+\emojione_define:nnnn{💇}{haircut}{128135}{1f487}
+\emojione_define:nnnn{🏻}{haircuttoneone}{127995}{1f487-1f3fb}
+\emojione_define:nnnn{🏼}{haircuttonetwo}{127996}{1f487-1f3fc}
+\emojione_define:nnnn{🏽}{haircuttonethree}{127997}{1f487-1f3fd}
+\emojione_define:nnnn{🏾}{haircuttonefour}{127998}{1f487-1f3fe}
+\emojione_define:nnnn{🏿}{haircuttonefive}{127999}{1f487-1f3ff}
+\emojione_define:nnnn{🍔}{hamburger}{127828}{1f354}
+\emojione_define:nnnn{🔨}{hammer}{128296}{1f528}
+\emojione_define:nnnn{⚒}{hammerpick}{9874}{2692}
+\emojione_define:nnnn{🐹}{hamster}{128057}{1f439}
+\emojione_define:nnnn{🖐}{handsplayed}{128400}{1f590}
+\emojione_define:nnnn{🏻}{handsplayedtoneone}{127995}{1f590-1f3fb}
+\emojione_define:nnnn{🏼}{handsplayedtonetwo}{127996}{1f590-1f3fc}
+\emojione_define:nnnn{🏽}{handsplayedtonethree}{127997}{1f590-1f3fd}
+\emojione_define:nnnn{🏾}{handsplayedtonefour}{127998}{1f590-1f3fe}
+\emojione_define:nnnn{🏿}{handsplayedtonefive}{127999}{1f590-1f3ff}
+\emojione_define:nnnn{👜}{handbag}{128092}{1f45c}
+\emojione_define:nnnn{⃣}{hash}{8419}{0023-20e3}
+\emojione_define:nnnn{🐥}{hatchedchick}{128037}{1f425}
+\emojione_define:nnnn{🐣}{hatchingchick}{128035}{1f423}
+\emojione_define:nnnn{🤕}{headbandage}{129301}{1f915}
+\emojione_define:nnnn{🎧}{headphones}{127911}{1f3a7}
+\emojione_define:nnnn{🙉}{hearnoevil}{128585}{1f649}
+\emojione_define:nnnn{❤}{heart}{10084}{2764}
+\emojione_define:nnnn{💟}{heartdecoration}{128159}{1f49f}
+\emojione_define:nnnn{❣}{heartexclamation}{10083}{2763}
+\emojione_define:nnnn{😍}{hearteyes}{128525}{1f60d}
+\emojione_define:nnnn{😻}{hearteyescat}{128571}{1f63b}
+\emojione_define:nnnn{💓}{heartbeat}{128147}{1f493}
+\emojione_define:nnnn{💗}{heartpulse}{128151}{1f497}
+\emojione_define:nnnn{♥}{hearts}{9829}{2665}
+\emojione_define:nnnn{✔}{heavycheckmark}{10004}{2714}
+\emojione_define:nnnn{➗}{heavydivisionsign}{10135}{2797}
+\emojione_define:nnnn{💲}{heavydollarsign}{128178}{1f4b2}
+\emojione_define:nnnn{➖}{heavyminussign}{10134}{2796}
+\emojione_define:nnnn{✖}{heavymultiplicationx}{10006}{2716}
+\emojione_define:nnnn{➕}{heavyplussign}{10133}{2795}
+\emojione_define:nnnn{🚁}{helicopter}{128641}{1f681}
+\emojione_define:nnnn{⛑}{helmetwithcross}{9937}{26d1}
+\emojione_define:nnnn{🌿}{herb}{127807}{1f33f}
+\emojione_define:nnnn{🌺}{hibiscus}{127802}{1f33a}
+\emojione_define:nnnn{🔆}{highbrightness}{128262}{1f506}
+\emojione_define:nnnn{👠}{highheel}{128096}{1f460}
+\emojione_define:nnnn{🏒}{hockey}{127954}{1f3d2}
+\emojione_define:nnnn{🕳}{hole}{128371}{1f573}
+\emojione_define:nnnn{🏘}{homes}{127960}{1f3d8}
+\emojione_define:nnnn{🍯}{honeypot}{127855}{1f36f}
+\emojione_define:nnnn{🐴}{horse}{128052}{1f434}
+\emojione_define:nnnn{🏇}{horseracing}{127943}{1f3c7}
+\emojione_define:nnnn{🏻}{horseracingtoneone}{127995}{1f3c7-1f3fb}
+\emojione_define:nnnn{🏼}{horseracingtonetwo}{127996}{1f3c7-1f3fc}
+\emojione_define:nnnn{🏽}{horseracingtonethree}{127997}{1f3c7-1f3fd}
+\emojione_define:nnnn{🏾}{horseracingtonefour}{127998}{1f3c7-1f3fe}
+\emojione_define:nnnn{🏿}{horseracingtonefive}{127999}{1f3c7-1f3ff}
+\emojione_define:nnnn{🏥}{hospital}{127973}{1f3e5}
+\emojione_define:nnnn{🌶}{hotpepper}{127798}{1f336}
+\emojione_define:nnnn{🌭}{hotdog}{127789}{1f32d}
+\emojione_define:nnnn{🏨}{hotel}{127976}{1f3e8}
+\emojione_define:nnnn{♨}{hotsprings}{9832}{2668}
+\emojione_define:nnnn{⌛}{hourglass}{8987}{231b}
+\emojione_define:nnnn{⏳}{hourglassflowingsand}{9203}{23f3}
+\emojione_define:nnnn{🏠}{house}{127968}{1f3e0}
+\emojione_define:nnnn{🏚}{houseabandoned}{127962}{1f3da}
+\emojione_define:nnnn{🏡}{housewithgarden}{127969}{1f3e1}
+\emojione_define:nnnn{🤗}{hugging}{129303}{1f917}
+\emojione_define:nnnn{😯}{hushed}{128559}{1f62f}
+\emojione_define:nnnn{🍨}{icecream}{127848}{1f368}
+\emojione_define:nnnn{⛸}{iceskate}{9976}{26f8}
+\emojione_define:nnnn{🍦}{icecream}{127846}{1f366}
+\emojione_define:nnnn{🆔}{id}{127380}{1f194}
+\emojione_define:nnnn{🉐}{ideographadvantage}{127568}{1f250}
+\emojione_define:nnnn{👿}{imp}{128127}{1f47f}
+\emojione_define:nnnn{📥}{inboxtray}{128229}{1f4e5}
+\emojione_define:nnnn{📨}{incomingenvelope}{128232}{1f4e8}
+\emojione_define:nnnn{💁}{informationdeskperson}{128129}{1f481}
+\emojione_define:nnnn{🏻}{informationdeskpersontoneone}{127995}{1f481-1f3fb}
+\emojione_define:nnnn{🏼}{informationdeskpersontonetwo}{127996}{1f481-1f3fc}
+\emojione_define:nnnn{🏽}{informationdeskpersontonethree}{127997}{1f481-1f3fd}
+\emojione_define:nnnn{🏾}{informationdeskpersontonefour}{127998}{1f481-1f3fe}
+\emojione_define:nnnn{🏿}{informationdeskpersontonefive}{127999}{1f481-1f3ff}
+\emojione_define:nnnn{ℹ}{informationsource}{8505}{2139}
+\emojione_define:nnnn{😇}{innocent}{128519}{1f607}
+\emojione_define:nnnn{⁉}{interrobang}{8265}{2049}
+\emojione_define:nnnn{📱}{iphone}{128241}{1f4f1}
+\emojione_define:nnnn{🏝}{island}{127965}{1f3dd}
+\emojione_define:nnnn{🏮}{izakayalantern}{127982}{1f3ee}
+\emojione_define:nnnn{🎃}{jackolantern}{127875}{1f383}
+\emojione_define:nnnn{🗾}{japan}{128510}{1f5fe}
+\emojione_define:nnnn{🏯}{japanesecastle}{127983}{1f3ef}
+\emojione_define:nnnn{👺}{japanesegoblin}{128122}{1f47a}
+\emojione_define:nnnn{👹}{japaneseogre}{128121}{1f479}
+\emojione_define:nnnn{👖}{jeans}{128086}{1f456}
+\emojione_define:nnnn{😂}{joy}{128514}{1f602}
+\emojione_define:nnnn{😹}{joycat}{128569}{1f639}
+\emojione_define:nnnn{🕹}{joystick}{128377}{1f579}
+\emojione_define:nnnn{🕋}{kaaba}{128331}{1f54b}
+\emojione_define:nnnn{🔑}{key}{128273}{1f511}
+\emojione_define:nnnn{🗝}{keytwo}{128477}{1f5dd}
+\emojione_define:nnnn{⌨}{keyboard}{9000}{2328}
+\emojione_define:nnnn{👘}{kimono}{128088}{1f458}
+\emojione_define:nnnn{💋}{kiss}{128139}{1f48b}
+\emojione_define:nnnn{👨}{kissmm}{128104}{1f468-2764-1f48b-1f468}
+\emojione_define:nnnn{👩}{kissww}{128105}{1f469-2764-1f48b-1f469}
+\emojione_define:nnnn{😗}{kissing}{128535}{1f617}
+\emojione_define:nnnn{😽}{kissingcat}{128573}{1f63d}
+\emojione_define:nnnn{😚}{kissingclosedeyes}{128538}{1f61a}
+\emojione_define:nnnn{😘}{kissingheart}{128536}{1f618}
+\emojione_define:nnnn{😙}{kissingsmilingeyes}{128537}{1f619}
+\emojione_define:nnnn{🔪}{knife}{128298}{1f52a}
+\emojione_define:nnnn{🐨}{koala}{128040}{1f428}
+\emojione_define:nnnn{🈁}{koko}{127489}{1f201}
+\emojione_define:nnnn{🏷}{label}{127991}{1f3f7}
+\emojione_define:nnnn{🔵}{largebluecircle}{128309}{1f535}
+\emojione_define:nnnn{🔷}{largebluediamond}{128311}{1f537}
+\emojione_define:nnnn{🔶}{largeorangediamond}{128310}{1f536}
+\emojione_define:nnnn{🌗}{lastquartermoon}{127767}{1f317}
+\emojione_define:nnnn{🌜}{lastquartermoonwithface}{127772}{1f31c}
+\emojione_define:nnnn{😆}{laughing}{128518}{1f606}
+\emojione_define:nnnn{🍃}{leaves}{127811}{1f343}
+\emojione_define:nnnn{📒}{ledger}{128210}{1f4d2}
+\emojione_define:nnnn{🛅}{leftluggage}{128709}{1f6c5}
+\emojione_define:nnnn{↔}{leftrightarrow}{8596}{2194}
+\emojione_define:nnnn{↩}{leftwardsarrowwithhook}{8617}{21a9}
+\emojione_define:nnnn{🍋}{lemon}{127819}{1f34b}
+\emojione_define:nnnn{♌}{leo}{9804}{264c}
+\emojione_define:nnnn{🐆}{leopard}{128006}{1f406}
+\emojione_define:nnnn{🎚}{levelslider}{127898}{1f39a}
+\emojione_define:nnnn{🕴}{levitate}{128372}{1f574}
+\emojione_define:nnnn{♎}{libra}{9806}{264e}
+\emojione_define:nnnn{🏋}{lifter}{127947}{1f3cb}
+\emojione_define:nnnn{🏻}{liftertoneone}{127995}{1f3cb-1f3fb}
+\emojione_define:nnnn{🏼}{liftertonetwo}{127996}{1f3cb-1f3fc}
+\emojione_define:nnnn{🏽}{liftertonethree}{127997}{1f3cb-1f3fd}
+\emojione_define:nnnn{🏾}{liftertonefour}{127998}{1f3cb-1f3fe}
+\emojione_define:nnnn{🏿}{liftertonefive}{127999}{1f3cb-1f3ff}
+\emojione_define:nnnn{🚈}{lightrail}{128648}{1f688}
+\emojione_define:nnnn{🔗}{link}{128279}{1f517}
+\emojione_define:nnnn{🦁}{lionface}{129409}{1f981}
+\emojione_define:nnnn{👄}{lips}{128068}{1f444}
+\emojione_define:nnnn{💄}{lipstick}{128132}{1f484}
+\emojione_define:nnnn{🔒}{lock}{128274}{1f512}
+\emojione_define:nnnn{🔏}{lockwithinkpen}{128271}{1f50f}
+\emojione_define:nnnn{🍭}{lollipop}{127853}{1f36d}
+\emojione_define:nnnn{➿}{loop}{10175}{27bf}
+\emojione_define:nnnn{🔊}{loudsound}{128266}{1f50a}
+\emojione_define:nnnn{📢}{loudspeaker}{128226}{1f4e2}
+\emojione_define:nnnn{🏩}{lovehotel}{127977}{1f3e9}
+\emojione_define:nnnn{💌}{loveletter}{128140}{1f48c}
+\emojione_define:nnnn{🔅}{lowbrightness}{128261}{1f505}
+\emojione_define:nnnn{Ⓜ}{m}{9410}{24c2}
+\emojione_define:nnnn{🔍}{mag}{128269}{1f50d}
+\emojione_define:nnnn{🔎}{magright}{128270}{1f50e}
+\emojione_define:nnnn{🀄}{mahjong}{126980}{1f004}
+\emojione_define:nnnn{📫}{mailbox}{128235}{1f4eb}
+\emojione_define:nnnn{📪}{mailboxclosed}{128234}{1f4ea}
+\emojione_define:nnnn{📬}{mailboxwithmail}{128236}{1f4ec}
+\emojione_define:nnnn{📭}{mailboxwithnomail}{128237}{1f4ed}
+\emojione_define:nnnn{👨}{man}{128104}{1f468}
+\emojione_define:nnnn{🏻}{mantoneone}{127995}{1f468-1f3fb}
+\emojione_define:nnnn{🏼}{mantonetwo}{127996}{1f468-1f3fc}
+\emojione_define:nnnn{🏽}{mantonethree}{127997}{1f468-1f3fd}
+\emojione_define:nnnn{🏾}{mantonefour}{127998}{1f468-1f3fe}
+\emojione_define:nnnn{🏿}{mantonefive}{127999}{1f468-1f3ff}
+\emojione_define:nnnn{👲}{manwithguapimao}{128114}{1f472}
+\emojione_define:nnnn{🏻}{manwithguapimaotoneone}{127995}{1f472-1f3fb}
+\emojione_define:nnnn{🏼}{manwithguapimaotonetwo}{127996}{1f472-1f3fc}
+\emojione_define:nnnn{🏽}{manwithguapimaotonethree}{127997}{1f472-1f3fd}
+\emojione_define:nnnn{🏾}{manwithguapimaotonefour}{127998}{1f472-1f3fe}
+\emojione_define:nnnn{🏿}{manwithguapimaotonefive}{127999}{1f472-1f3ff}
+\emojione_define:nnnn{👳}{manwithturban}{128115}{1f473}
+\emojione_define:nnnn{🏻}{manwithturbantoneone}{127995}{1f473-1f3fb}
+\emojione_define:nnnn{🏼}{manwithturbantonetwo}{127996}{1f473-1f3fc}
+\emojione_define:nnnn{🏽}{manwithturbantonethree}{127997}{1f473-1f3fd}
+\emojione_define:nnnn{🏾}{manwithturbantonefour}{127998}{1f473-1f3fe}
+\emojione_define:nnnn{🏿}{manwithturbantonefive}{127999}{1f473-1f3ff}
+\emojione_define:nnnn{👞}{mansshoe}{128094}{1f45e}
+\emojione_define:nnnn{🗺}{map}{128506}{1f5fa}
+\emojione_define:nnnn{🍁}{mapleleaf}{127809}{1f341}
+\emojione_define:nnnn{😷}{mask}{128567}{1f637}
+\emojione_define:nnnn{💆}{massage}{128134}{1f486}
+\emojione_define:nnnn{🏻}{massagetoneone}{127995}{1f486-1f3fb}
+\emojione_define:nnnn{🏼}{massagetonetwo}{127996}{1f486-1f3fc}
+\emojione_define:nnnn{🏽}{massagetonethree}{127997}{1f486-1f3fd}
+\emojione_define:nnnn{🏾}{massagetonefour}{127998}{1f486-1f3fe}
+\emojione_define:nnnn{🏿}{massagetonefive}{127999}{1f486-1f3ff}
+\emojione_define:nnnn{🍖}{meatonbone}{127830}{1f356}
+\emojione_define:nnnn{🏅}{medal}{127941}{1f3c5}
+\emojione_define:nnnn{📣}{mega}{128227}{1f4e3}
+\emojione_define:nnnn{🍈}{melon}{127816}{1f348}
+\emojione_define:nnnn{🕎}{menorah}{128334}{1f54e}
+\emojione_define:nnnn{🚹}{mens}{128697}{1f6b9}
+\emojione_define:nnnn{🤘}{metal}{129304}{1f918}
+\emojione_define:nnnn{🏻}{metaltoneone}{127995}{1f918-1f3fb}
+\emojione_define:nnnn{🏼}{metaltonetwo}{127996}{1f918-1f3fc}
+\emojione_define:nnnn{🏽}{metaltonethree}{127997}{1f918-1f3fd}
+\emojione_define:nnnn{🏾}{metaltonefour}{127998}{1f918-1f3fe}
+\emojione_define:nnnn{🏿}{metaltonefive}{127999}{1f918-1f3ff}
+\emojione_define:nnnn{🚇}{metro}{128647}{1f687}
+\emojione_define:nnnn{🎤}{microphone}{127908}{1f3a4}
+\emojione_define:nnnn{🎙}{microphonetwo}{127897}{1f399}
+\emojione_define:nnnn{🔬}{microscope}{128300}{1f52c}
+\emojione_define:nnnn{🖕}{middlefinger}{128405}{1f595}
+\emojione_define:nnnn{🏻}{middlefingertoneone}{127995}{1f595-1f3fb}
+\emojione_define:nnnn{🏼}{middlefingertonetwo}{127996}{1f595-1f3fc}
+\emojione_define:nnnn{🏽}{middlefingertonethree}{127997}{1f595-1f3fd}
+\emojione_define:nnnn{🏾}{middlefingertonefour}{127998}{1f595-1f3fe}
+\emojione_define:nnnn{🏿}{middlefingertonefive}{127999}{1f595-1f3ff}
+\emojione_define:nnnn{🎖}{militarymedal}{127894}{1f396}
+\emojione_define:nnnn{🌌}{milkyway}{127756}{1f30c}
+\emojione_define:nnnn{🚐}{minibus}{128656}{1f690}
+\emojione_define:nnnn{💽}{minidisc}{128189}{1f4bd}
+\emojione_define:nnnn{📴}{mobilephoneoff}{128244}{1f4f4}
+\emojione_define:nnnn{🤑}{moneymouth}{129297}{1f911}
+\emojione_define:nnnn{💸}{moneywithwings}{128184}{1f4b8}
+\emojione_define:nnnn{💰}{moneybag}{128176}{1f4b0}
+\emojione_define:nnnn{🐒}{monkey}{128018}{1f412}
+\emojione_define:nnnn{🐵}{monkeyface}{128053}{1f435}
+\emojione_define:nnnn{🚝}{monorail}{128669}{1f69d}
+\emojione_define:nnnn{🎓}{mortarboard}{127891}{1f393}
+\emojione_define:nnnn{🕌}{mosque}{128332}{1f54c}
+\emojione_define:nnnn{🛥}{motorboat}{128741}{1f6e5}
+\emojione_define:nnnn{🏍}{motorcycle}{127949}{1f3cd}
+\emojione_define:nnnn{🛣}{motorway}{128739}{1f6e3}
+\emojione_define:nnnn{🗻}{mountfuji}{128507}{1f5fb}
+\emojione_define:nnnn{⛰}{mountain}{9968}{26f0}
+\emojione_define:nnnn{🚵}{mountainbicyclist}{128693}{1f6b5}
+\emojione_define:nnnn{🏻}{mountainbicyclisttoneone}{127995}{1f6b5-1f3fb}
+\emojione_define:nnnn{🏼}{mountainbicyclisttonetwo}{127996}{1f6b5-1f3fc}
+\emojione_define:nnnn{🏽}{mountainbicyclisttonethree}{127997}{1f6b5-1f3fd}
+\emojione_define:nnnn{🏾}{mountainbicyclisttonefour}{127998}{1f6b5-1f3fe}
+\emojione_define:nnnn{🏿}{mountainbicyclisttonefive}{127999}{1f6b5-1f3ff}
+\emojione_define:nnnn{🚠}{mountaincableway}{128672}{1f6a0}
+\emojione_define:nnnn{🚞}{mountainrailway}{128670}{1f69e}
+\emojione_define:nnnn{🏔}{mountainsnow}{127956}{1f3d4}
+\emojione_define:nnnn{🐭}{mouse}{128045}{1f42d}
+\emojione_define:nnnn{🐁}{mousetwo}{128001}{1f401}
+\emojione_define:nnnn{🖱}{mousethreebutton}{128433}{1f5b1}
+\emojione_define:nnnn{🎥}{moviecamera}{127909}{1f3a5}
+\emojione_define:nnnn{🗿}{moyai}{128511}{1f5ff}
+\emojione_define:nnnn{💪}{muscle}{128170}{1f4aa}
+\emojione_define:nnnn{🏻}{muscletoneone}{127995}{1f4aa-1f3fb}
+\emojione_define:nnnn{🏼}{muscletonetwo}{127996}{1f4aa-1f3fc}
+\emojione_define:nnnn{🏽}{muscletonethree}{127997}{1f4aa-1f3fd}
+\emojione_define:nnnn{🏾}{muscletonefour}{127998}{1f4aa-1f3fe}
+\emojione_define:nnnn{🏿}{muscletonefive}{127999}{1f4aa-1f3ff}
+\emojione_define:nnnn{🍄}{mushroom}{127812}{1f344}
+\emojione_define:nnnn{🎹}{musicalkeyboard}{127929}{1f3b9}
+\emojione_define:nnnn{🎵}{musicalnote}{127925}{1f3b5}
+\emojione_define:nnnn{🎼}{musicalscore}{127932}{1f3bc}
+\emojione_define:nnnn{🔇}{mute}{128263}{1f507}
+\emojione_define:nnnn{💅}{nailcare}{128133}{1f485}
+\emojione_define:nnnn{🏻}{nailcaretoneone}{127995}{1f485-1f3fb}
+\emojione_define:nnnn{🏼}{nailcaretonetwo}{127996}{1f485-1f3fc}
+\emojione_define:nnnn{🏽}{nailcaretonethree}{127997}{1f485-1f3fd}
+\emojione_define:nnnn{🏾}{nailcaretonefour}{127998}{1f485-1f3fe}
+\emojione_define:nnnn{🏿}{nailcaretonefive}{127999}{1f485-1f3ff}
+\emojione_define:nnnn{📛}{namebadge}{128219}{1f4db}
+\emojione_define:nnnn{👔}{necktie}{128084}{1f454}
+\emojione_define:nnnn{❎}{negativesquaredcrossmark}{10062}{274e}
+\emojione_define:nnnn{🤓}{nerd}{129299}{1f913}
+\emojione_define:nnnn{😐}{neutralface}{128528}{1f610}
+\emojione_define:nnnn{🆕}{new}{127381}{1f195}
+\emojione_define:nnnn{🌑}{newmoon}{127761}{1f311}
+\emojione_define:nnnn{🌚}{newmoonwithface}{127770}{1f31a}
+\emojione_define:nnnn{📰}{newspaper}{128240}{1f4f0}
+\emojione_define:nnnn{🗞}{newspapertwo}{128478}{1f5de}
+\emojione_define:nnnn{🆖}{ng}{127382}{1f196}
+\emojione_define:nnnn{🌃}{nightwithstars}{127747}{1f303}
+\emojione_define:nnnn{⃣}{nine}{8419}{0039-20e3}
+\emojione_define:nnnn{🔕}{nobell}{128277}{1f515}
+\emojione_define:nnnn{🚳}{nobicycles}{128691}{1f6b3}
+\emojione_define:nnnn{⛔}{noentry}{9940}{26d4}
+\emojione_define:nnnn{🚫}{noentrysign}{128683}{1f6ab}
+\emojione_define:nnnn{🙅}{nogood}{128581}{1f645}
+\emojione_define:nnnn{🏻}{nogoodtoneone}{127995}{1f645-1f3fb}
+\emojione_define:nnnn{🏼}{nogoodtonetwo}{127996}{1f645-1f3fc}
+\emojione_define:nnnn{🏽}{nogoodtonethree}{127997}{1f645-1f3fd}
+\emojione_define:nnnn{🏾}{nogoodtonefour}{127998}{1f645-1f3fe}
+\emojione_define:nnnn{🏿}{nogoodtonefive}{127999}{1f645-1f3ff}
+\emojione_define:nnnn{📵}{nomobilephones}{128245}{1f4f5}
+\emojione_define:nnnn{😶}{nomouth}{128566}{1f636}
+\emojione_define:nnnn{🚷}{nopedestrians}{128695}{1f6b7}
+\emojione_define:nnnn{🚭}{nosmoking}{128685}{1f6ad}
+\emojione_define:nnnn{🚱}{non-potablewater}{128689}{1f6b1}
+\emojione_define:nnnn{👃}{nose}{128067}{1f443}
+\emojione_define:nnnn{🏻}{nosetoneone}{127995}{1f443-1f3fb}
+\emojione_define:nnnn{🏼}{nosetonetwo}{127996}{1f443-1f3fc}
+\emojione_define:nnnn{🏽}{nosetonethree}{127997}{1f443-1f3fd}
+\emojione_define:nnnn{🏾}{nosetonefour}{127998}{1f443-1f3fe}
+\emojione_define:nnnn{🏿}{nosetonefive}{127999}{1f443-1f3ff}
+\emojione_define:nnnn{📓}{notebook}{128211}{1f4d3}
+\emojione_define:nnnn{📔}{notebookwithdecorativecover}{128212}{1f4d4}
+\emojione_define:nnnn{🗒}{notepadspiral}{128466}{1f5d2}
+\emojione_define:nnnn{🎶}{notes}{127926}{1f3b6}
+\emojione_define:nnnn{🔩}{nutandbolt}{128297}{1f529}
+\emojione_define:nnnn{⭕}{o}{11093}{2b55}
+\emojione_define:nnnn{🅾}{otwo}{127358}{1f17e}
+\emojione_define:nnnn{🌊}{ocean}{127754}{1f30a}
+\emojione_define:nnnn{🐙}{octopus}{128025}{1f419}
+\emojione_define:nnnn{🍢}{oden}{127842}{1f362}
+\emojione_define:nnnn{🏢}{office}{127970}{1f3e2}
+\emojione_define:nnnn{🛢}{oil}{128738}{1f6e2}
+\emojione_define:nnnn{🆗}{ok}{127383}{1f197}
+\emojione_define:nnnn{👌}{okhand}{128076}{1f44c}
+\emojione_define:nnnn{🏻}{okhandtoneone}{127995}{1f44c-1f3fb}
+\emojione_define:nnnn{🏼}{okhandtonetwo}{127996}{1f44c-1f3fc}
+\emojione_define:nnnn{🏽}{okhandtonethree}{127997}{1f44c-1f3fd}
+\emojione_define:nnnn{🏾}{okhandtonefour}{127998}{1f44c-1f3fe}
+\emojione_define:nnnn{🏿}{okhandtonefive}{127999}{1f44c-1f3ff}
+\emojione_define:nnnn{🙆}{okwoman}{128582}{1f646}
+\emojione_define:nnnn{🏻}{okwomantoneone}{127995}{1f646-1f3fb}
+\emojione_define:nnnn{🏼}{okwomantonetwo}{127996}{1f646-1f3fc}
+\emojione_define:nnnn{🏽}{okwomantonethree}{127997}{1f646-1f3fd}
+\emojione_define:nnnn{🏾}{okwomantonefour}{127998}{1f646-1f3fe}
+\emojione_define:nnnn{🏿}{okwomantonefive}{127999}{1f646-1f3ff}
+\emojione_define:nnnn{👴}{olderman}{128116}{1f474}
+\emojione_define:nnnn{🏻}{oldermantoneone}{127995}{1f474-1f3fb}
+\emojione_define:nnnn{🏼}{oldermantonetwo}{127996}{1f474-1f3fc}
+\emojione_define:nnnn{🏽}{oldermantonethree}{127997}{1f474-1f3fd}
+\emojione_define:nnnn{🏾}{oldermantonefour}{127998}{1f474-1f3fe}
+\emojione_define:nnnn{🏿}{oldermantonefive}{127999}{1f474-1f3ff}
+\emojione_define:nnnn{👵}{olderwoman}{128117}{1f475}
+\emojione_define:nnnn{🏻}{olderwomantoneone}{127995}{1f475-1f3fb}
+\emojione_define:nnnn{🏼}{olderwomantonetwo}{127996}{1f475-1f3fc}
+\emojione_define:nnnn{🏽}{olderwomantonethree}{127997}{1f475-1f3fd}
+\emojione_define:nnnn{🏾}{olderwomantonefour}{127998}{1f475-1f3fe}
+\emojione_define:nnnn{🏿}{olderwomantonefive}{127999}{1f475-1f3ff}
+\emojione_define:nnnn{🕉}{omsymbol}{128329}{1f549}
+\emojione_define:nnnn{🔛}{on}{128283}{1f51b}
+\emojione_define:nnnn{🚘}{oncomingautomobile}{128664}{1f698}
+\emojione_define:nnnn{🚍}{oncomingbus}{128653}{1f68d}
+\emojione_define:nnnn{🚔}{oncomingpolicecar}{128660}{1f694}
+\emojione_define:nnnn{🚖}{oncomingtaxi}{128662}{1f696}
+\emojione_define:nnnn{⃣}{one}{8419}{0031-20e3}
+\emojione_define:nnnn{📂}{openfilefolder}{128194}{1f4c2}
+\emojione_define:nnnn{👐}{openhands}{128080}{1f450}
+\emojione_define:nnnn{🏻}{openhandstoneone}{127995}{1f450-1f3fb}
+\emojione_define:nnnn{🏼}{openhandstonetwo}{127996}{1f450-1f3fc}
+\emojione_define:nnnn{🏽}{openhandstonethree}{127997}{1f450-1f3fd}
+\emojione_define:nnnn{🏾}{openhandstonefour}{127998}{1f450-1f3fe}
+\emojione_define:nnnn{🏿}{openhandstonefive}{127999}{1f450-1f3ff}
+\emojione_define:nnnn{😮}{openmouth}{128558}{1f62e}
+\emojione_define:nnnn{⛎}{ophiuchus}{9934}{26ce}
+\emojione_define:nnnn{📙}{orangebook}{128217}{1f4d9}
+\emojione_define:nnnn{☦}{orthodoxcross}{9766}{2626}
+\emojione_define:nnnn{📤}{outboxtray}{128228}{1f4e4}
+\emojione_define:nnnn{🐂}{ox}{128002}{1f402}
+\emojione_define:nnnn{📦}{package}{128230}{1f4e6}
+\emojione_define:nnnn{📄}{pagefacingup}{128196}{1f4c4}
+\emojione_define:nnnn{📃}{pagewithcurl}{128195}{1f4c3}
+\emojione_define:nnnn{📟}{pager}{128223}{1f4df}
+\emojione_define:nnnn{🖌}{paintbrush}{128396}{1f58c}
+\emojione_define:nnnn{🌴}{palmtree}{127796}{1f334}
+\emojione_define:nnnn{🐼}{pandaface}{128060}{1f43c}
+\emojione_define:nnnn{📎}{paperclip}{128206}{1f4ce}
+\emojione_define:nnnn{🖇}{paperclips}{128391}{1f587}
+\emojione_define:nnnn{🏞}{park}{127966}{1f3de}
+\emojione_define:nnnn{🅿}{parking}{127359}{1f17f}
+\emojione_define:nnnn{〽}{partalternationmark}{12349}{303d}
+\emojione_define:nnnn{⛅}{partlysunny}{9925}{26c5}
+\emojione_define:nnnn{🛂}{passportcontrol}{128706}{1f6c2}
+\emojione_define:nnnn{⏸}{pausebutton}{9208}{23f8}
+\emojione_define:nnnn{☮}{peace}{9774}{262e}
+\emojione_define:nnnn{🍑}{peach}{127825}{1f351}
+\emojione_define:nnnn{🍐}{pear}{127824}{1f350}
+\emojione_define:nnnn{🖊}{penballpoint}{128394}{1f58a}
+\emojione_define:nnnn{🖋}{penfountain}{128395}{1f58b}
+\emojione_define:nnnn{📝}{pencil}{128221}{1f4dd}
+\emojione_define:nnnn{✏}{penciltwo}{9999}{270f}
+\emojione_define:nnnn{🐧}{penguin}{128039}{1f427}
+\emojione_define:nnnn{😔}{pensive}{128532}{1f614}
+\emojione_define:nnnn{🎭}{performingarts}{127917}{1f3ad}
+\emojione_define:nnnn{😣}{persevere}{128547}{1f623}
+\emojione_define:nnnn{🙍}{personfrowning}{128589}{1f64d}
+\emojione_define:nnnn{🏻}{personfrowningtoneone}{127995}{1f64d-1f3fb}
+\emojione_define:nnnn{🏼}{personfrowningtonetwo}{127996}{1f64d-1f3fc}
+\emojione_define:nnnn{🏽}{personfrowningtonethree}{127997}{1f64d-1f3fd}
+\emojione_define:nnnn{🏾}{personfrowningtonefour}{127998}{1f64d-1f3fe}
+\emojione_define:nnnn{🏿}{personfrowningtonefive}{127999}{1f64d-1f3ff}
+\emojione_define:nnnn{👱}{personwithblondhair}{128113}{1f471}
+\emojione_define:nnnn{🏻}{personwithblondhairtoneone}{127995}{1f471-1f3fb}
+\emojione_define:nnnn{🏼}{personwithblondhairtonetwo}{127996}{1f471-1f3fc}
+\emojione_define:nnnn{🏽}{personwithblondhairtonethree}{127997}{1f471-1f3fd}
+\emojione_define:nnnn{🏾}{personwithblondhairtonefour}{127998}{1f471-1f3fe}
+\emojione_define:nnnn{🏿}{personwithblondhairtonefive}{127999}{1f471-1f3ff}
+\emojione_define:nnnn{🙎}{personwithpoutingface}{128590}{1f64e}
+\emojione_define:nnnn{🏻}{personwithpoutingfacetoneone}{127995}{1f64e-1f3fb}
+\emojione_define:nnnn{🏼}{personwithpoutingfacetonetwo}{127996}{1f64e-1f3fc}
+\emojione_define:nnnn{🏽}{personwithpoutingfacetonethree}{127997}{1f64e-1f3fd}
+\emojione_define:nnnn{🏾}{personwithpoutingfacetonefour}{127998}{1f64e-1f3fe}
+\emojione_define:nnnn{🏿}{personwithpoutingfacetonefive}{127999}{1f64e-1f3ff}
+\emojione_define:nnnn{⛏}{pick}{9935}{26cf}
+\emojione_define:nnnn{🐷}{pig}{128055}{1f437}
+\emojione_define:nnnn{🐖}{pigtwo}{128022}{1f416}
+\emojione_define:nnnn{🐽}{pignose}{128061}{1f43d}
+\emojione_define:nnnn{💊}{pill}{128138}{1f48a}
+\emojione_define:nnnn{🍍}{pineapple}{127821}{1f34d}
+\emojione_define:nnnn{🏓}{pingpong}{127955}{1f3d3}
+\emojione_define:nnnn{♓}{pisces}{9811}{2653}
+\emojione_define:nnnn{🍕}{pizza}{127829}{1f355}
+\emojione_define:nnnn{🛐}{placeofworship}{128720}{1f6d0}
+\emojione_define:nnnn{⏯}{playpause}{9199}{23ef}
+\emojione_define:nnnn{👇}{pointdown}{128071}{1f447}
+\emojione_define:nnnn{🏻}{pointdowntoneone}{127995}{1f447-1f3fb}
+\emojione_define:nnnn{🏼}{pointdowntonetwo}{127996}{1f447-1f3fc}
+\emojione_define:nnnn{🏽}{pointdowntonethree}{127997}{1f447-1f3fd}
+\emojione_define:nnnn{🏾}{pointdowntonefour}{127998}{1f447-1f3fe}
+\emojione_define:nnnn{🏿}{pointdowntonefive}{127999}{1f447-1f3ff}
+\emojione_define:nnnn{👈}{pointleft}{128072}{1f448}
+\emojione_define:nnnn{🏻}{pointlefttoneone}{127995}{1f448-1f3fb}
+\emojione_define:nnnn{🏼}{pointlefttonetwo}{127996}{1f448-1f3fc}
+\emojione_define:nnnn{🏽}{pointlefttonethree}{127997}{1f448-1f3fd}
+\emojione_define:nnnn{🏾}{pointlefttonefour}{127998}{1f448-1f3fe}
+\emojione_define:nnnn{🏿}{pointlefttonefive}{127999}{1f448-1f3ff}
+\emojione_define:nnnn{👉}{pointright}{128073}{1f449}
+\emojione_define:nnnn{🏻}{pointrighttoneone}{127995}{1f449-1f3fb}
+\emojione_define:nnnn{🏼}{pointrighttonetwo}{127996}{1f449-1f3fc}
+\emojione_define:nnnn{🏽}{pointrighttonethree}{127997}{1f449-1f3fd}
+\emojione_define:nnnn{🏾}{pointrighttonefour}{127998}{1f449-1f3fe}
+\emojione_define:nnnn{🏿}{pointrighttonefive}{127999}{1f449-1f3ff}
+\emojione_define:nnnn{☝}{pointup}{9757}{261d}
+\emojione_define:nnnn{👆}{pointuptwo}{128070}{1f446}
+\emojione_define:nnnn{🏻}{pointuptwotoneone}{127995}{1f446-1f3fb}
+\emojione_define:nnnn{🏼}{pointuptwotonetwo}{127996}{1f446-1f3fc}
+\emojione_define:nnnn{🏽}{pointuptwotonethree}{127997}{1f446-1f3fd}
+\emojione_define:nnnn{🏾}{pointuptwotonefour}{127998}{1f446-1f3fe}
+\emojione_define:nnnn{🏿}{pointuptwotonefive}{127999}{1f446-1f3ff}
+\emojione_define:nnnn{🏻}{pointuptoneone}{127995}{261d-1f3fb}
+\emojione_define:nnnn{🏼}{pointuptonetwo}{127996}{261d-1f3fc}
+\emojione_define:nnnn{🏽}{pointuptonethree}{127997}{261d-1f3fd}
+\emojione_define:nnnn{🏾}{pointuptonefour}{127998}{261d-1f3fe}
+\emojione_define:nnnn{🏿}{pointuptonefive}{127999}{261d-1f3ff}
+\emojione_define:nnnn{🚓}{policecar}{128659}{1f693}
+\emojione_define:nnnn{🐩}{poodle}{128041}{1f429}
+\emojione_define:nnnn{💩}{poop}{128169}{1f4a9}
+\emojione_define:nnnn{🍿}{popcorn}{127871}{1f37f}
+\emojione_define:nnnn{🏣}{postoffice}{127971}{1f3e3}
+\emojione_define:nnnn{📯}{postalhorn}{128239}{1f4ef}
+\emojione_define:nnnn{📮}{postbox}{128238}{1f4ee}
+\emojione_define:nnnn{🚰}{potablewater}{128688}{1f6b0}
+\emojione_define:nnnn{👝}{pouch}{128093}{1f45d}
+\emojione_define:nnnn{🍗}{poultryleg}{127831}{1f357}
+\emojione_define:nnnn{💷}{pound}{128183}{1f4b7}
+\emojione_define:nnnn{😾}{poutingcat}{128574}{1f63e}
+\emojione_define:nnnn{🙏}{pray}{128591}{1f64f}
+\emojione_define:nnnn{🏻}{praytoneone}{127995}{1f64f-1f3fb}
+\emojione_define:nnnn{🏼}{praytonetwo}{127996}{1f64f-1f3fc}
+\emojione_define:nnnn{🏽}{praytonethree}{127997}{1f64f-1f3fd}
+\emojione_define:nnnn{🏾}{praytonefour}{127998}{1f64f-1f3fe}
+\emojione_define:nnnn{🏿}{praytonefive}{127999}{1f64f-1f3ff}
+\emojione_define:nnnn{📿}{prayerbeads}{128255}{1f4ff}
+\emojione_define:nnnn{👸}{princess}{128120}{1f478}
+\emojione_define:nnnn{🏻}{princesstoneone}{127995}{1f478-1f3fb}
+\emojione_define:nnnn{🏼}{princesstonetwo}{127996}{1f478-1f3fc}
+\emojione_define:nnnn{🏽}{princesstonethree}{127997}{1f478-1f3fd}
+\emojione_define:nnnn{🏾}{princesstonefour}{127998}{1f478-1f3fe}
+\emojione_define:nnnn{🏿}{princesstonefive}{127999}{1f478-1f3ff}
+\emojione_define:nnnn{🖨}{printer}{128424}{1f5a8}
+\emojione_define:nnnn{📽}{projector}{128253}{1f4fd}
+\emojione_define:nnnn{👊}{punch}{128074}{1f44a}
+\emojione_define:nnnn{🏻}{punchtoneone}{127995}{1f44a-1f3fb}
+\emojione_define:nnnn{🏼}{punchtonetwo}{127996}{1f44a-1f3fc}
+\emojione_define:nnnn{🏽}{punchtonethree}{127997}{1f44a-1f3fd}
+\emojione_define:nnnn{🏾}{punchtonefour}{127998}{1f44a-1f3fe}
+\emojione_define:nnnn{🏿}{punchtonefive}{127999}{1f44a-1f3ff}
+\emojione_define:nnnn{💜}{purpleheart}{128156}{1f49c}
+\emojione_define:nnnn{👛}{purse}{128091}{1f45b}
+\emojione_define:nnnn{📌}{pushpin}{128204}{1f4cc}
+\emojione_define:nnnn{🚮}{putlitterinitsplace}{128686}{1f6ae}
+\emojione_define:nnnn{❓}{question}{10067}{2753}
+\emojione_define:nnnn{🐰}{rabbit}{128048}{1f430}
+\emojione_define:nnnn{🐇}{rabbittwo}{128007}{1f407}
+\emojione_define:nnnn{🏎}{racecar}{127950}{1f3ce}
+\emojione_define:nnnn{🐎}{racehorse}{128014}{1f40e}
+\emojione_define:nnnn{📻}{radio}{128251}{1f4fb}
+\emojione_define:nnnn{🔘}{radiobutton}{128280}{1f518}
+\emojione_define:nnnn{☢}{radioactive}{9762}{2622}
+\emojione_define:nnnn{😡}{rage}{128545}{1f621}
+\emojione_define:nnnn{🚃}{railwaycar}{128643}{1f683}
+\emojione_define:nnnn{🛤}{railwaytrack}{128740}{1f6e4}
+\emojione_define:nnnn{🌈}{rainbow}{127752}{1f308}
+\emojione_define:nnnn{✋}{raisedhand}{9995}{270b}
+\emojione_define:nnnn{🏻}{raisedhandtoneone}{127995}{270b-1f3fb}
+\emojione_define:nnnn{🏼}{raisedhandtonetwo}{127996}{270b-1f3fc}
+\emojione_define:nnnn{🏽}{raisedhandtonethree}{127997}{270b-1f3fd}
+\emojione_define:nnnn{🏾}{raisedhandtonefour}{127998}{270b-1f3fe}
+\emojione_define:nnnn{🏿}{raisedhandtonefive}{127999}{270b-1f3ff}
+\emojione_define:nnnn{🙌}{raisedhands}{128588}{1f64c}
+\emojione_define:nnnn{🏻}{raisedhandstoneone}{127995}{1f64c-1f3fb}
+\emojione_define:nnnn{🏼}{raisedhandstonetwo}{127996}{1f64c-1f3fc}
+\emojione_define:nnnn{🏽}{raisedhandstonethree}{127997}{1f64c-1f3fd}
+\emojione_define:nnnn{🏾}{raisedhandstonefour}{127998}{1f64c-1f3fe}
+\emojione_define:nnnn{🏿}{raisedhandstonefive}{127999}{1f64c-1f3ff}
+\emojione_define:nnnn{🙋}{raisinghand}{128587}{1f64b}
+\emojione_define:nnnn{🏻}{raisinghandtoneone}{127995}{1f64b-1f3fb}
+\emojione_define:nnnn{🏼}{raisinghandtonetwo}{127996}{1f64b-1f3fc}
+\emojione_define:nnnn{🏽}{raisinghandtonethree}{127997}{1f64b-1f3fd}
+\emojione_define:nnnn{🏾}{raisinghandtonefour}{127998}{1f64b-1f3fe}
+\emojione_define:nnnn{🏿}{raisinghandtonefive}{127999}{1f64b-1f3ff}
+\emojione_define:nnnn{🐏}{ram}{128015}{1f40f}
+\emojione_define:nnnn{🍜}{ramen}{127836}{1f35c}
+\emojione_define:nnnn{🐀}{rat}{128000}{1f400}
+\emojione_define:nnnn{⏺}{recordbutton}{9210}{23fa}
+\emojione_define:nnnn{♻}{recycle}{9851}{267b}
+\emojione_define:nnnn{🚗}{redcar}{128663}{1f697}
+\emojione_define:nnnn{🔴}{redcircle}{128308}{1f534}
+\emojione_define:nnnn{®}{registered}{174}{00ae}
+\emojione_define:nnnn{☺}{relaxed}{9786}{263a}
+\emojione_define:nnnn{😌}{relieved}{128524}{1f60c}
+\emojione_define:nnnn{🎗}{reminderribbon}{127895}{1f397}
+\emojione_define:nnnn{🔁}{repeat}{128257}{1f501}
+\emojione_define:nnnn{🔂}{repeatone}{128258}{1f502}
+\emojione_define:nnnn{🚻}{restroom}{128699}{1f6bb}
+\emojione_define:nnnn{💞}{revolvinghearts}{128158}{1f49e}
+\emojione_define:nnnn{⏪}{rewind}{9194}{23ea}
+\emojione_define:nnnn{🎀}{ribbon}{127872}{1f380}
+\emojione_define:nnnn{🍚}{rice}{127834}{1f35a}
+\emojione_define:nnnn{🍙}{riceball}{127833}{1f359}
+\emojione_define:nnnn{🍘}{ricecracker}{127832}{1f358}
+\emojione_define:nnnn{🎑}{ricescene}{127889}{1f391}
+\emojione_define:nnnn{💍}{ring}{128141}{1f48d}
+\emojione_define:nnnn{🤖}{robot}{129302}{1f916}
+\emojione_define:nnnn{🚀}{rocket}{128640}{1f680}
+\emojione_define:nnnn{🎢}{rollercoaster}{127906}{1f3a2}
+\emojione_define:nnnn{🙄}{rollingeyes}{128580}{1f644}
+\emojione_define:nnnn{🐓}{rooster}{128019}{1f413}
+\emojione_define:nnnn{🌹}{rose}{127801}{1f339}
+\emojione_define:nnnn{🏵}{rosette}{127989}{1f3f5}
+\emojione_define:nnnn{🚨}{rotatinglight}{128680}{1f6a8}
+\emojione_define:nnnn{📍}{roundpushpin}{128205}{1f4cd}
+\emojione_define:nnnn{🚣}{rowboat}{128675}{1f6a3}
+\emojione_define:nnnn{🏻}{rowboattoneone}{127995}{1f6a3-1f3fb}
+\emojione_define:nnnn{🏼}{rowboattonetwo}{127996}{1f6a3-1f3fc}
+\emojione_define:nnnn{🏽}{rowboattonethree}{127997}{1f6a3-1f3fd}
+\emojione_define:nnnn{🏾}{rowboattonefour}{127998}{1f6a3-1f3fe}
+\emojione_define:nnnn{🏿}{rowboattonefive}{127999}{1f6a3-1f3ff}
+\emojione_define:nnnn{🏉}{rugbyfootball}{127945}{1f3c9}
+\emojione_define:nnnn{🏃}{runner}{127939}{1f3c3}
+\emojione_define:nnnn{🏻}{runnertoneone}{127995}{1f3c3-1f3fb}
+\emojione_define:nnnn{🏼}{runnertonetwo}{127996}{1f3c3-1f3fc}
+\emojione_define:nnnn{🏽}{runnertonethree}{127997}{1f3c3-1f3fd}
+\emojione_define:nnnn{🏾}{runnertonefour}{127998}{1f3c3-1f3fe}
+\emojione_define:nnnn{🏿}{runnertonefive}{127999}{1f3c3-1f3ff}
+\emojione_define:nnnn{🎽}{runningshirtwithsash}{127933}{1f3bd}
+\emojione_define:nnnn{🈂}{sa}{127490}{1f202}
+\emojione_define:nnnn{♐}{sagittarius}{9808}{2650}
+\emojione_define:nnnn{⛵}{sailboat}{9973}{26f5}
+\emojione_define:nnnn{🍶}{sake}{127862}{1f376}
+\emojione_define:nnnn{👡}{sandal}{128097}{1f461}
+\emojione_define:nnnn{🎅}{santa}{127877}{1f385}
+\emojione_define:nnnn{🏻}{santatoneone}{127995}{1f385-1f3fb}
+\emojione_define:nnnn{🏼}{santatonetwo}{127996}{1f385-1f3fc}
+\emojione_define:nnnn{🏽}{santatonethree}{127997}{1f385-1f3fd}
+\emojione_define:nnnn{🏾}{santatonefour}{127998}{1f385-1f3fe}
+\emojione_define:nnnn{🏿}{santatonefive}{127999}{1f385-1f3ff}
+\emojione_define:nnnn{📡}{satellite}{128225}{1f4e1}
+\emojione_define:nnnn{🛰}{satelliteorbital}{128752}{1f6f0}
+\emojione_define:nnnn{🎷}{saxophone}{127927}{1f3b7}
+\emojione_define:nnnn{⚖}{scales}{9878}{2696}
+\emojione_define:nnnn{🏫}{school}{127979}{1f3eb}
+\emojione_define:nnnn{🎒}{schoolsatchel}{127890}{1f392}
+\emojione_define:nnnn{✂}{scissors}{9986}{2702}
+\emojione_define:nnnn{🦂}{scorpion}{129410}{1f982}
+\emojione_define:nnnn{♏}{scorpius}{9807}{264f}
+\emojione_define:nnnn{😱}{scream}{128561}{1f631}
+\emojione_define:nnnn{🙀}{screamcat}{128576}{1f640}
+\emojione_define:nnnn{📜}{scroll}{128220}{1f4dc}
+\emojione_define:nnnn{💺}{seat}{128186}{1f4ba}
+\emojione_define:nnnn{㊙}{secret}{12953}{3299}
+\emojione_define:nnnn{🙈}{seenoevil}{128584}{1f648}
+\emojione_define:nnnn{🌱}{seedling}{127793}{1f331}
+\emojione_define:nnnn{⃣}{seven}{8419}{0037-20e3}
+\emojione_define:nnnn{☘}{shamrock}{9752}{2618}
+\emojione_define:nnnn{🍧}{shavedice}{127847}{1f367}
+\emojione_define:nnnn{🐑}{sheep}{128017}{1f411}
+\emojione_define:nnnn{🐚}{shell}{128026}{1f41a}
+\emojione_define:nnnn{🛡}{shield}{128737}{1f6e1}
+\emojione_define:nnnn{⛩}{shintoshrine}{9961}{26e9}
+\emojione_define:nnnn{🚢}{ship}{128674}{1f6a2}
+\emojione_define:nnnn{👕}{shirt}{128085}{1f455}
+\emojione_define:nnnn{🛍}{shoppingbags}{128717}{1f6cd}
+\emojione_define:nnnn{🚿}{shower}{128703}{1f6bf}
+\emojione_define:nnnn{📶}{signalstrength}{128246}{1f4f6}
+\emojione_define:nnnn{⃣}{six}{8419}{0036-20e3}
+\emojione_define:nnnn{🔯}{sixpointedstar}{128303}{1f52f}
+\emojione_define:nnnn{🎿}{ski}{127935}{1f3bf}
+\emojione_define:nnnn{⛷}{skier}{9975}{26f7}
+\emojione_define:nnnn{💀}{skull}{128128}{1f480}
+\emojione_define:nnnn{☠}{skullcrossbones}{9760}{2620}
+\emojione_define:nnnn{😴}{sleeping}{128564}{1f634}
+\emojione_define:nnnn{🛌}{sleepingaccommodation}{128716}{1f6cc}
+\emojione_define:nnnn{😪}{sleepy}{128554}{1f62a}
+\emojione_define:nnnn{🙁}{slightfrown}{128577}{1f641}
+\emojione_define:nnnn{🙂}{slightsmile}{128578}{1f642}
+\emojione_define:nnnn{🎰}{slotmachine}{127920}{1f3b0}
+\emojione_define:nnnn{🔹}{smallbluediamond}{128313}{1f539}
+\emojione_define:nnnn{🔸}{smallorangediamond}{128312}{1f538}
+\emojione_define:nnnn{🔺}{smallredtriangle}{128314}{1f53a}
+\emojione_define:nnnn{🔻}{smallredtriangledown}{128315}{1f53b}
+\emojione_define:nnnn{😄}{smile}{128516}{1f604}
+\emojione_define:nnnn{😸}{smilecat}{128568}{1f638}
+\emojione_define:nnnn{😃}{smiley}{128515}{1f603}
+\emojione_define:nnnn{😺}{smileycat}{128570}{1f63a}
+\emojione_define:nnnn{😈}{smilingimp}{128520}{1f608}
+\emojione_define:nnnn{😏}{smirk}{128527}{1f60f}
+\emojione_define:nnnn{😼}{smirkcat}{128572}{1f63c}
+\emojione_define:nnnn{🚬}{smoking}{128684}{1f6ac}
+\emojione_define:nnnn{🐌}{snail}{128012}{1f40c}
+\emojione_define:nnnn{🐍}{snake}{128013}{1f40d}
+\emojione_define:nnnn{🏂}{snowboarder}{127938}{1f3c2}
+\emojione_define:nnnn{❄}{snowflake}{10052}{2744}
+\emojione_define:nnnn{⛄}{snowman}{9924}{26c4}
+\emojione_define:nnnn{☃}{snowmantwo}{9731}{2603}
+\emojione_define:nnnn{😭}{sob}{128557}{1f62d}
+\emojione_define:nnnn{⚽}{soccer}{9917}{26bd}
+\emojione_define:nnnn{🔜}{soon}{128284}{1f51c}
+\emojione_define:nnnn{🆘}{sos}{127384}{1f198}
+\emojione_define:nnnn{🔉}{sound}{128265}{1f509}
+\emojione_define:nnnn{👾}{spaceinvader}{128126}{1f47e}
+\emojione_define:nnnn{♠}{spades}{9824}{2660}
+\emojione_define:nnnn{🍝}{spaghetti}{127837}{1f35d}
+\emojione_define:nnnn{❇}{sparkle}{10055}{2747}
+\emojione_define:nnnn{🎇}{sparkler}{127879}{1f387}
+\emojione_define:nnnn{✨}{sparkles}{10024}{2728}
+\emojione_define:nnnn{💖}{sparklingheart}{128150}{1f496}
+\emojione_define:nnnn{🙊}{speaknoevil}{128586}{1f64a}
+\emojione_define:nnnn{🔈}{speaker}{128264}{1f508}
+\emojione_define:nnnn{🗣}{speakinghead}{128483}{1f5e3}
+\emojione_define:nnnn{💬}{speechballoon}{128172}{1f4ac}
+\emojione_define:nnnn{🚤}{speedboat}{128676}{1f6a4}
+\emojione_define:nnnn{🕷}{spider}{128375}{1f577}
+\emojione_define:nnnn{🕸}{spiderweb}{128376}{1f578}
+\emojione_define:nnnn{🕵}{spy}{128373}{1f575}
+\emojione_define:nnnn{🏻}{spytoneone}{127995}{1f575-1f3fb}
+\emojione_define:nnnn{🏼}{spytonetwo}{127996}{1f575-1f3fc}
+\emojione_define:nnnn{🏽}{spytonethree}{127997}{1f575-1f3fd}
+\emojione_define:nnnn{🏾}{spytonefour}{127998}{1f575-1f3fe}
+\emojione_define:nnnn{🏿}{spytonefive}{127999}{1f575-1f3ff}
+\emojione_define:nnnn{🏟}{stadium}{127967}{1f3df}
+\emojione_define:nnnn{⭐}{star}{11088}{2b50}
+\emojione_define:nnnn{🌟}{startwo}{127775}{1f31f}
+\emojione_define:nnnn{☪}{starandcrescent}{9770}{262a}
+\emojione_define:nnnn{✡}{starofdavid}{10017}{2721}
+\emojione_define:nnnn{🌠}{stars}{127776}{1f320}
+\emojione_define:nnnn{🚉}{station}{128649}{1f689}
+\emojione_define:nnnn{🗽}{statueofliberty}{128509}{1f5fd}
+\emojione_define:nnnn{🚂}{steamlocomotive}{128642}{1f682}
+\emojione_define:nnnn{🍲}{stew}{127858}{1f372}
+\emojione_define:nnnn{⏹}{stopbutton}{9209}{23f9}
+\emojione_define:nnnn{⏱}{stopwatch}{9201}{23f1}
+\emojione_define:nnnn{📏}{straightruler}{128207}{1f4cf}
+\emojione_define:nnnn{🍓}{strawberry}{127827}{1f353}
+\emojione_define:nnnn{😛}{stuckouttongue}{128539}{1f61b}
+\emojione_define:nnnn{😝}{stuckouttongueclosedeyes}{128541}{1f61d}
+\emojione_define:nnnn{😜}{stuckouttonguewinkingeye}{128540}{1f61c}
+\emojione_define:nnnn{🌞}{sunwithface}{127774}{1f31e}
+\emojione_define:nnnn{🌻}{sunflower}{127803}{1f33b}
+\emojione_define:nnnn{😎}{sunglasses}{128526}{1f60e}
+\emojione_define:nnnn{☀}{sunny}{9728}{2600}
+\emojione_define:nnnn{🌅}{sunrise}{127749}{1f305}
+\emojione_define:nnnn{🌄}{sunriseovermountains}{127748}{1f304}
+\emojione_define:nnnn{🏄}{surfer}{127940}{1f3c4}
+\emojione_define:nnnn{🏻}{surfertoneone}{127995}{1f3c4-1f3fb}
+\emojione_define:nnnn{🏼}{surfertonetwo}{127996}{1f3c4-1f3fc}
+\emojione_define:nnnn{🏽}{surfertonethree}{127997}{1f3c4-1f3fd}
+\emojione_define:nnnn{🏾}{surfertonefour}{127998}{1f3c4-1f3fe}
+\emojione_define:nnnn{🏿}{surfertonefive}{127999}{1f3c4-1f3ff}
+\emojione_define:nnnn{🍣}{sushi}{127843}{1f363}
+\emojione_define:nnnn{🚟}{suspensionrailway}{128671}{1f69f}
+\emojione_define:nnnn{😓}{sweat}{128531}{1f613}
+\emojione_define:nnnn{💦}{sweatdrops}{128166}{1f4a6}
+\emojione_define:nnnn{😅}{sweatsmile}{128517}{1f605}
+\emojione_define:nnnn{🍠}{sweetpotato}{127840}{1f360}
+\emojione_define:nnnn{🏊}{swimmer}{127946}{1f3ca}
+\emojione_define:nnnn{🏻}{swimmertoneone}{127995}{1f3ca-1f3fb}
+\emojione_define:nnnn{🏼}{swimmertonetwo}{127996}{1f3ca-1f3fc}
+\emojione_define:nnnn{🏽}{swimmertonethree}{127997}{1f3ca-1f3fd}
+\emojione_define:nnnn{🏾}{swimmertonefour}{127998}{1f3ca-1f3fe}
+\emojione_define:nnnn{🏿}{swimmertonefive}{127999}{1f3ca-1f3ff}
+\emojione_define:nnnn{🔣}{symbols}{128291}{1f523}
+\emojione_define:nnnn{🕍}{synagogue}{128333}{1f54d}
+\emojione_define:nnnn{💉}{syringe}{128137}{1f489}
+\emojione_define:nnnn{🌮}{taco}{127790}{1f32e}
+\emojione_define:nnnn{🎉}{tada}{127881}{1f389}
+\emojione_define:nnnn{🎋}{tanabatatree}{127883}{1f38b}
+\emojione_define:nnnn{🍊}{tangerine}{127818}{1f34a}
+\emojione_define:nnnn{♉}{taurus}{9801}{2649}
+\emojione_define:nnnn{🚕}{taxi}{128661}{1f695}
+\emojione_define:nnnn{🍵}{tea}{127861}{1f375}
+\emojione_define:nnnn{☎}{telephone}{9742}{260e}
+\emojione_define:nnnn{📞}{telephonereceiver}{128222}{1f4de}
+\emojione_define:nnnn{🔭}{telescope}{128301}{1f52d}
+\emojione_define:nnnn{🔟}{ten}{128287}{1f51f}
+\emojione_define:nnnn{🎾}{tennis}{127934}{1f3be}
+\emojione_define:nnnn{⛺}{tent}{9978}{26fa}
+\emojione_define:nnnn{🌡}{thermometer}{127777}{1f321}
+\emojione_define:nnnn{🤒}{thermometerface}{129298}{1f912}
+\emojione_define:nnnn{🤔}{thinking}{129300}{1f914}
+\emojione_define:nnnn{💭}{thoughtballoon}{128173}{1f4ad}
+\emojione_define:nnnn{⃣}{three}{8419}{0033-20e3}
+\emojione_define:nnnn{👎}{thumbsdown}{128078}{1f44e}
+\emojione_define:nnnn{🏻}{thumbsdowntoneone}{127995}{1f44e-1f3fb}
+\emojione_define:nnnn{🏼}{thumbsdowntonetwo}{127996}{1f44e-1f3fc}
+\emojione_define:nnnn{🏽}{thumbsdowntonethree}{127997}{1f44e-1f3fd}
+\emojione_define:nnnn{🏾}{thumbsdowntonefour}{127998}{1f44e-1f3fe}
+\emojione_define:nnnn{🏿}{thumbsdowntonefive}{127999}{1f44e-1f3ff}
+\emojione_define:nnnn{👍}{thumbsup}{128077}{1f44d}
+\emojione_define:nnnn{🏻}{thumbsuptoneone}{127995}{1f44d-1f3fb}
+\emojione_define:nnnn{🏼}{thumbsuptonetwo}{127996}{1f44d-1f3fc}
+\emojione_define:nnnn{🏽}{thumbsuptonethree}{127997}{1f44d-1f3fd}
+\emojione_define:nnnn{🏾}{thumbsuptonefour}{127998}{1f44d-1f3fe}
+\emojione_define:nnnn{🏿}{thumbsuptonefive}{127999}{1f44d-1f3ff}
+\emojione_define:nnnn{⛈}{thundercloudrain}{9928}{26c8}
+\emojione_define:nnnn{🎫}{ticket}{127915}{1f3ab}
+\emojione_define:nnnn{🎟}{tickets}{127903}{1f39f}
+\emojione_define:nnnn{🐯}{tiger}{128047}{1f42f}
+\emojione_define:nnnn{🐅}{tigertwo}{128005}{1f405}
+\emojione_define:nnnn{⏲}{timer}{9202}{23f2}
+\emojione_define:nnnn{😫}{tiredface}{128555}{1f62b}
+\emojione_define:nnnn{™}{tm}{8482}{2122}
+\emojione_define:nnnn{🚽}{toilet}{128701}{1f6bd}
+\emojione_define:nnnn{🗼}{tokyotower}{128508}{1f5fc}
+\emojione_define:nnnn{🍅}{tomato}{127813}{1f345}
+\emojione_define:nnnn{🏻}{toneone}{127995}{1f3fb}
+\emojione_define:nnnn{🏼}{tonetwo}{127996}{1f3fc}
+\emojione_define:nnnn{🏽}{tonethree}{127997}{1f3fd}
+\emojione_define:nnnn{🏾}{tonefour}{127998}{1f3fe}
+\emojione_define:nnnn{🏿}{tonefive}{127999}{1f3ff}
+\emojione_define:nnnn{👅}{tongue}{128069}{1f445}
+\emojione_define:nnnn{🛠}{tools}{128736}{1f6e0}
+\emojione_define:nnnn{🔝}{top}{128285}{1f51d}
+\emojione_define:nnnn{🎩}{tophat}{127913}{1f3a9}
+\emojione_define:nnnn{⏭}{tracknext}{9197}{23ed}
+\emojione_define:nnnn{⏮}{trackprevious}{9198}{23ee}
+\emojione_define:nnnn{🖲}{trackball}{128434}{1f5b2}
+\emojione_define:nnnn{🚜}{tractor}{128668}{1f69c}
+\emojione_define:nnnn{🚥}{trafficlight}{128677}{1f6a5}
+\emojione_define:nnnn{🚋}{train}{128651}{1f68b}
+\emojione_define:nnnn{🚆}{traintwo}{128646}{1f686}
+\emojione_define:nnnn{🚊}{tram}{128650}{1f68a}
+\emojione_define:nnnn{🚩}{triangularflagonpost}{128681}{1f6a9}
+\emojione_define:nnnn{📐}{triangularruler}{128208}{1f4d0}
+\emojione_define:nnnn{🔱}{trident}{128305}{1f531}
+\emojione_define:nnnn{😤}{triumph}{128548}{1f624}
+\emojione_define:nnnn{🚎}{trolleybus}{128654}{1f68e}
+\emojione_define:nnnn{🏆}{trophy}{127942}{1f3c6}
+\emojione_define:nnnn{🍹}{tropicaldrink}{127865}{1f379}
+\emojione_define:nnnn{🐠}{tropicalfish}{128032}{1f420}
+\emojione_define:nnnn{🚚}{truck}{128666}{1f69a}
+\emojione_define:nnnn{🎺}{trumpet}{127930}{1f3ba}
+\emojione_define:nnnn{🌷}{tulip}{127799}{1f337}
+\emojione_define:nnnn{🦃}{turkey}{129411}{1f983}
+\emojione_define:nnnn{🐢}{turtle}{128034}{1f422}
+\emojione_define:nnnn{📺}{tv}{128250}{1f4fa}
+\emojione_define:nnnn{🔀}{twistedrightwardsarrows}{128256}{1f500}
+\emojione_define:nnnn{⃣}{two}{8419}{0032-20e3}
+\emojione_define:nnnn{💕}{twohearts}{128149}{1f495}
+\emojione_define:nnnn{👬}{twomenholdinghands}{128108}{1f46c}
+\emojione_define:nnnn{👭}{twowomenholdinghands}{128109}{1f46d}
+\emojione_define:nnnn{🈹}{ufivetwoseventwo}{127545}{1f239}
+\emojione_define:nnnn{🈴}{ufivefourzeroeight}{127540}{1f234}
+\emojione_define:nnnn{🈺}{ufivefivebsix}{127546}{1f23a}
+\emojione_define:nnnn{🈯}{usixthreezeroseven}{127535}{1f22f}
+\emojione_define:nnnn{🈷}{usixsevenzeroeight}{127543}{1f237}
+\emojione_define:nnnn{🈶}{usixsevenzeronine}{127542}{1f236}
+\emojione_define:nnnn{🈵}{usixeeightzero}{127541}{1f235}
+\emojione_define:nnnn{🈚}{usevenonetwoone}{127514}{1f21a}
+\emojione_define:nnnn{🈸}{usevenfivethreethree}{127544}{1f238}
+\emojione_define:nnnn{🈲}{usevennineeightone}{127538}{1f232}
+\emojione_define:nnnn{🈳}{usevenasevena}{127539}{1f233}
+\emojione_define:nnnn{☔}{umbrella}{9748}{2614}
+\emojione_define:nnnn{☂}{umbrellatwo}{9730}{2602}
+\emojione_define:nnnn{😒}{unamused}{128530}{1f612}
+\emojione_define:nnnn{🔞}{underage}{128286}{1f51e}
+\emojione_define:nnnn{🦄}{unicorn}{129412}{1f984}
+\emojione_define:nnnn{🔓}{unlock}{128275}{1f513}
+\emojione_define:nnnn{🆙}{up}{127385}{1f199}
+\emojione_define:nnnn{🙃}{upsidedown}{128579}{1f643}
+\emojione_define:nnnn{⚱}{urn}{9905}{26b1}
+\emojione_define:nnnn{✌}{v}{9996}{270c}
+\emojione_define:nnnn{🏻}{vtoneone}{127995}{270c-1f3fb}
+\emojione_define:nnnn{🏼}{vtonetwo}{127996}{270c-1f3fc}
+\emojione_define:nnnn{🏽}{vtonethree}{127997}{270c-1f3fd}
+\emojione_define:nnnn{🏾}{vtonefour}{127998}{270c-1f3fe}
+\emojione_define:nnnn{🏿}{vtonefive}{127999}{270c-1f3ff}
+\emojione_define:nnnn{🚦}{verticaltrafficlight}{128678}{1f6a6}
+\emojione_define:nnnn{📼}{vhs}{128252}{1f4fc}
+\emojione_define:nnnn{📳}{vibrationmode}{128243}{1f4f3}
+\emojione_define:nnnn{📹}{videocamera}{128249}{1f4f9}
+\emojione_define:nnnn{🎮}{videogame}{127918}{1f3ae}
+\emojione_define:nnnn{🎻}{violin}{127931}{1f3bb}
+\emojione_define:nnnn{♍}{virgo}{9805}{264d}
+\emojione_define:nnnn{🌋}{volcano}{127755}{1f30b}
+\emojione_define:nnnn{🏐}{volleyball}{127952}{1f3d0}
+\emojione_define:nnnn{🆚}{vs}{127386}{1f19a}
+\emojione_define:nnnn{🖖}{vulcan}{128406}{1f596}
+\emojione_define:nnnn{🏻}{vulcantoneone}{127995}{1f596-1f3fb}
+\emojione_define:nnnn{🏼}{vulcantonetwo}{127996}{1f596-1f3fc}
+\emojione_define:nnnn{🏽}{vulcantonethree}{127997}{1f596-1f3fd}
+\emojione_define:nnnn{🏾}{vulcantonefour}{127998}{1f596-1f3fe}
+\emojione_define:nnnn{🏿}{vulcantonefive}{127999}{1f596-1f3ff}
+\emojione_define:nnnn{🚶}{walking}{128694}{1f6b6}
+\emojione_define:nnnn{🏻}{walkingtoneone}{127995}{1f6b6-1f3fb}
+\emojione_define:nnnn{🏼}{walkingtonetwo}{127996}{1f6b6-1f3fc}
+\emojione_define:nnnn{🏽}{walkingtonethree}{127997}{1f6b6-1f3fd}
+\emojione_define:nnnn{🏾}{walkingtonefour}{127998}{1f6b6-1f3fe}
+\emojione_define:nnnn{🏿}{walkingtonefive}{127999}{1f6b6-1f3ff}
+\emojione_define:nnnn{🌘}{waningcrescentmoon}{127768}{1f318}
+\emojione_define:nnnn{🌖}{waninggibbousmoon}{127766}{1f316}
+\emojione_define:nnnn{⚠}{warning}{9888}{26a0}
+\emojione_define:nnnn{🗑}{wastebasket}{128465}{1f5d1}
+\emojione_define:nnnn{⌚}{watch}{8986}{231a}
+\emojione_define:nnnn{🐃}{waterbuffalo}{128003}{1f403}
+\emojione_define:nnnn{🍉}{watermelon}{127817}{1f349}
+\emojione_define:nnnn{👋}{wave}{128075}{1f44b}
+\emojione_define:nnnn{🏻}{wavetoneone}{127995}{1f44b-1f3fb}
+\emojione_define:nnnn{🏼}{wavetonetwo}{127996}{1f44b-1f3fc}
+\emojione_define:nnnn{🏽}{wavetonethree}{127997}{1f44b-1f3fd}
+\emojione_define:nnnn{🏾}{wavetonefour}{127998}{1f44b-1f3fe}
+\emojione_define:nnnn{🏿}{wavetonefive}{127999}{1f44b-1f3ff}
+\emojione_define:nnnn{〰}{wavydash}{12336}{3030}
+\emojione_define:nnnn{🌒}{waxingcrescentmoon}{127762}{1f312}
+\emojione_define:nnnn{🌔}{waxinggibbousmoon}{127764}{1f314}
+\emojione_define:nnnn{🚾}{wc}{128702}{1f6be}
+\emojione_define:nnnn{😩}{weary}{128553}{1f629}
+\emojione_define:nnnn{💒}{wedding}{128146}{1f492}
+\emojione_define:nnnn{🐳}{whale}{128051}{1f433}
+\emojione_define:nnnn{🐋}{whaletwo}{128011}{1f40b}
+\emojione_define:nnnn{☸}{wheelofdharma}{9784}{2638}
+\emojione_define:nnnn{♿}{wheelchair}{9855}{267f}
+\emojione_define:nnnn{✅}{whitecheckmark}{9989}{2705}
+\emojione_define:nnnn{⚪}{whitecircle}{9898}{26aa}
+\emojione_define:nnnn{💮}{whiteflower}{128174}{1f4ae}
+\emojione_define:nnnn{⬜}{whitelargesquare}{11036}{2b1c}
+\emojione_define:nnnn{◽}{whitemediumsmallsquare}{9725}{25fd}
+\emojione_define:nnnn{◻}{whitemediumsquare}{9723}{25fb}
+\emojione_define:nnnn{▫}{whitesmallsquare}{9643}{25ab}
+\emojione_define:nnnn{🔳}{whitesquarebutton}{128307}{1f533}
+\emojione_define:nnnn{🌥}{whitesuncloud}{127781}{1f325}
+\emojione_define:nnnn{🌦}{whitesunraincloud}{127782}{1f326}
+\emojione_define:nnnn{🌤}{whitesunsmallcloud}{127780}{1f324}
+\emojione_define:nnnn{🌬}{windblowingface}{127788}{1f32c}
+\emojione_define:nnnn{🎐}{windchime}{127888}{1f390}
+\emojione_define:nnnn{🍷}{wineglass}{127863}{1f377}
+\emojione_define:nnnn{😉}{wink}{128521}{1f609}
+\emojione_define:nnnn{🐺}{wolf}{128058}{1f43a}
+\emojione_define:nnnn{👩}{woman}{128105}{1f469}
+\emojione_define:nnnn{🏻}{womantoneone}{127995}{1f469-1f3fb}
+\emojione_define:nnnn{🏼}{womantonetwo}{127996}{1f469-1f3fc}
+\emojione_define:nnnn{🏽}{womantonethree}{127997}{1f469-1f3fd}
+\emojione_define:nnnn{🏾}{womantonefour}{127998}{1f469-1f3fe}
+\emojione_define:nnnn{🏿}{womantonefive}{127999}{1f469-1f3ff}
+\emojione_define:nnnn{👚}{womansclothes}{128090}{1f45a}
+\emojione_define:nnnn{👒}{womanshat}{128082}{1f452}
+\emojione_define:nnnn{🚺}{womens}{128698}{1f6ba}
+\emojione_define:nnnn{😟}{worried}{128543}{1f61f}
+\emojione_define:nnnn{🔧}{wrench}{128295}{1f527}
+\emojione_define:nnnn{✍}{writinghand}{9997}{270d}
+\emojione_define:nnnn{🏻}{writinghandtoneone}{127995}{270d-1f3fb}
+\emojione_define:nnnn{🏼}{writinghandtonetwo}{127996}{270d-1f3fc}
+\emojione_define:nnnn{🏽}{writinghandtonethree}{127997}{270d-1f3fd}
+\emojione_define:nnnn{🏾}{writinghandtonefour}{127998}{270d-1f3fe}
+\emojione_define:nnnn{🏿}{writinghandtonefive}{127999}{270d-1f3ff}
+\emojione_define:nnnn{❌}{x}{10060}{274c}
+\emojione_define:nnnn{💛}{yellowheart}{128155}{1f49b}
+\emojione_define:nnnn{💴}{yen}{128180}{1f4b4}
+\emojione_define:nnnn{☯}{yinyang}{9775}{262f}
+\emojione_define:nnnn{😋}{yum}{128523}{1f60b}
+\emojione_define:nnnn{⚡}{zap}{9889}{26a1}
+\emojione_define:nnnn{⃣}{zero}{8419}{0030-20e3}
+\emojione_define:nnnn{🤐}{zippermouth}{129296}{1f910}
+\emojione_define:nnnn{💤}{zzz}{128164}{1f4a4}
+%    \end{macrocode}
+%
+% Disable expl3 syntax.
+%    \begin{macrocode}
+\ExplSyntaxOff
+%    \end{macrocode}
+%
+%
+% \iffalse
+%</package>
+% \fi
+%
+% \Finale
+\endinput

@@ -1845,7 +1845,7 @@
 % characters for every symbol a new macro is created. For a symbol named
 % |link| the macro is called |\emojilink|.
 %    \begin{macrocode}
-\bool_if:nTF { \xetex_if_engine_p: || \luatex_if_engine_p:}
+\bool_if:nTF { \sys_if_engine_xetex_p: || \sys_if_engine_luatex_p: }
 {%
   \RequirePackage{newunicodechar}
   \cs_new:Npn \emojione_define:nnnn #1#2#3#4

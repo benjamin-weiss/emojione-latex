@@ -12,7 +12,7 @@ CTAN_CONTENT = $(INS) $(DTX) $(PDF) $(MD) $(IMG)
 TEXMFHOME = $(shell kpsewhich -var-value=TEXMFHOME)
 INSTALL_DIR = $(TEXMFHOME)/tex/latex/emojione
 DOC_DIR = $(TEXMFHOME)/doc/latex/emojione
-CACHE_DIR = .latex-cache
+CACHE_DIR = latex-cache
 
 TEXC := latexmk -xelatex -output-directory=$(CACHE_DIR)
 

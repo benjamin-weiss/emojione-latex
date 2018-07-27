@@ -27,7 +27,7 @@
 %<package>\NeedsTeXFormat{LaTeX2e}
 %<package>\ProvidesPackage{emojione}
 %<*package>
-    [2016/02/21 1.0.0 emojione package]
+    [2018/07/27 1.0.1 emojione package]
 %</package>
 %<*driver>
 \documentclass{l3doc}
@@ -1845,7 +1845,7 @@
 % characters for every symbol a new macro is created. For a symbol named
 % |link| the macro is called |\emojilink|.
 %    \begin{macrocode}
-\bool_if:nTF { \xetex_if_engine_p: || \luatex_if_engine_p:}
+\bool_if:nTF { \sys_if_engine_xetex_p: || \sys_if_engine_luatex_p: }
 {%
   \RequirePackage{newunicodechar}
   \cs_new:Npn \emojione_define:nnnn #1#2#3#4

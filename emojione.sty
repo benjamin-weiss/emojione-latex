@@ -23,7 +23,7 @@
 %% derived file emojione.sty.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{emojione}
-    [2016/02/21 1.0.0 emojione package]
+    [2018/07/27 1.0.1 emojione package]
 \RequirePackage{expl3}
 \RequirePackage{graphicx}
 \RequirePackage{amsmath}
@@ -54,7 +54,7 @@
                   {\c_emojione_folder / #1.\c_emojione_extension}%
   }%
 }
-\bool_if:nTF { \xetex_if_engine_p: || \luatex_if_engine_p:}
+\bool_if:nTF { \sys_if_engine_xetex_p: || \sys_if_engine_luatex_p: }
 {%
   \RequirePackage{newunicodechar}
   \cs_new:Npn \emojione_define:nnnn #1#2#3#4

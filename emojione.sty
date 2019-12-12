@@ -23,7 +23,7 @@
 %% derived file emojione.sty.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{emojione}
-    [2016/02/21 1.0.0 emojione package]
+    [2018/12/12 1.0.2 emojione package]
 \RequirePackage{expl3}
 \RequirePackage{graphicx}
 \RequirePackage{amsmath}
@@ -33,7 +33,7 @@
 \RequirePackage{l3keys2e}
 \ExplSyntaxOn
 \fp_new:N \emojione_scale
-\tl_const:Nn \c_emojione_folder { ./pdf }
+\tl_const:Nn \c_emojione_folder { pdf }
 \tl_const:Nn \c_emojione_extension { pdf }
 \dim_new:N \emojione_height
 \dim_new:N \emojione_raise
@@ -54,7 +54,7 @@
                   {\c_emojione_folder / #1.\c_emojione_extension}%
   }%
 }
-\bool_if:nTF { \xetex_if_engine_p: || \luatex_if_engine_p:}
+\bool_if:nTF { \sys_if_engine_xetex_p: || \sys_if_engine_luatex_p: }
 {%
   \RequirePackage{newunicodechar}
   \cs_new:Npn \emojione_define:nnnn #1#2#3#4
